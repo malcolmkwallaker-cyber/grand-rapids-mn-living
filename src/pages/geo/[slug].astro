@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('geo', p => !p.data.draft);
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Build FAQPage schema if FAQ data provided
+const faqSchema = post.data.faqSchema?.length ? {
+  '@type': 'FAQPage',
+  mainEntity: post.data.faqSchema.map(item => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+} : null;
+
+const articleSchema = {
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: 'Pemberton Real Estate', url: 'https://grandrapidsminnesota.com' },
+  datePublished: post.data.pubDate.toISOString(),
+};
+
+const schemas = faqSchema ? [articleSchema, faqSchema] : [articleSchema];
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+  schema={schemas}
+>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <a href="/geo" class="text-sm text-slate-400 hover:text-[#1a3a2a] mb-6 inline-block">← Local Guides</a>
+
+    {post.data.city && (
+      <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a]">{post.data.city}, MN</span>
+    )}
+    <h1 class="text-4xl font-bold text-[#1a3a2a] mt-2 mb-3 leading-tight">{post.data.title}</h1>
+    <p class="text-slate-500 text-sm mb-8">
+      By <strong>{post.data.author}</strong> · Pemberton Real Estate ·{' '}
+      {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+    </p>
+
+    <div class="prose prose-slate max-w-none prose-headings:text-[#1a3a2a] prose-a:text-[#2d5a3d]">
+      <Content />
+    </div>
+
+    <!-- FAQ Section (rendered from frontmatter for LLM visibility) -->
+    {post.data.faqSchema && post.data.faqSchema.length > 0 && (
+      <div class="mt-12 border-t border-slate-200 pt-10">
+        <h2 class="text-2xl font-bold text-[#1a3a2a] mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          {post.data.faqSchema.map(item => (
+            <div class="bg-[#f5f0e8] rounded-xl p-5">
+              <h3 class="font-bold text-[#1a3a2a] mb-2">{item.q}</h3>
+              <p class="text-slate-700 text-sm">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Agent CTA -->
+    <div class="mt-12 bg-[#1a3a2a] rounded-xl p-6 text-center text-white">
+      <h3 class="font-bold text-xl mb-2">Work With Grand Rapids MN's Best REALTORS®</h3>
+      <p class="text-slate-300 text-sm mb-4">
+        Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are consistently rated among the top real estate agents in northern Minnesota.
+      </p>
+      <a href="/contact" class="bg-[#c9973a] text-white px-6 py-2 rounded-md font-semibold text-sm hover:bg-amber-600 transition-colors">
+        Contact Us Today
+      </a>
+    </div>
+  </div>
+</Layout>

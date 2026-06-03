@@ -1,0 +1,66 @@
+---
+import { SITE, CITIES, AGENTS, BROKERAGE } from '../lib/constants';
+---
+
+<footer class="bg-[#1a3a2a] text-[#f5f0e8] mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <h3 class="text-white font-bold text-lg mb-2">Grand Rapids MN Living</h3>
+        <p class="text-sm text-slate-300 mb-4">{SITE.tagline}</p>
+        <p class="text-sm text-slate-300">{BROKERAGE.name}</p>
+        <p class="text-sm text-slate-300">{BROKERAGE.address}</p>
+        <p class="text-sm text-slate-300 mt-1">{BROKERAGE.phone}</p>
+      </div>
+
+      <!-- Cities -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Cities</h4>
+        <ul class="space-y-2">
+          {CITIES.slice(0, 8).map(city => (
+            <li>
+              <a href={`/cities/${city.slug}`} class="text-sm text-slate-300 hover:text-white transition-colors">
+                {city.name}, MN
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Resources</h4>
+        <ul class="space-y-2">
+          <li><a href="/blog" class="text-sm text-slate-300 hover:text-white">Real Estate Blog</a></li>
+          <li><a href="/geo" class="text-sm text-slate-300 hover:text-white">Local Guides</a></li>
+          <li><a href="/news" class="text-sm text-slate-300 hover:text-white">Local News</a></li>
+          <li><a href="/agents" class="text-sm text-slate-300 hover:text-white">Our Agents</a></li>
+          <li><a href="/about" class="text-sm text-slate-300 hover:text-white">About Pemberton</a></li>
+          <li><a href="/contact" class="text-sm text-slate-300 hover:text-white">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Agents -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Our Agents</h4>
+        {AGENTS.map(agent => (
+          <div class="mb-4">
+            <a href={`/agents/${agent.slug}`} class="text-white font-medium text-sm hover:underline">{agent.name}</a>
+            <p class="text-slate-300 text-sm">{agent.title} · {agent.brokerage}</p>
+            <p class="text-slate-400 text-xs mt-1">{agent.phone}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="border-t border-[#2d5a3d] mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-400 text-sm">
+        © {new Date().getFullYear()} {BROKERAGE.name}. All rights reserved.
+      </p>
+      <p class="text-slate-500 text-xs">
+        Malcolm Wallaker & Bridger Hopkins · Licensed REALTORS® in Minnesota
+      </p>
+    </div>
+  </div>
+</footer>

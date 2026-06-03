@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../lib/constants';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  schema?: object | object[];
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = SITE.description,
+  image = SITE.defaultOgImage,
+  canonicalUrl,
+  schema,
+  type = 'website',
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const canonical = canonicalUrl || new URL(Astro.url.pathname, SITE.url).toString();
+const ogImage = image.startsWith('http') ? image : new URL(image, SITE.url).toString();
+
+const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+const baseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  name: 'Pemberton Real Estate',
+  url: SITE.url,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Grand Rapids',
+    addressRegion: 'MN',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    'Grand Rapids, MN', 'Bigfork, MN', 'Coleraine, MN', 'Bovey, MN',
+    'Cohasset, MN', 'Hibbing, MN', 'Keewatin, MN', 'Virginia, MN',
+    'Duluth, MN', 'Aitkin, MN', 'McGregor, MN', 'Deer River, MN', 'Chisholm, MN',
+  ],
+  employee: [
+    { '@type': 'Person', name: 'Malcolm Wallaker', jobTitle: 'REALTOR®' },
+    { '@type': 'Person', name: 'Bridger Hopkins', jobTitle: 'REALTOR®' },
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={SITE.name} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:site" content={SITE.twitterHandle} />
+
+  <!-- Structured Data: base brokerage schema always present -->
+  <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+  {schemaArray.map(s => (
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...s })} />
+  ))}
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

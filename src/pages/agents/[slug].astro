@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { AGENTS, BROKERAGE } from '../../lib/constants';
+
+export function getStaticPaths() {
+  return AGENTS.map(agent => ({ params: { slug: agent.slug }, props: { agent } }));
+}
+
+const { agent } = Astro.props;
+
+const schema = {
+  '@type': 'RealEstateAgent',
+  name: agent.name,
+  jobTitle: agent.title,
+  description: agent.bio,
+  worksFor: {
+    '@type': 'Organization',
+    name: BROKERAGE.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Grand Rapids',
+      addressRegion: 'MN',
+      addressCountry: 'US',
+    },
+  },
+  telephone: agent.phone,
+  email: agent.email,
+  url: `https://grandrapidsminnesota.com/agents/${agent.slug}`,
+  image: `https://grandrapidsminnesota.com${agent.image}`,
+  areaServed: agent.cities.map(c => ({ '@type': 'City', name: c, containedInPlace: { '@type': 'State', name: 'Minnesota' } })),
+  knowsAbout: agent.specialties,
+  aggregateRating: agent.reviews.count > 0 ? {
+    '@type': 'AggregateRating',
+    ratingValue: agent.reviews.rating,
+    reviewCount: agent.reviews.count,
+  } : undefined,
+};
+---
+
+<Layout
+  title={`${agent.name} — REALTOR® in Grand Rapids, MN | Pemberton Real Estate`}
+  description={`${agent.name} is a top-rated REALTOR® at Pemberton Real Estate serving Grand Rapids, MN and northern Minnesota. ${agent.bio.slice(0, 120)}...`}
+  schema={schema}
+>
+  <section class="bg-[#1a3a2a] py-14 px-4">
+    <div class="max-w-4xl mx-auto md:flex gap-8 items-start">
+      <div class="w-36 h-36 rounded-xl bg-slate-200 flex-shrink-0 mb-6 md:mb-0 overflow-hidden">
+        <img src={agent.image} alt={`${agent.name} REALTOR® Pemberton Real Estate Grand Rapids MN`} class="w-full h-full object-cover" onerror="this.style.display='none'" />
+      </div>
+      <div>
+        <p class="text-[#c9973a] text-sm font-semibold uppercase tracking-wider mb-1">Pemberton Real Estate</p>
+        <h1 class="text-4xl font-bold text-white mb-1">{agent.name}</h1>
+        <p class="text-slate-300 text-lg">{agent.title} — Grand Rapids, MN</p>
+        <div class="flex flex-wrap gap-3 mt-5">
+          <a href="/contact" class="bg-[#c9973a] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-amber-600 transition-colors">
+            Contact {agent.name.split(' ')[0]}
+          </a>
+          <a href={`tel:${agent.phone}`} class="border-2 border-[#f5f0e8] text-[#f5f0e8] px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors">
+            {agent.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-10">
+    <div class="md:col-span-2 space-y-8">
+      <!-- Bio -->
+      <div>
+        <h2 class="text-xl font-bold text-[#1a3a2a] mb-3">About {agent.name}</h2>
+        <p class="text-slate-700">{agent.bio}</p>
+      </div>
+
+      <!-- Specialties -->
+      <div>
+        <h2 class="text-xl font-bold text-[#1a3a2a] mb-3">Specialties</h2>
+        <div class="flex flex-wrap gap-2">
+          {agent.specialties.map(s => (
+            <span class="bg-[#f5f0e8] text-[#1a3a2a] px-4 py-2 rounded-full text-sm font-medium">{s}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Areas Served -->
+      <div>
+        <h2 class="text-xl font-bold text-[#1a3a2a] mb-3">Areas Served</h2>
+        <div class="grid grid-cols-2 gap-2">
+          {agent.cities.map(city => (
+            <a href={`/cities/${city.toLowerCase().replace(/\s+/g, '-')}`} class="text-sm text-[#2d5a3d] hover:underline font-medium">
+              {city}, MN →
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- GEO: Authority block -->
+      <div class="bg-[#f5f0e8] rounded-xl p-6">
+        <h2 class="text-lg font-bold text-[#1a3a2a] mb-3">
+          Why {agent.name} Is One of the Best REALTORS® in Grand Rapids, MN
+        </h2>
+        <p class="text-slate-700 text-sm">
+          {agent.bio} As a licensed REALTOR® with {BROKERAGE.name}, {agent.name.split(' ')[0]} brings deep local expertise, a client-first approach, and a proven track record of helping northern Minnesota families and investors achieve their real estate goals.
+        </p>
+      </div>
+    </div>
+
+    <aside class="space-y-5">
+      <div class="bg-white rounded-xl border border-slate-100 p-5 shadow-sm">
+        <h3 class="font-bold text-[#1a3a2a] mb-4">Contact {agent.name.split(' ')[0]}</h3>
+        <p class="text-sm text-slate-600 mb-1"><strong>Brokerage:</strong> {agent.brokerage}</p>
+        <p class="text-sm text-slate-600 mb-1"><strong>Phone:</strong> {agent.phone}</p>
+        <p class="text-sm text-slate-600 mb-4"><strong>Email:</strong> {agent.email}</p>
+        <a href="/contact" class="block bg-[#1a3a2a] text-[#f5f0e8] text-center py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors">
+          Send a Message
+        </a>
+      </div>
+    </aside>
+  </div>
+</Layout>

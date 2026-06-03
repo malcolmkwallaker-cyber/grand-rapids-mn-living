@@ -1,0 +1,74 @@
+name: Auto-Publish Content
+
+on:
+  schedule:
+    # GEO post: every Monday at 8am CT (14:00 UTC)
+    - cron: '0 14 * * 1'
+    # News + GEO post: every Thursday at 8am CT (14:00 UTC)
+    - cron: '0 14 * * 4'
+    # SEO blog post: every Wednesday at 8am CT (14:00 UTC)
+    - cron: '0 14 * * 3'
+  workflow_dispatch:
+    inputs:
+      content_type:
+        description: 'Content type to generate'
+        required: true
+        default: 'geo'
+        type: choice
+        options:
+          - geo
+          - blog
+          - news
+          - all
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine content type by schedule
+        id: content-type
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "type=${{ github.event.inputs.content_type }}" >> $GITHUB_OUTPUT
+          else
+            DAY=$(date +%u)
+            if [ "$DAY" = "1" ]; then
+              echo "type=geo" >> $GITHUB_OUTPUT
+            elif [ "$DAY" = "3" ]; then
+              echo "type=blog" >> $GITHUB_OUTPUT
+            elif [ "$DAY" = "4" ]; then
+              echo "type=news_and_geo" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Generate content via Claude API
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CONTENT_TYPE: ${{ steps.content-type.outputs.type }}
+        run: |
+          node scripts/generate-content.mjs
+
+      - name: Commit and push new content
+        run: |
+          git config user.name "Grand Rapids MN Living Bot"
+          git config user.email "bot@grandrapidsminnesota.com"
+          git add src/content/
+          if git diff --staged --quiet; then
+            echo "No new content to commit"
+          else
+            git commit -m "Auto-publish: ${CONTENT_TYPE} content $(date +%Y-%m-%d)"
+            git push
+          fi
