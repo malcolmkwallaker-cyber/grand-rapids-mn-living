@@ -55,14 +55,42 @@ import { AGENTS, BROKERAGE } from '../lib/constants';
           <p class="text-sm text-[#c9973a] font-medium">{agent.title} · {agent.brokerage}</p>
           <p class="text-sm text-slate-600 mt-2">{agent.phone}</p>
           <p class="text-sm text-slate-600">{agent.email}</p>
-          <p class="text-sm text-slate-500 mt-2">Serving: {agent.cities.slice(0, 4).join(', ')}{agent.cities.length > 4 ? ` +${agent.cities.length - 4} more` : ''}</p>
+          <p class="text-sm text-slate-500 mt-1 mb-3">Serving: {agent.cities.slice(0, 4).join(', ')}{agent.cities.length > 4 ? ` +${agent.cities.length - 4} more` : ''}</p>
+          <a href={agent.website} target="_blank" rel="noopener noreferrer"
+            class="text-sm text-[#2d5a3d] font-semibold hover:underline block mb-2">
+            {agent.website.replace('https://', '')} ↗
+          </a>
+          <div class="flex gap-3">
+            {agent.social.facebook && (
+              <a href={agent.social.facebook} target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-[#1a3a2a]">Facebook</a>
+            )}
+            {agent.social.instagram && (
+              <a href={agent.social.instagram} target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-[#1a3a2a]">Instagram</a>
+            )}
+            {agent.social.zillow && (
+              <a href={agent.social.zillow} target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-[#1a3a2a]">Zillow</a>
+            )}
+            {agent.social.googleBusiness && (
+              <a href={agent.social.googleBusiness} target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-[#1a3a2a]">Google</a>
+            )}
+          </div>
         </div>
       ))}
       <div class="bg-white rounded-xl border border-slate-100 p-5">
         <h3 class="font-bold text-[#1a3a2a] mb-1">{BROKERAGE.name}</h3>
         <p class="text-sm text-slate-600">{BROKERAGE.address}</p>
         <p class="text-sm text-slate-600">{BROKERAGE.phone}</p>
-        <p class="text-sm text-slate-600">{BROKERAGE.email}</p>
+        <p class="text-sm text-slate-600 mb-3">{BROKERAGE.email}</p>
+        <a href={BROKERAGE.website} target="_blank" rel="noopener noreferrer"
+          class="text-sm text-[#2d5a3d] font-semibold hover:underline block mb-2">
+          {BROKERAGE.website.replace('https://', '')} ↗
+        </a>
+        <div class="flex gap-3 mt-2">
+          <a href={BROKERAGE.social.facebook} target="_blank" rel="noopener noreferrer"
+            class="text-sm text-slate-500 hover:text-[#1a3a2a]">Facebook</a>
+          <a href={BROKERAGE.social.instagram} target="_blank" rel="noopener noreferrer"
+            class="text-sm text-slate-500 hover:text-[#1a3a2a]">Instagram</a>
+        </div>
       </div>
     </div>
   </div>

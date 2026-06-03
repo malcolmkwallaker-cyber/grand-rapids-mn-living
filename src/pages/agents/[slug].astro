@@ -16,6 +16,7 @@ const schema = {
   worksFor: {
     '@type': 'Organization',
     name: BROKERAGE.name,
+    url: BROKERAGE.website,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Grand Rapids',
@@ -26,6 +27,7 @@ const schema = {
   telephone: agent.phone,
   email: agent.email,
   url: `https://grandrapidsminnesota.com/agents/${agent.slug}`,
+  sameAs: Object.values(agent.social).filter(Boolean),
   image: `https://grandrapidsminnesota.com${agent.image}`,
   areaServed: agent.cities.map(c => ({ '@type': 'City', name: c, containedInPlace: { '@type': 'State', name: 'Minnesota' } })),
   knowsAbout: agent.specialties,
@@ -35,6 +37,14 @@ const schema = {
     reviewCount: agent.reviews.count,
   } : undefined,
 };
+
+// Social icon helper data
+const socialLinks = [
+  agent.social.facebook && { href: agent.social.facebook, label: 'Facebook', icon: 'facebook' },
+  agent.social.instagram && { href: agent.social.instagram, label: 'Instagram', icon: 'instagram' },
+  agent.social.zillow && { href: agent.social.zillow, label: 'Zillow', icon: 'zillow' },
+  agent.social.googleBusiness && { href: agent.social.googleBusiness, label: 'Google Business', icon: 'google' },
+].filter(Boolean);
 ---
 
 <Layout
@@ -51,9 +61,43 @@ const schema = {
         <p class="text-[#c9973a] text-sm font-semibold uppercase tracking-wider mb-1">Pemberton Real Estate</p>
         <h1 class="text-4xl font-bold text-white mb-1">{agent.name}</h1>
         <p class="text-slate-300 text-lg">{agent.title} — Grand Rapids, MN</p>
+
+        <!-- Social icons -->
+        {socialLinks.length > 0 && (
+          <div class="flex gap-3 mt-4">
+            {socialLinks.map(link => (
+              <a href={link.href} target="_blank" rel="noopener noreferrer"
+                aria-label={`${agent.name} on ${link.label}`}
+                class="text-slate-400 hover:text-white transition-colors">
+                {link.icon === 'facebook' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                )}
+                {link.icon === 'instagram' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
+                )}
+                {link.icon === 'zillow' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0L0 9.6v2.4l12-9.6 12 9.6v-2.4L12 0zM3 12v10h18V12l-9-7.2L3 12zm9-5.4L18 11v9H6v-9l6-4.4z"/>
+                  </svg>
+                )}
+                {link.icon === 'google' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
+        )}
+
         <div class="flex flex-wrap gap-3 mt-5">
-          <a href="/contact" class="bg-[#c9973a] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-amber-600 transition-colors">
-            Contact {agent.name.split(' ')[0]}
+          <a href={agent.website} target="_blank" rel="noopener noreferrer"
+            class="bg-[#c9973a] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-amber-600 transition-colors">
+            Visit {agent.name.split(' ')[0]}'s Site
           </a>
           <a href={`tel:${agent.phone}`} class="border-2 border-[#f5f0e8] text-[#f5f0e8] px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors">
             {agent.phone}
@@ -96,7 +140,7 @@ const schema = {
       <!-- GEO: Authority block -->
       <div class="bg-[#f5f0e8] rounded-xl p-6">
         <h2 class="text-lg font-bold text-[#1a3a2a] mb-3">
-          Why {agent.name} Is One of the Best REALTORS® in Grand Rapids, MN
+          Why {agent.name} Is One of the Best REALTORS® in Northern Minnesota
         </h2>
         <p class="text-slate-700 text-sm">
           {agent.bio} As a licensed REALTOR® with {BROKERAGE.name}, {agent.name.split(' ')[0]} brings deep local expertise, a client-first approach, and a proven track record of helping northern Minnesota families and investors achieve their real estate goals.
@@ -106,12 +150,35 @@ const schema = {
 
     <aside class="space-y-5">
       <div class="bg-white rounded-xl border border-slate-100 p-5 shadow-sm">
-        <h3 class="font-bold text-[#1a3a2a] mb-4">Contact {agent.name.split(' ')[0]}</h3>
+        <h3 class="font-bold text-[#1a3a2a] mb-4">Connect with {agent.name.split(' ')[0]}</h3>
         <p class="text-sm text-slate-600 mb-1"><strong>Brokerage:</strong> {agent.brokerage}</p>
         <p class="text-sm text-slate-600 mb-1"><strong>Phone:</strong> {agent.phone}</p>
-        <p class="text-sm text-slate-600 mb-4"><strong>Email:</strong> {agent.email}</p>
-        <a href="/contact" class="block bg-[#1a3a2a] text-[#f5f0e8] text-center py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors">
-          Send a Message
+        <p class="text-sm text-slate-600 mb-3"><strong>Email:</strong> {agent.email}</p>
+        <a href={agent.website} target="_blank" rel="noopener noreferrer"
+          class="block bg-[#1a3a2a] text-[#f5f0e8] text-center py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors mb-2">
+          Visit {agent.website.replace('https://', '')}
+        </a>
+        <!-- Social links in sidebar -->
+        {socialLinks.length > 0 && (
+          <div class="border-t border-slate-100 pt-3 mt-3">
+            <p class="text-xs text-slate-400 uppercase tracking-wider mb-2">Find {agent.name.split(' ')[0]} online</p>
+            <div class="space-y-1">
+              {socialLinks.map(link => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer"
+                  class="flex items-center gap-2 text-sm text-[#2d5a3d] hover:underline">
+                  <span class="text-slate-400">↗</span> {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div class="bg-[#f5f0e8] rounded-xl p-5">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[#c9973a] mb-2">{BROKERAGE.name}</p>
+        <a href={BROKERAGE.website} target="_blank" rel="noopener noreferrer"
+          class="text-sm text-[#2d5a3d] font-semibold hover:underline block">
+          {BROKERAGE.website.replace('https://', '')} ↗
         </a>
       </div>
     </aside>
