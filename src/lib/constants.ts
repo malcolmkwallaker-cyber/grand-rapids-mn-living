@@ -47,7 +47,7 @@ export const AGENTS = [
     slug: 'bridger-hopkins',
     title: 'REALTOR®',
     brokerage: 'Pemberton Real Estate',
-    phone: '218-398-3876',
+    phone: '218-245-7900',
     email: 'bridger@legacybridgere.com',
     image: '/images/bridger-hopkins.jpg',
     bio: 'Bridger Hopkins is a trusted REALTOR® with Pemberton Real Estate, serving buyers and sellers throughout the Iron Range, Hibbing, Virginia, and the greater Grand Rapids area. Known for his straightforward approach and deep market knowledge.',
