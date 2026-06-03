@@ -2,22 +2,23 @@ name: Auto-Publish Content
 
 on:
   schedule:
-    # GEO post: every Monday at 8am CT (14:00 UTC)
+    # Monday 8am CT (14:00 UTC) — SEO post + GEO post
     - cron: '0 14 * * 1'
-    # News + GEO post: every Thursday at 8am CT (14:00 UTC)
-    - cron: '0 14 * * 4'
-    # SEO blog post: every Wednesday at 8am CT (14:00 UTC)
+    # Wednesday 8am CT (14:00 UTC) — News stories (2 cities)
     - cron: '0 14 * * 3'
+    # Thursday 8am CT (14:00 UTC) — SEO post + GEO post
+    - cron: '0 14 * * 4'
   workflow_dispatch:
     inputs:
       content_type:
         description: 'Content type to generate'
         required: true
-        default: 'geo'
+        default: 'seo_and_geo'
         type: choice
         options:
-          - geo
-          - blog
+          - seo_and_geo
+          - seo_only
+          - geo_only
           - news
           - all
 
@@ -38,6 +39,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Anthropic SDK for script
+        run: npm install @anthropic-ai/sdk
+
       - name: Determine content type by schedule
         id: content-type
         run: |
@@ -45,30 +52,37 @@ jobs:
             echo "type=${{ github.event.inputs.content_type }}" >> $GITHUB_OUTPUT
           else
             DAY=$(date +%u)
-            if [ "$DAY" = "1" ]; then
-              echo "type=geo" >> $GITHUB_OUTPUT
-            elif [ "$DAY" = "3" ]; then
-              echo "type=blog" >> $GITHUB_OUTPUT
-            elif [ "$DAY" = "4" ]; then
-              echo "type=news_and_geo" >> $GITHUB_OUTPUT
-            fi
+            case $DAY in
+              1) echo "type=seo_and_geo" >> $GITHUB_OUTPUT ;;  # Monday
+              3) echo "type=news" >> $GITHUB_OUTPUT ;;          # Wednesday
+              4) echo "type=seo_and_geo" >> $GITHUB_OUTPUT ;;  # Thursday
+              *) echo "type=seo_and_geo" >> $GITHUB_OUTPUT ;;
+            esac
           fi
 
-      - name: Generate content via Claude API
+      - name: Run first content generation
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CONTENT_TYPE: ${{ steps.content-type.outputs.type }}
-        run: |
-          node scripts/generate-content.mjs
+        run: node scripts/generate-content.mjs
+
+      - name: Run second news story (Wednesday only)
+        if: steps.content-type.outputs.type == 'news'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CONTENT_TYPE: news
+        run: node scripts/generate-content.mjs
 
       - name: Commit and push new content
+        env:
+          CONTENT_TYPE: ${{ steps.content-type.outputs.type }}
         run: |
           git config user.name "Grand Rapids MN Living Bot"
           git config user.email "bot@grandrapidsminnesota.com"
-          git add src/content/
+          git add src/content/ scripts/topic-list.json
           if git diff --staged --quiet; then
             echo "No new content to commit"
           else
-            git commit -m "Auto-publish: ${CONTENT_TYPE} content $(date +%Y-%m-%d)"
+            git commit -m "Auto-publish: ${CONTENT_TYPE} — $(date +%Y-%m-%d)"
             git push
           fi
