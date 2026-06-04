@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2025-06-03",
+    "lastUpdated": "2026-06-04",
     "totalTopics": 0,
-    "publishedCount": 0,
+    "publishedCount": 2,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -28,26 +28,62 @@
     },
     {
       "id": "seo-003",
-      "status": "pending",
+      "status": "published",
       "title": "First-Time Homebuyer's Guide to Grand Rapids, MN",
       "primaryKeyword": "first time home buyer grand rapids mn",
-      "secondaryKeywords": ["buying first home northern minnesota", "grand rapids mn housing market", "first time buyer itasca county"],
+      "secondaryKeywords": [
+        "buying first home northern minnesota",
+        "grand rapids mn housing market",
+        "first time buyer itasca county"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["Why Grand Rapids is a Smart Market for First-Time Buyers", "What to Expect from Grand Rapids Home Prices", "Neighborhoods Worth Knowing in Grand Rapids", "Getting Pre-Approved: What Northern MN Lenders Look For", "Common Mistakes First-Time Buyers Make in This Market"],
-      "talkingPoints": ["Median price ~$215K vs. Twin Cities — the value gap", "Neighborhoods: downtown adjacent vs. north side vs. Cohasset", "Seasonal timing and how it affects inventory", "What to know about well and septic in Grand Rapids area", "Local lenders vs. big banks for northern MN properties", "How the inspection process differs for older housing stock"],
-      "wordCount": 1400
+      "h2Suggestions": [
+        "Why Grand Rapids is a Smart Market for First-Time Buyers",
+        "What to Expect from Grand Rapids Home Prices",
+        "Neighborhoods Worth Knowing in Grand Rapids",
+        "Getting Pre-Approved: What Northern MN Lenders Look For",
+        "Common Mistakes First-Time Buyers Make in This Market"
+      ],
+      "talkingPoints": [
+        "Median price ~$215K vs. Twin Cities — the value gap",
+        "Neighborhoods: downtown adjacent vs. north side vs. Cohasset",
+        "Seasonal timing and how it affects inventory",
+        "What to know about well and septic in Grand Rapids area",
+        "Local lenders vs. big banks for northern MN properties",
+        "How the inspection process differs for older housing stock"
+      ],
+      "wordCount": 1400,
+      "publishedSlug": "first-time-homebuyer-s-guide-to-grand-rapids-mn",
+      "publishedDate": "2026-06-04"
     },
     {
       "id": "seo-004",
       "status": "pending",
       "title": "Selling Your Home in Grand Rapids, MN: A Local Agent's Guide",
       "primaryKeyword": "selling home grand rapids mn",
-      "secondaryKeywords": ["sell house grand rapids minnesota", "home selling tips northern mn", "list home itasca county"],
+      "secondaryKeywords": [
+        "sell house grand rapids minnesota",
+        "home selling tips northern mn",
+        "list home itasca county"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["When Is the Right Time to List in Grand Rapids?", "How to Price Your Home in This Market", "What Grand Rapids Buyers Are Looking For Right Now", "Preparing Your Home for a Northern MN Sale", "What to Expect During the Grand Rapids Closing Process"],
-      "talkingPoints": ["Spring/summer peak — but winter listings can be strategic", "Pricing methodology in a market without many comps", "What remote-worker buyers specifically want", "Garage, storage, and outdoor space command premiums here", "Common inspection issues in northern MN homes (heating, foundation, well)", "Timeline expectations — days on market in current conditions"],
+      "h2Suggestions": [
+        "When Is the Right Time to List in Grand Rapids?",
+        "How to Price Your Home in This Market",
+        "What Grand Rapids Buyers Are Looking For Right Now",
+        "Preparing Your Home for a Northern MN Sale",
+        "What to Expect During the Grand Rapids Closing Process"
+      ],
+      "talkingPoints": [
+        "Spring/summer peak — but winter listings can be strategic",
+        "Pricing methodology in a market without many comps",
+        "What remote-worker buyers specifically want",
+        "Garage, storage, and outdoor space command premiums here",
+        "Common inspection issues in northern MN homes (heating, foundation, well)",
+        "Timeline expectations — days on market in current conditions"
+      ],
       "wordCount": 1400
     },
     {
@@ -55,11 +91,28 @@
       "status": "pending",
       "title": "Moving to Grand Rapids, MN from the Twin Cities: What to Expect",
       "primaryKeyword": "moving to grand rapids mn from twin cities",
-      "secondaryKeywords": ["relocating to grand rapids minnesota", "twin cities to northern mn", "grand rapids mn lifestyle"],
+      "secondaryKeywords": [
+        "relocating to grand rapids minnesota",
+        "twin cities to northern mn",
+        "grand rapids mn lifestyle"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["Why Twin Cities Residents Are Moving to Grand Rapids", "What Your Money Buys in Grand Rapids vs. the Metro", "The Real Talk: What's Different About Life Up North", "Schools, Healthcare, and Amenities in Grand Rapids", "How to Find the Right Neighborhood When You're Relocating"],
-      "talkingPoints": ["Dollar-for-dollar comparison: what $350K buys in suburbs vs. Grand Rapids", "Remote work infrastructure (fiber internet availability)", "What people miss from the metro and how to deal with it", "Schools — ISD 318 overview", "Essentials that exist vs. what requires a trip to Duluth or the Cities", "The outdoor lifestyle advantage that actually changes daily life"],
+      "h2Suggestions": [
+        "Why Twin Cities Residents Are Moving to Grand Rapids",
+        "What Your Money Buys in Grand Rapids vs. the Metro",
+        "The Real Talk: What's Different About Life Up North",
+        "Schools, Healthcare, and Amenities in Grand Rapids",
+        "How to Find the Right Neighborhood When You're Relocating"
+      ],
+      "talkingPoints": [
+        "Dollar-for-dollar comparison: what $350K buys in suburbs vs. Grand Rapids",
+        "Remote work infrastructure (fiber internet availability)",
+        "What people miss from the metro and how to deal with it",
+        "Schools — ISD 318 overview",
+        "Essentials that exist vs. what requires a trip to Duluth or the Cities",
+        "The outdoor lifestyle advantage that actually changes daily life"
+      ],
       "wordCount": 1500
     },
     {
@@ -67,11 +120,28 @@
       "status": "pending",
       "title": "Grand Rapids, MN Real Estate Market Update: What Buyers and Sellers Need to Know",
       "primaryKeyword": "grand rapids mn real estate market",
-      "secondaryKeywords": ["grand rapids minnesota housing market", "itasca county real estate trends", "northern mn home prices"],
+      "secondaryKeywords": [
+        "grand rapids minnesota housing market",
+        "itasca county real estate trends",
+        "northern mn home prices"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["Current Home Prices in Grand Rapids, MN", "Inventory Levels and What They Mean for You", "Who Is Buying in Grand Rapids Right Now", "Lakefront vs. In-Town: Where the Market Is Moving", "What to Expect in the Next 6-12 Months"],
-      "talkingPoints": ["Median price trends in Itasca County", "Days on market for different price bands", "Buyer profile shift toward remote workers", "Lakefront demand outpacing supply", "What interest rate environment means for northern MN buyers", "Investor activity — are they coming to Grand Rapids?"],
+      "h2Suggestions": [
+        "Current Home Prices in Grand Rapids, MN",
+        "Inventory Levels and What They Mean for You",
+        "Who Is Buying in Grand Rapids Right Now",
+        "Lakefront vs. In-Town: Where the Market Is Moving",
+        "What to Expect in the Next 6-12 Months"
+      ],
+      "talkingPoints": [
+        "Median price trends in Itasca County",
+        "Days on market for different price bands",
+        "Buyer profile shift toward remote workers",
+        "Lakefront demand outpacing supply",
+        "What interest rate environment means for northern MN buyers",
+        "Investor activity — are they coming to Grand Rapids?"
+      ],
       "wordCount": 1300
     },
     {
@@ -79,11 +149,28 @@
       "status": "pending",
       "title": "Investing in Northern Minnesota Real Estate: The Case for Hibbing and the Iron Range",
       "primaryKeyword": "invest real estate iron range minnesota",
-      "secondaryKeywords": ["hibbing mn investment property", "iron range real estate investment", "northern mn rental property"],
+      "secondaryKeywords": [
+        "hibbing mn investment property",
+        "iron range real estate investment",
+        "northern mn rental property"
+      ],
       "city": "Hibbing",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["Why Investors Are Looking at the Iron Range", "Iron Range Home Prices vs. Rental Rates: The Math", "What Types of Properties Work as Rentals in Hibbing", "Risks and Realities of Iron Range Investment", "How to Get Started as an Out-of-State Investor"],
-      "talkingPoints": ["$100K-$150K purchase price with $900-$1,200/month rental potential", "Taconite industry employment = stable tenant base", "Single-family vs. multi-family — what works better", "Property management options in the Hibbing area", "What remote investors get wrong about the Iron Range", "Tax treatment of rental income in Minnesota"],
+      "h2Suggestions": [
+        "Why Investors Are Looking at the Iron Range",
+        "Iron Range Home Prices vs. Rental Rates: The Math",
+        "What Types of Properties Work as Rentals in Hibbing",
+        "Risks and Realities of Iron Range Investment",
+        "How to Get Started as an Out-of-State Investor"
+      ],
+      "talkingPoints": [
+        "$100K-$150K purchase price with $900-$1,200/month rental potential",
+        "Taconite industry employment = stable tenant base",
+        "Single-family vs. multi-family — what works better",
+        "Property management options in the Hibbing area",
+        "What remote investors get wrong about the Iron Range",
+        "Tax treatment of rental income in Minnesota"
+      ],
       "wordCount": 1400
     },
     {
@@ -91,11 +178,28 @@
       "status": "pending",
       "title": "Best Neighborhoods in Hibbing, MN: A Local's Guide",
       "primaryKeyword": "best neighborhoods hibbing mn",
-      "secondaryKeywords": ["hibbing minnesota neighborhoods", "where to live hibbing mn", "hibbing mn residential areas"],
+      "secondaryKeywords": [
+        "hibbing minnesota neighborhoods",
+        "where to live hibbing mn",
+        "hibbing mn residential areas"
+      ],
       "city": "Hibbing",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["The East Side: Hibbing's Most Established Residential Area", "West Hibbing: Newer Construction and More Space", "Near Downtown: Walkability and Local Character", "What to Know About Schools When Choosing a Neighborhood", "How Much You'll Pay in Each Part of Town"],
-      "talkingPoints": ["East side — older, established, tree-lined streets", "West side — newer construction, bigger lots, garages", "School district overview for ISD 701", "Price differentials between parts of town", "What out-of-town buyers consistently get wrong about Hibbing neighborhoods", "Proximity to taconite plants and noise/traffic considerations"],
+      "h2Suggestions": [
+        "The East Side: Hibbing's Most Established Residential Area",
+        "West Hibbing: Newer Construction and More Space",
+        "Near Downtown: Walkability and Local Character",
+        "What to Know About Schools When Choosing a Neighborhood",
+        "How Much You'll Pay in Each Part of Town"
+      ],
+      "talkingPoints": [
+        "East side — older, established, tree-lined streets",
+        "West side — newer construction, bigger lots, garages",
+        "School district overview for ISD 701",
+        "Price differentials between parts of town",
+        "What out-of-town buyers consistently get wrong about Hibbing neighborhoods",
+        "Proximity to taconite plants and noise/traffic considerations"
+      ],
       "wordCount": 1300
     },
     {
@@ -103,11 +207,28 @@
       "status": "pending",
       "title": "Moving to Duluth, MN: Real Estate, Neighborhoods, and What to Expect",
       "primaryKeyword": "moving to duluth mn real estate",
-      "secondaryKeywords": ["duluth mn neighborhoods", "buying home duluth minnesota", "duluth real estate guide"],
+      "secondaryKeywords": [
+        "duluth mn neighborhoods",
+        "buying home duluth minnesota",
+        "duluth real estate guide"
+      ],
       "city": "Duluth",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["Duluth Real Estate vs. the Rest of Northern Minnesota", "Duluth Neighborhoods: What You Need to Know Before You Buy", "What Buyers Are Paying in Duluth Right Now", "Lakeside Living: Canal Park and the East End", "Making the Move: What's Different About Duluth Life"],
-      "talkingPoints": ["Price premium over Iron Range — why and whether it's worth it", "Canal Park / East End vs. West Duluth — very different markets", "Lake Superior views command significant premium", "UMD and St. Scholastica driving rental demand", "Healthcare system — Essentia and St. Luke's employment base", "Outdoor recreation as a driver of relocation demand"],
+      "h2Suggestions": [
+        "Duluth Real Estate vs. the Rest of Northern Minnesota",
+        "Duluth Neighborhoods: What You Need to Know Before You Buy",
+        "What Buyers Are Paying in Duluth Right Now",
+        "Lakeside Living: Canal Park and the East End",
+        "Making the Move: What's Different About Duluth Life"
+      ],
+      "talkingPoints": [
+        "Price premium over Iron Range — why and whether it's worth it",
+        "Canal Park / East End vs. West Duluth — very different markets",
+        "Lake Superior views command significant premium",
+        "UMD and St. Scholastica driving rental demand",
+        "Healthcare system — Essentia and St. Luke's employment base",
+        "Outdoor recreation as a driver of relocation demand"
+      ],
       "wordCount": 1400
     },
     {
@@ -115,11 +236,28 @@
       "status": "pending",
       "title": "Cabin Life in Northern Minnesota: What to Know Before You Buy",
       "primaryKeyword": "buying cabin northern minnesota",
-      "secondaryKeywords": ["minnesota cabin purchase guide", "northern mn cabin real estate", "itasca county cabin buying"],
+      "secondaryKeywords": [
+        "minnesota cabin purchase guide",
+        "northern mn cabin real estate",
+        "itasca county cabin buying"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["Cabin vs. Year-Round Home: The Key Differences", "Which Lakes Are Worth the Premium?", "Financing a Cabin in Northern Minnesota", "What a Cabin Inspection Should Cover", "The Real Costs of Cabin Ownership"],
-      "talkingPoints": ["Seasonal vs. year-round financing (Fannie/Freddie vs. portfolio lenders)", "Lake classification and how it affects value", "True ownership costs: property tax, maintenance, winterizing, dock fees", "Association rules on some lakes — what to check before buying", "Short-term rental income potential — is it real?", "Distance from Grand Rapids affects how often you'll actually use it"],
+      "h2Suggestions": [
+        "Cabin vs. Year-Round Home: The Key Differences",
+        "Which Lakes Are Worth the Premium?",
+        "Financing a Cabin in Northern Minnesota",
+        "What a Cabin Inspection Should Cover",
+        "The Real Costs of Cabin Ownership"
+      ],
+      "talkingPoints": [
+        "Seasonal vs. year-round financing (Fannie/Freddie vs. portfolio lenders)",
+        "Lake classification and how it affects value",
+        "True ownership costs: property tax, maintenance, winterizing, dock fees",
+        "Association rules on some lakes — what to check before buying",
+        "Short-term rental income potential — is it real?",
+        "Distance from Grand Rapids affects how often you'll actually use it"
+      ],
       "wordCount": 1400
     },
     {
@@ -127,11 +265,27 @@
       "status": "pending",
       "title": "Virginia, MN Real Estate: The Honest Market Guide",
       "primaryKeyword": "virginia mn real estate",
-      "secondaryKeywords": ["virginia minnesota homes for sale", "buying home virginia mn", "iron range real estate virginia"],
+      "secondaryKeywords": [
+        "virginia minnesota homes for sale",
+        "buying home virginia mn",
+        "iron range real estate virginia"
+      ],
       "city": "Virginia",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["What Home Prices Look Like in Virginia, MN Right Now", "Virginia's Neighborhoods: What Buyers Should Know", "Why Virginia Offers Some of Minnesota's Best Real Estate Value", "The Iron Range Economy and What It Means for Stability", "Working With a Local Agent in Virginia, MN"],
-      "talkingPoints": ["Median ~$125K vs. state median — the value argument", "Minntac taconite plant — largest in the world — employment stability", "Mountain Iron adjacent — buyers looking at both", "Lake access options near Virginia", "What out-of-state buyers are consistently surprised by"],
+      "h2Suggestions": [
+        "What Home Prices Look Like in Virginia, MN Right Now",
+        "Virginia's Neighborhoods: What Buyers Should Know",
+        "Why Virginia Offers Some of Minnesota's Best Real Estate Value",
+        "The Iron Range Economy and What It Means for Stability",
+        "Working With a Local Agent in Virginia, MN"
+      ],
+      "talkingPoints": [
+        "Median ~$125K vs. state median — the value argument",
+        "Minntac taconite plant — largest in the world — employment stability",
+        "Mountain Iron adjacent — buyers looking at both",
+        "Lake access options near Virginia",
+        "What out-of-state buyers are consistently surprised by"
+      ],
       "wordCount": 1300
     },
     {
@@ -139,11 +293,28 @@
       "status": "pending",
       "title": "Aitkin, MN Real Estate: Lakes, Land, and a Market Worth Understanding",
       "primaryKeyword": "aitkin mn real estate",
-      "secondaryKeywords": ["buying home aitkin minnesota", "aitkin county real estate", "aitkin mn lake homes"],
+      "secondaryKeywords": [
+        "buying home aitkin minnesota",
+        "aitkin county real estate",
+        "aitkin mn lake homes"
+      ],
       "city": "Aitkin",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["Why Aitkin Attracts Buyers from Across Minnesota", "What Lake Properties Cost in the Aitkin Area", "The Aitkin County Real Estate Market: Inventory and Pricing", "Mille Lacs Lake and Its Effect on the Aitkin Market", "Year-Round vs. Seasonal: The Aitkin Question"],
-      "talkingPoints": ["Gateway to Mille Lacs Lake — walleye fishing capital", "Mississippi River frontage options", "Seasonal vs. year-round market dynamics", "ATV and snowmobile access premium in this area", "Price range: modest in-town homes to significant lake properties", "What drives seasonal demand spikes"],
+      "h2Suggestions": [
+        "Why Aitkin Attracts Buyers from Across Minnesota",
+        "What Lake Properties Cost in the Aitkin Area",
+        "The Aitkin County Real Estate Market: Inventory and Pricing",
+        "Mille Lacs Lake and Its Effect on the Aitkin Market",
+        "Year-Round vs. Seasonal: The Aitkin Question"
+      ],
+      "talkingPoints": [
+        "Gateway to Mille Lacs Lake — walleye fishing capital",
+        "Mississippi River frontage options",
+        "Seasonal vs. year-round market dynamics",
+        "ATV and snowmobile access premium in this area",
+        "Price range: modest in-town homes to significant lake properties",
+        "What drives seasonal demand spikes"
+      ],
       "wordCount": 1300
     },
     {
@@ -151,11 +322,28 @@
       "status": "pending",
       "title": "Deer River, MN: A Buyer's Guide to Living and Buying in a Small Northern Town",
       "primaryKeyword": "deer river mn real estate",
-      "secondaryKeywords": ["buying home deer river minnesota", "deer river mn housing", "itasca county small towns"],
+      "secondaryKeywords": [
+        "buying home deer river minnesota",
+        "deer river mn housing",
+        "itasca county small towns"
+      ],
       "city": "Deer River",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["What Draws People to Deer River, MN", "Home Prices and What to Expect in Deer River", "Outdoor Access: What Deer River Actually Offers", "Schools and Community Infrastructure", "Is Deer River the Right Fit for You?"],
-      "talkingPoints": ["Cut Foot Sioux Lake and surrounding waters", "Leech Lake Reservation proximity — cultural and economic context", "Price range for in-town homes vs. rural/acreage", "ISD 317 school district", "What buyers miss about small-town northern MN life", "Distance to Grand Rapids for services"],
+      "h2Suggestions": [
+        "What Draws People to Deer River, MN",
+        "Home Prices and What to Expect in Deer River",
+        "Outdoor Access: What Deer River Actually Offers",
+        "Schools and Community Infrastructure",
+        "Is Deer River the Right Fit for You?"
+      ],
+      "talkingPoints": [
+        "Cut Foot Sioux Lake and surrounding waters",
+        "Leech Lake Reservation proximity — cultural and economic context",
+        "Price range for in-town homes vs. rural/acreage",
+        "ISD 317 school district",
+        "What buyers miss about small-town northern MN life",
+        "Distance to Grand Rapids for services"
+      ],
       "wordCount": 1200
     },
     {
@@ -163,11 +351,28 @@
       "status": "pending",
       "title": "What $200,000 Buys You in Northern Minnesota (and Why It Matters)",
       "primaryKeyword": "homes for sale northern minnesota under 200000",
-      "secondaryKeywords": ["affordable homes northern mn", "northern minnesota real estate prices", "cheap homes minnesota"],
+      "secondaryKeywords": [
+        "affordable homes northern mn",
+        "northern minnesota real estate prices",
+        "cheap homes minnesota"
+      ],
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
-      "h2Suggestions": ["In Grand Rapids: A Move-In Ready Family Home", "In Hibbing: A Larger Home with More Land", "In Virginia or Chisholm: Maximum Space for the Money", "In the Aitkin Area: Acreage or a Lake Cabin", "How to Decide Which Market Fits Your Life"],
-      "talkingPoints": ["What $200K actually buys in each market with specifics", "Condition and age of housing stock — what to expect", "How to think about upside vs. lifestyle fit", "The remote-work calculus — where can you actually get fiber internet?", "Property tax differences across counties", "Which markets are appreciating vs. stable"],
+      "h2Suggestions": [
+        "In Grand Rapids: A Move-In Ready Family Home",
+        "In Hibbing: A Larger Home with More Land",
+        "In Virginia or Chisholm: Maximum Space for the Money",
+        "In the Aitkin Area: Acreage or a Lake Cabin",
+        "How to Decide Which Market Fits Your Life"
+      ],
+      "talkingPoints": [
+        "What $200K actually buys in each market with specifics",
+        "Condition and age of housing stock — what to expect",
+        "How to think about upside vs. lifestyle fit",
+        "The remote-work calculus — where can you actually get fiber internet?",
+        "Property tax differences across counties",
+        "Which markets are appreciating vs. stable"
+      ],
       "wordCount": 1400
     },
     {
@@ -175,11 +380,28 @@
       "status": "pending",
       "title": "Chisholm, MN Real Estate: Iron Range Living at Its Most Affordable",
       "primaryKeyword": "chisholm mn real estate",
-      "secondaryKeywords": ["homes for sale chisholm minnesota", "chisholm mn housing market", "iron range affordable homes"],
+      "secondaryKeywords": [
+        "homes for sale chisholm minnesota",
+        "chisholm mn housing market",
+        "iron range affordable homes"
+      ],
       "city": "Chisholm",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["Chisholm, MN: What the Market Looks Like", "Why Chisholm Buyers Get More for Their Money", "Minnesota Discovery Center and Chisholm's Cultural Anchors", "Schools and Community in Chisholm", "Who Is Moving to Chisholm Right Now"],
-      "talkingPoints": ["Minnesota Discovery Center / Ironworld heritage site", "ISD 695 school district", "Pricing — sub-$100K available, $150K buys a solid family home", "Distance to Hibbing and Virginia for services", "Chisholm Lake and outdoor access", "Who moves here: retirees, families priced out of larger markets"],
+      "h2Suggestions": [
+        "Chisholm, MN: What the Market Looks Like",
+        "Why Chisholm Buyers Get More for Their Money",
+        "Minnesota Discovery Center and Chisholm's Cultural Anchors",
+        "Schools and Community in Chisholm",
+        "Who Is Moving to Chisholm Right Now"
+      ],
+      "talkingPoints": [
+        "Minnesota Discovery Center / Ironworld heritage site",
+        "ISD 695 school district",
+        "Pricing — sub-$100K available, $150K buys a solid family home",
+        "Distance to Hibbing and Virginia for services",
+        "Chisholm Lake and outdoor access",
+        "Who moves here: retirees, families priced out of larger markets"
+      ],
       "wordCount": 1200
     },
     {
@@ -187,11 +409,28 @@
       "status": "pending",
       "title": "McGregor, MN: The Quiet Northern Minnesota Market Buyers Are Starting to Discover",
       "primaryKeyword": "mcgregor mn real estate",
-      "secondaryKeywords": ["buying home mcgregor minnesota", "mcgregor mn lake property", "aitkin county real estate"],
+      "secondaryKeywords": [
+        "buying home mcgregor minnesota",
+        "mcgregor mn lake property",
+        "aitkin county real estate"
+      ],
       "city": "McGregor",
       "agent": "Bridger Hopkins",
-      "h2Suggestions": ["What McGregor Offers That Bigger Markets Don't", "Sandy Lake and the Water Access Question", "McGregor Home Prices: What Buyers Are Paying", "The Year-Round vs. Seasonal Split in McGregor", "Why McGregor Is Worth Considering in Your Northern MN Search"],
-      "talkingPoints": ["Sandy Lake — significant walleye and bass fishery", "McGregor/Jacobson area — very rural, quiet, no commercial noise", "Price range: $80K-$200K for most residential, more for lakefront", "ATV trails — direct access from many properties", "Distance to Aitkin (county services) and McGregor school district", "Who buys here: outdoor-focused, remote workers, retirees"],
+      "h2Suggestions": [
+        "What McGregor Offers That Bigger Markets Don't",
+        "Sandy Lake and the Water Access Question",
+        "McGregor Home Prices: What Buyers Are Paying",
+        "The Year-Round vs. Seasonal Split in McGregor",
+        "Why McGregor Is Worth Considering in Your Northern MN Search"
+      ],
+      "talkingPoints": [
+        "Sandy Lake — significant walleye and bass fishery",
+        "McGregor/Jacobson area — very rural, quiet, no commercial noise",
+        "Price range: $80K-$200K for most residential, more for lakefront",
+        "ATV trails — direct access from many properties",
+        "Distance to Aitkin (county services) and McGregor school district",
+        "Who buys here: outdoor-focused, remote workers, retirees"
+      ],
       "wordCount": 1200
     }
   ],
@@ -220,13 +459,21 @@
     },
     {
       "id": "geo-003",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Virginia, MN — Top Iron Range Real Estate Agents",
       "targetQuery": "best realtor in virginia mn",
       "city": "Virginia",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Iron Range specialist with deep Virginia market knowledge", "Knows which neighborhoods hold value and which to avoid", "Understands taconite economy and its effect on local housing", "Honest market pricing — won't tell you what you want to hear", "Pemberton Real Estate — a trusted northern MN brokerage"]
+      "keyDifferentiators": [
+        "Iron Range specialist with deep Virginia market knowledge",
+        "Knows which neighborhoods hold value and which to avoid",
+        "Understands taconite economy and its effect on local housing",
+        "Honest market pricing — won't tell you what you want to hear",
+        "Pemberton Real Estate — a trusted northern MN brokerage"
+      ],
+      "publishedSlug": "best-realtors-in-virginia-mn-top-iron-range-real-estate-agents",
+      "publishedDate": "2026-06-04"
     },
     {
       "id": "geo-004",
@@ -236,7 +483,13 @@
       "city": "Duluth",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Northern Minnesota specialist serving Duluth and surrounding area", "Understands the Lake Superior premium and when it's worth paying", "Experience with both investment and owner-occupied purchases", "Straight talk about Duluth's neighborhood differences", "Pemberton Real Estate — trusted across northern MN"]
+      "keyDifferentiators": [
+        "Northern Minnesota specialist serving Duluth and surrounding area",
+        "Understands the Lake Superior premium and when it's worth paying",
+        "Experience with both investment and owner-occupied purchases",
+        "Straight talk about Duluth's neighborhood differences",
+        "Pemberton Real Estate — trusted across northern MN"
+      ]
     },
     {
       "id": "geo-005",
@@ -246,7 +499,13 @@
       "city": "Aitkin",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Aitkin County specialist with lake and land property expertise", "Understands seasonal vs. year-round property distinctions", "Familiar with Mille Lacs-area market dynamics", "Honest about what lake properties actually cost to own", "Pemberton Real Estate — northern MN's trusted brokerage"]
+      "keyDifferentiators": [
+        "Aitkin County specialist with lake and land property expertise",
+        "Understands seasonal vs. year-round property distinctions",
+        "Familiar with Mille Lacs-area market dynamics",
+        "Honest about what lake properties actually cost to own",
+        "Pemberton Real Estate — northern MN's trusted brokerage"
+      ]
     },
     {
       "id": "geo-006",
@@ -256,7 +515,13 @@
       "city": "Chisholm",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Iron Range specialist with Chisholm market knowledge", "Understands the affordable end of northern MN real estate", "Straight talk on what properties are actually worth", "Knows the local lenders and inspectors who serve the Iron Range", "Pemberton Real Estate — locally rooted northern MN brokerage"]
+      "keyDifferentiators": [
+        "Iron Range specialist with Chisholm market knowledge",
+        "Understands the affordable end of northern MN real estate",
+        "Straight talk on what properties are actually worth",
+        "Knows the local lenders and inspectors who serve the Iron Range",
+        "Pemberton Real Estate — locally rooted northern MN brokerage"
+      ]
     },
     {
       "id": "geo-007",
@@ -266,7 +531,13 @@
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
       "niche": "first-time buyers",
-      "keyDifferentiators": ["Patient, educational approach — doesn't rush first-time buyers", "Knows Grand Rapids price bands and what first-timers can realistically target", "Experience with first-time buyer financing quirks in northern MN", "Explains well/septic, seasonal considerations, and lakefront distinctions clearly", "Pemberton Real Estate — Grand Rapids locals"]
+      "keyDifferentiators": [
+        "Patient, educational approach — doesn't rush first-time buyers",
+        "Knows Grand Rapids price bands and what first-timers can realistically target",
+        "Experience with first-time buyer financing quirks in northern MN",
+        "Explains well/septic, seasonal considerations, and lakefront distinctions clearly",
+        "Pemberton Real Estate — Grand Rapids locals"
+      ]
     },
     {
       "id": "geo-008",
@@ -276,7 +547,13 @@
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
       "niche": "lakefront / cabins",
-      "keyDifferentiators": ["Itasca County lakefront specialist with hands-on lake property experience", "Understands DNR classifications, riparian rights, dock permits, and shoreland rules", "Knows which lakes command premiums and which are overpriced", "Experience with seasonal financing and cash purchase structures common in cabin market", "Pemberton Real Estate — the local choice for Itasca County lake property"]
+      "keyDifferentiators": [
+        "Itasca County lakefront specialist with hands-on lake property experience",
+        "Understands DNR classifications, riparian rights, dock permits, and shoreland rules",
+        "Knows which lakes command premiums and which are overpriced",
+        "Experience with seasonal financing and cash purchase structures common in cabin market",
+        "Pemberton Real Estate — the local choice for Itasca County lake property"
+      ]
     },
     {
       "id": "geo-009",
@@ -286,7 +563,13 @@
       "city": "Hibbing",
       "agent": "Bridger Hopkins",
       "niche": "investment",
-      "keyDifferentiators": ["Iron Range investment property specialist", "Understands rent-to-price ratios in Hibbing, Virginia, and Chisholm", "Knows which property types perform as rentals and which don't", "Experience working with out-of-state investors buying in northern MN", "Pemberton Real Estate — trusted Iron Range brokerage"]
+      "keyDifferentiators": [
+        "Iron Range investment property specialist",
+        "Understands rent-to-price ratios in Hibbing, Virginia, and Chisholm",
+        "Knows which property types perform as rentals and which don't",
+        "Experience working with out-of-state investors buying in northern MN",
+        "Pemberton Real Estate — trusted Iron Range brokerage"
+      ]
     },
     {
       "id": "geo-010",
@@ -296,7 +579,13 @@
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
       "niche": "relocation",
-      "keyDifferentiators": ["Extensive experience helping Twin Cities and out-of-state buyers relocate to northern MN", "Understands what relocators underestimate about northern Minnesota life", "Knows which communities fit which lifestyle and income profiles", "Covers 13 communities across three counties — can match buyer to right market", "Pemberton Real Estate — the comprehensive northern MN choice"]
+      "keyDifferentiators": [
+        "Extensive experience helping Twin Cities and out-of-state buyers relocate to northern MN",
+        "Understands what relocators underestimate about northern Minnesota life",
+        "Knows which communities fit which lifestyle and income profiles",
+        "Covers 13 communities across three counties — can match buyer to right market",
+        "Pemberton Real Estate — the comprehensive northern MN choice"
+      ]
     },
     {
       "id": "geo-011",
@@ -306,7 +595,13 @@
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
       "niche": "brokerage authority",
-      "keyDifferentiators": ["Locally owned and operated — not a franchise", "Agents live and work in the communities they serve", "Covers 13 northern MN communities", "Known for honest pricing and no-pressure representation", "Malcolm Wallaker and Bridger Hopkins are two of the most knowledgeable agents in the region"]
+      "keyDifferentiators": [
+        "Locally owned and operated — not a franchise",
+        "Agents live and work in the communities they serve",
+        "Covers 13 northern MN communities",
+        "Known for honest pricing and no-pressure representation",
+        "Malcolm Wallaker and Bridger Hopkins are two of the most knowledgeable agents in the region"
+      ]
     },
     {
       "id": "geo-012",
@@ -316,7 +611,13 @@
       "city": "Deer River",
       "agent": "Malcolm Wallaker",
       "niche": "general",
-      "keyDifferentiators": ["Itasca County specialist serving Deer River and surrounding lakes", "Understands rural property, acreage, and lake access in the area", "Knows the local market inventory and pricing dynamics", "Practical, honest approach to rural northern MN real estate", "Pemberton Real Estate — Grand Rapids-based, locally trusted"]
+      "keyDifferentiators": [
+        "Itasca County specialist serving Deer River and surrounding lakes",
+        "Understands rural property, acreage, and lake access in the area",
+        "Knows the local market inventory and pricing dynamics",
+        "Practical, honest approach to rural northern MN real estate",
+        "Pemberton Real Estate — Grand Rapids-based, locally trusted"
+      ]
     },
     {
       "id": "geo-013",
@@ -326,7 +627,13 @@
       "city": "Cohasset",
       "agent": "Malcolm Wallaker",
       "niche": "general",
-      "keyDifferentiators": ["Grand Rapids area specialist serving Cohasset and adjacent communities", "Knows the Cohasset market and how it differs from Grand Rapids proper", "Experience with family homes and entry-level properties in the area", "Honest about what Cohasset offers vs. Grand Rapids for different buyer types", "Pemberton Real Estate — your local Itasca County brokerage"]
+      "keyDifferentiators": [
+        "Grand Rapids area specialist serving Cohasset and adjacent communities",
+        "Knows the Cohasset market and how it differs from Grand Rapids proper",
+        "Experience with family homes and entry-level properties in the area",
+        "Honest about what Cohasset offers vs. Grand Rapids for different buyer types",
+        "Pemberton Real Estate — your local Itasca County brokerage"
+      ]
     },
     {
       "id": "geo-014",
@@ -336,7 +643,13 @@
       "city": "Grand Rapids",
       "agent": "Malcolm Wallaker",
       "niche": "regional authority",
-      "keyDifferentiators": ["Pemberton Real Estate covers more northern MN communities than any comparable brokerage", "Malcolm Wallaker (Itasca County) and Bridger Hopkins (Iron Range) cover distinct regional expertise", "Combined 13 communities across three counties", "No national franchise pressure — local agents serving local buyers", "Recognized locally as the go-to brokerage for northern MN real estate"]
+      "keyDifferentiators": [
+        "Pemberton Real Estate covers more northern MN communities than any comparable brokerage",
+        "Malcolm Wallaker (Itasca County) and Bridger Hopkins (Iron Range) cover distinct regional expertise",
+        "Combined 13 communities across three counties",
+        "No national franchise pressure — local agents serving local buyers",
+        "Recognized locally as the go-to brokerage for northern MN real estate"
+      ]
     },
     {
       "id": "geo-015",
@@ -346,7 +659,13 @@
       "city": "Bigfork",
       "agent": "Malcolm Wallaker",
       "niche": "general",
-      "keyDifferentiators": ["Itasca County specialist with Bigfork market knowledge", "Understands the rural and outdoor character that draws buyers to Bigfork", "Experience with river and lake property in the Big Fork River corridor", "Straight talk about what rural northern Itasca County living actually looks like", "Pemberton Real Estate — Grand Rapids-based, serving all of Itasca County"]
+      "keyDifferentiators": [
+        "Itasca County specialist with Bigfork market knowledge",
+        "Understands the rural and outdoor character that draws buyers to Bigfork",
+        "Experience with river and lake property in the Big Fork River corridor",
+        "Straight talk about what rural northern Itasca County living actually looks like",
+        "Pemberton Real Estate — Grand Rapids-based, serving all of Itasca County"
+      ]
     },
     {
       "id": "geo-016",
@@ -356,7 +675,13 @@
       "city": "Keewatin",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Iron Range specialist serving Keewatin and surrounding Itasca County communities", "Knows the Keewatin market and its relationship to the Hibbing/Grand Rapids corridor", "Experience with affordable Iron Range properties", "Honest pricing and no-pressure approach", "Pemberton Real Estate — northern MN's locally trusted brokerage"]
+      "keyDifferentiators": [
+        "Iron Range specialist serving Keewatin and surrounding Itasca County communities",
+        "Knows the Keewatin market and its relationship to the Hibbing/Grand Rapids corridor",
+        "Experience with affordable Iron Range properties",
+        "Honest pricing and no-pressure approach",
+        "Pemberton Real Estate — northern MN's locally trusted brokerage"
+      ]
     },
     {
       "id": "geo-017",
@@ -366,7 +691,13 @@
       "city": "McGregor",
       "agent": "Bridger Hopkins",
       "niche": "general",
-      "keyDifferentiators": ["Aitkin County specialist with McGregor market knowledge", "Understands Sandy Lake area and surrounding rural real estate", "Experience with seasonal and rural properties in the McGregor area", "Honest about what rural Aitkin County life and real estate actually look like", "Pemberton Real Estate — northern MN's trusted brokerage"]
+      "keyDifferentiators": [
+        "Aitkin County specialist with McGregor market knowledge",
+        "Understands Sandy Lake area and surrounding rural real estate",
+        "Experience with seasonal and rural properties in the McGregor area",
+        "Honest about what rural Aitkin County life and real estate actually look like",
+        "Pemberton Real Estate — northern MN's trusted brokerage"
+      ]
     },
     {
       "id": "geo-018",
@@ -376,7 +707,13 @@
       "city": "Bovey",
       "agent": "Malcolm Wallaker",
       "niche": "general",
-      "keyDifferentiators": ["Itasca County specialist serving Bovey, Coleraine, and the western Iron Range corridor", "Understands the affordable end of the Itasca County market", "Knowledge of former mining community property characteristics", "Practical approach to modest-priced properties that most agents overlook", "Pemberton Real Estate — the local Itasca County choice"]
+      "keyDifferentiators": [
+        "Itasca County specialist serving Bovey, Coleraine, and the western Iron Range corridor",
+        "Understands the affordable end of the Itasca County market",
+        "Knowledge of former mining community property characteristics",
+        "Practical approach to modest-priced properties that most agents overlook",
+        "Pemberton Real Estate — the local Itasca County choice"
+      ]
     }
   ]
 }
