@@ -2,7 +2,7 @@
   "meta": {
     "lastUpdated": "2026-06-04",
     "totalTopics": 0,
-    "publishedCount": 2,
+    "publishedCount": 4,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -59,7 +59,7 @@
     },
     {
       "id": "seo-004",
-      "status": "pending",
+      "status": "published",
       "title": "Selling Your Home in Grand Rapids, MN: A Local Agent's Guide",
       "primaryKeyword": "selling home grand rapids mn",
       "secondaryKeywords": [
@@ -84,7 +84,9 @@
         "Common inspection issues in northern MN homes (heating, foundation, well)",
         "Timeline expectations — days on market in current conditions"
       ],
-      "wordCount": 1400
+      "wordCount": 1400,
+      "publishedSlug": "selling-your-home-in-grand-rapids-mn-a-local-agent-s-guide",
+      "publishedDate": "2026-06-04"
     },
     {
       "id": "seo-005",
@@ -477,7 +479,7 @@
     },
     {
       "id": "geo-004",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Duluth, MN — Top Local Real Estate Agents",
       "targetQuery": "best realtor in duluth mn",
       "city": "Duluth",
@@ -489,7 +491,9 @@
         "Experience with both investment and owner-occupied purchases",
         "Straight talk about Duluth's neighborhood differences",
         "Pemberton Real Estate — trusted across northern MN"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-duluth-mn-top-local-real-estate-agents",
+      "publishedDate": "2026-06-04"
     },
     {
       "id": "geo-005",
