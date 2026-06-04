@@ -27,39 +27,61 @@ const schema = {
   type="article"
   schema={schema}
 >
-  <div class="max-w-3xl mx-auto px-4 py-12">
-    <a href="/blog" class="text-sm text-slate-400 hover:text-[#1a3a2a] mb-6 inline-block">← Back to Blog</a>
-
-    {post.data.city && (
-      <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a]">{post.data.city}</span>
-    )}
-    <h1 class="text-4xl font-bold text-[#1a3a2a] mt-2 mb-3 leading-tight">{post.data.title}</h1>
-    <p class="text-slate-500 text-sm mb-2">
-      By <strong>{post.data.author}</strong> · Pemberton Real Estate ·{' '}
-      {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-    </p>
-
-    {post.data.tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-8">
-        {post.data.tags.map(tag => (
-          <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">{tag}</span>
-        ))}
+  <!-- Article Header -->
+  <div class="bg-[#f5f0e8] border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <a href="/blog" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#1a3a2a] font-sans font-medium transition-colors mb-6">
+        <span aria-hidden="true">←</span> Back to Blog
+      </a>
+      {post.data.city && (
+        <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans mb-3">{post.data.city}, MN</span>
+      )}
+      <h1 class="text-4xl md:text-5xl font-bold text-[#1a3a2a] leading-tight mb-4">{post.data.title}</h1>
+      <p class="text-slate-600 font-sans mb-4 text-lg leading-relaxed">{post.data.description}</p>
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <span class="text-slate-500 font-sans">
+          By <strong class="text-[#1a3a2a]">{post.data.author}</strong> · Pemberton Real Estate
+        </span>
+        <span class="text-slate-300">·</span>
+        <time class="text-slate-400 font-sans" datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
       </div>
-    )}
+      {post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {post.data.tags.map(tag => (
+            <span class="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1 rounded-full font-sans">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
 
-    <div class="prose prose-slate max-w-none prose-headings:text-[#1a3a2a] prose-a:text-[#2d5a3d]">
+  <!-- Featured Image -->
+  {post.data.image && (
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 -mb-2 mt-8">
+      <div class="rounded-2xl overflow-hidden shadow-sm">
+        <img src={post.data.image} alt={post.data.title} class="w-full h-64 md:h-80 object-cover" />
+      </div>
+    </div>
+  )}
+
+  <!-- Article Body -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="article-prose">
       <Content />
     </div>
 
     <!-- Agent CTA -->
-    <div class="mt-12 bg-[#f5f0e8] rounded-xl p-6 text-center">
-      <h3 class="font-bold text-[#1a3a2a] text-xl mb-2">Have Questions? We're Here to Help.</h3>
-      <p class="text-slate-600 text-sm mb-4">
-        Malcolm Wallaker and Bridger Hopkins are Grand Rapids MN's top REALTORS® at Pemberton Real Estate.
+    <div class="mt-14 bg-[#1a3a2a] rounded-2xl p-8 text-center">
+      <span class="text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans">Pemberton Real Estate</span>
+      <h3 class="text-2xl font-bold text-white mt-2 mb-3">Have Questions? We're Here.</h3>
+      <p class="text-slate-300 font-sans text-sm leading-relaxed mb-6 max-w-md mx-auto">
+        Malcolm Wallaker and Bridger Hopkins are Grand Rapids' top REALTORS® — ready to help you navigate northern Minnesota real estate.
       </p>
-      <a href="/contact" class="bg-[#1a3a2a] text-[#f5f0e8] px-6 py-2 rounded-md font-semibold text-sm hover:bg-[#2d5a3d] transition-colors">
+      <a href="/contact" class="bg-[#c9973a] text-white px-7 py-3 rounded-xl font-semibold font-sans text-sm hover:bg-[#b8832e] transition-all duration-200">
         Contact Our Team
       </a>
     </div>
-  </div>
+  </article>
 </Layout>

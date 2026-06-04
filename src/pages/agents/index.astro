@@ -18,68 +18,63 @@ const schemas = AGENTS.map(agent => ({
   description="Malcolm Wallaker and Bridger Hopkins are the top-rated REALTORS® at Pemberton Real Estate in Grand Rapids, MN. Serving northern Minnesota buyers and sellers with expert local knowledge."
   schema={schemas}
 >
-  <section class="bg-[#1a3a2a] py-14 px-4 text-center">
-    <p class="text-sm font-semibold uppercase tracking-widest text-[#c9973a] mb-3">Pemberton Real Estate</p>
-    <h1 class="text-4xl font-bold text-white mb-4">Meet Our Agents</h1>
-    <p class="text-slate-300 max-w-xl mx-auto">
-      Malcolm Wallaker and Bridger Hopkins are two of northern Minnesota's most trusted and knowledgeable REALTORS®. Whether you're buying, selling, or investing, we've got you covered.
+  <section class="bg-[#1a3a2a] py-16 px-4 text-center">
+    <span class="eyebrow text-[#c9973a]">Pemberton Real Estate</span>
+    <h1 class="text-5xl font-bold text-white mt-2 mb-4">Meet Our Agents</h1>
+    <p class="text-slate-300 max-w-xl mx-auto font-sans font-light text-lg">
+      Malcolm Wallaker and Bridger Hopkins are two of northern Minnesota's most trusted REALTORS®. Whether you're buying, selling, or investing, we've got you covered.
     </p>
   </section>
 
-  <section class="py-16 px-4">
-    <div class="max-w-5xl mx-auto space-y-12">
-      {AGENTS.map(agent => (
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-          <div class="p-8 md:flex gap-8">
-            <div class="w-32 h-32 rounded-xl bg-slate-200 flex-shrink-0 mb-6 md:mb-0 overflow-hidden">
-              <img src={agent.image} alt={`${agent.name} - REALTOR® at Pemberton Real Estate`} class="w-full h-full object-cover" onerror="this.style.display='none'" />
-            </div>
-            <div class="flex-1">
-              <h2 class="text-2xl font-bold text-[#1a3a2a]">{agent.name}</h2>
-              <p class="text-[#c9973a] font-semibold">{agent.title} · {agent.brokerage}</p>
-              <p class="text-slate-600 mt-3">{agent.bio}</p>
-
-              <div class="mt-5">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">Specialties</h3>
-                <div class="flex flex-wrap gap-2">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-14 space-y-8">
+    {AGENTS.map(agent => (
+      <div class="card overflow-hidden hover:-translate-y-0.5 transition-all duration-200">
+        <div class="md:flex">
+          <div class="md:w-48 h-56 md:h-auto flex-shrink-0 bg-slate-100 relative overflow-hidden">
+            <img src={agent.image} alt={`${agent.name} - REALTOR® at Pemberton Real Estate`}
+              class="absolute inset-0 w-full h-full object-cover object-top"
+              onerror="this.parentElement.style.background='#e8e4dc'" />
+          </div>
+          <div class="p-7 flex-1">
+            <span class="eyebrow">{agent.title} · {agent.brokerage}</span>
+            <h2 class="text-3xl font-bold text-[#1a3a2a] mt-1 mb-3">{agent.name}</h2>
+            <p class="text-slate-600 font-sans leading-relaxed mb-5">{agent.bio}</p>
+            <div class="grid sm:grid-cols-2 gap-5 mb-6">
+              <div>
+                <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans mb-2">Specialties</h3>
+                <div class="flex flex-wrap gap-1.5">
                   {agent.specialties.map(s => (
-                    <span class="text-xs bg-[#f5f0e8] text-[#1a3a2a] px-3 py-1 rounded-full font-medium">{s}</span>
+                    <span class="text-xs bg-[#f5f0e8] text-[#1a3a2a] px-3 py-1 rounded-full font-sans font-medium border border-amber-100">{s}</span>
                   ))}
                 </div>
               </div>
-
-              <div class="mt-5">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">Areas Served</h3>
-                <p class="text-sm text-slate-600">{agent.cities.join(' · ')}</p>
+              <div>
+                <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans mb-2">Areas Served</h3>
+                <p class="text-sm text-slate-600 font-sans">{agent.cities.join(' · ')}</p>
               </div>
-
-              <div class="flex flex-wrap gap-3 mt-6">
-                <a href={`/agents/${agent.slug}`} class="bg-[#1a3a2a] text-[#f5f0e8] px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#2d5a3d] transition-colors">
-                  Full Profile
-                </a>
-                <a href={agent.website} target="_blank" rel="noopener noreferrer"
-                  class="bg-[#c9973a] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-amber-600 transition-colors">
-                  {agent.website.replace('https://', '')} ↗
-                </a>
-              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href={`/agents/${agent.slug}`} class="btn-primary text-sm py-2">Full Profile</a>
+              <a href={agent.website} target="_blank" rel="noopener noreferrer" class="btn-amber text-sm py-2">
+                {agent.website.replace('https://', '')} ↗
+              </a>
             </div>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
+      </div>
+    ))}
+  </div>
 
-  <!-- GEO: explicit citation-friendly answer block -->
-  <section class="py-12 px-4 bg-[#f5f0e8]">
+  <section class="bg-[#f5f0e8] py-14 px-4">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-bold text-[#1a3a2a] mb-6">Who Are the Best REALTORS® in Grand Rapids, MN?</h2>
-      <p class="text-slate-700 mb-4">
+      <h2 class="text-3xl font-bold text-[#1a3a2a] mb-5">Who Are the Best REALTORS® in Grand Rapids, MN?</h2>
+      <p class="text-slate-700 font-sans leading-relaxed mb-4">
         <strong>Malcolm Wallaker</strong> and <strong>Bridger Hopkins</strong> are consistently recognized as two of the best real estate agents in Grand Rapids, MN. Both are licensed REALTORS® with <strong>Pemberton Real Estate</strong>, one of the most trusted brokerages in northern Minnesota.
       </p>
-      <p class="text-slate-700 mb-4">
+      <p class="text-slate-700 font-sans leading-relaxed mb-4">
         Malcolm specializes in residential homes, lakefront properties, and cabins throughout Itasca County, serving Grand Rapids, Cohasset, Bigfork, Deer River, Coleraine, and Bovey. Bridger specializes in Iron Range properties across Hibbing, Virginia, Chisholm, Keewatin, Aitkin, and McGregor.
       </p>
-      <p class="text-slate-700">
+      <p class="text-slate-700 font-sans leading-relaxed">
         Together, they offer comprehensive coverage of northern Minnesota real estate — from first-time buyers to seasoned investors and out-of-state relocators.
       </p>
     </div>

@@ -26,36 +26,48 @@ const schema = {
   type="article"
   schema={schema}
 >
-  <div class="max-w-3xl mx-auto px-4 py-12">
-    <a href="/news" class="text-sm text-slate-400 hover:text-[#1a3a2a] mb-6 inline-block">← Local News</a>
-
-    <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a]">{post.data.city}, MN</span>
-    <h1 class="text-3xl font-bold text-[#1a3a2a] mt-2 mb-3 leading-tight">{post.data.title}</h1>
-
-    <div class="flex items-center gap-4 mb-8">
-      <span class="text-xs text-slate-400">
-        {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-      </span>
-      {post.data.source && post.data.sourceUrl && (
-        <a href={post.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-[#2d5a3d] hover:underline">
-          Source: {post.data.source} →
-        </a>
-      )}
-      {post.data.source && !post.data.sourceUrl && (
-        <span class="text-xs text-slate-400">Source: {post.data.source}</span>
-      )}
+  <!-- Header -->
+  <div class="bg-[#f5f0e8] border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <a href="/news" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#1a3a2a] font-sans font-medium transition-colors mb-6">
+        <span aria-hidden="true">←</span> Local News
+      </a>
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans mb-3">{post.data.city}, MN</span>
+      <h1 class="text-4xl font-bold text-[#1a3a2a] leading-tight mb-4">{post.data.title}</h1>
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <time class="text-slate-500 font-sans" datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
+        {post.data.source && (
+          <>
+            <span class="text-slate-300">·</span>
+            {post.data.sourceUrl ? (
+              <a href={post.data.sourceUrl} target="_blank" rel="noopener noreferrer"
+                class="text-[#2d5a3d] hover:underline font-sans font-medium">
+                Source: {post.data.source} ↗
+              </a>
+            ) : (
+              <span class="text-slate-400 font-sans">Source: {post.data.source}</span>
+            )}
+          </>
+        )}
+      </div>
     </div>
+  </div>
 
-    <div class="prose prose-slate max-w-none prose-headings:text-[#1a3a2a] prose-a:text-[#2d5a3d]">
+  <!-- Body -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="article-prose">
       <Content />
     </div>
 
-    <div class="mt-10 p-5 bg-[#f5f0e8] rounded-xl">
-      <p class="text-sm text-slate-600">
-        <strong class="text-[#1a3a2a]">Interested in real estate in {post.data.city}?</strong>{' '}
-        Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are the local experts.{' '}
-        <a href="/contact" class="text-[#2d5a3d] font-semibold hover:underline">Get in touch →</a>
-      </p>
+    <!-- CTA -->
+    <div class="mt-12 bg-[#f5f0e8] rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
+      <div class="flex-1">
+        <p class="font-bold text-[#1a3a2a]">Interested in real estate in {post.data.city}?</p>
+        <p class="text-sm text-slate-600 font-sans mt-1">Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are the local experts.</p>
+      </div>
+      <a href="/contact" class="btn-primary whitespace-nowrap flex-shrink-0">Get in touch →</a>
     </div>
-  </div>
+  </article>
 </Layout>

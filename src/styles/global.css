@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@plugin "@tailwindcss/typography";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,15 +9,179 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
-    background-color: #faf8f4;
-    color: #374151;
-    font-family: system-ui, sans-serif;
+    background-color: #fdfcf9;
+    color: #2c2c2c;
+    font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
   }
+
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
     color: #1a3a2a;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
   }
+
+  p {
+    line-height: 1.75;
+  }
+
+  a {
+    transition: color 0.15s ease;
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  display: inline-block;
+  background-color: #1a3a2a;
+  color: #f5f0e8;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #2d5a3d;
+}
+
+.btn-secondary {
+  display: inline-block;
+  border: 2px solid #1a3a2a;
+  color: #1a3a2a;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: #1a3a2a;
+  color: #ffffff;
+}
+
+.btn-amber {
+  display: inline-block;
+  background-color: #c9973a;
+  color: #ffffff;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.btn-amber:hover {
+  background-color: #b8832e;
+}
+
+/* Eyebrow label */
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c9973a;
+  font-family: 'Inter', system-ui, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+/* Card base */
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* Section spacing */
+.section-pad {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Article prose */
+.article-prose {
+  font-family: 'Inter', system-ui, sans-serif;
+  max-width: none;
+}
+.article-prose h1,
+.article-prose h2,
+.article-prose h3,
+.article-prose h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #1a3a2a;
+  line-height: 1.25;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+.article-prose h2 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #f5f0e8;
+  padding-bottom: 0.5rem;
+}
+.article-prose h3 {
+  font-size: 1.25rem;
+}
+.article-prose p {
+  line-height: 1.85;
+  color: #374151;
+  margin-bottom: 1.25em;
+}
+.article-prose a {
+  color: #2d5a3d;
+  text-decoration: underline;
+  text-decoration-color: #c9973a;
+}
+.article-prose a:hover {
+  color: #1a3a2a;
+}
+.article-prose blockquote {
+  border-left: 4px solid #c9973a;
+  background: #f5f0e8;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: italic;
+  color: #1a3a2a;
+  margin: 1.5em 0;
+}
+.article-prose strong {
+  color: #1a3a2a;
+  font-weight: 600;
+}
+.article-prose ul {
+  list-style: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+.article-prose ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+.article-prose li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+  color: #374151;
+}
+.article-prose img {
+  border-radius: 0.75rem;
+  width: 100%;
 }

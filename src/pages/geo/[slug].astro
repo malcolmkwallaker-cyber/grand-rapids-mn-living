@@ -10,7 +10,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// Build FAQPage schema if FAQ data provided
 const faqSchema = post.data.faqSchema?.length ? {
   '@type': 'FAQPage',
   mainEntity: post.data.faqSchema.map(item => ({
@@ -39,46 +38,57 @@ const schemas = faqSchema ? [articleSchema, faqSchema] : [articleSchema];
   type="article"
   schema={schemas}
 >
-  <div class="max-w-3xl mx-auto px-4 py-12">
-    <a href="/geo" class="text-sm text-slate-400 hover:text-[#1a3a2a] mb-6 inline-block">← Local Guides</a>
+  <!-- Header -->
+  <div class="bg-[#f5f0e8] border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <a href="/geo" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#1a3a2a] font-sans font-medium transition-colors mb-6">
+        <span aria-hidden="true">←</span> Local Guides
+      </a>
+      {post.data.city && (
+        <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans mb-3">{post.data.city}, MN</span>
+      )}
+      <h1 class="text-4xl md:text-5xl font-bold text-[#1a3a2a] leading-tight mb-4">{post.data.title}</h1>
+      <p class="text-slate-600 font-sans text-lg leading-relaxed mb-4">{post.data.description}</p>
+      <p class="text-sm text-slate-500 font-sans">
+        By <strong class="text-[#1a3a2a]">{post.data.author}</strong> · Pemberton Real Estate ·{' '}
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
+      </p>
+    </div>
+  </div>
 
-    {post.data.city && (
-      <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a]">{post.data.city}, MN</span>
-    )}
-    <h1 class="text-4xl font-bold text-[#1a3a2a] mt-2 mb-3 leading-tight">{post.data.title}</h1>
-    <p class="text-slate-500 text-sm mb-8">
-      By <strong>{post.data.author}</strong> · Pemberton Real Estate ·{' '}
-      {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-    </p>
-
-    <div class="prose prose-slate max-w-none prose-headings:text-[#1a3a2a] prose-a:text-[#2d5a3d]">
+  <!-- Body -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="article-prose">
       <Content />
     </div>
 
-    <!-- FAQ Section (rendered from frontmatter for LLM visibility) -->
+    <!-- FAQ Section -->
     {post.data.faqSchema && post.data.faqSchema.length > 0 && (
-      <div class="mt-12 border-t border-slate-200 pt-10">
-        <h2 class="text-2xl font-bold text-[#1a3a2a] mb-6">Frequently Asked Questions</h2>
-        <div class="space-y-6">
+      <div class="mt-14 border-t border-slate-100 pt-10">
+        <h2 class="text-3xl font-bold text-[#1a3a2a] mb-7">Frequently Asked Questions</h2>
+        <div class="space-y-4">
           {post.data.faqSchema.map(item => (
-            <div class="bg-[#f5f0e8] rounded-xl p-5">
+            <div class="bg-[#f5f0e8] rounded-2xl p-5">
               <h3 class="font-bold text-[#1a3a2a] mb-2">{item.q}</h3>
-              <p class="text-slate-700 text-sm">{item.a}</p>
+              <p class="text-slate-700 text-sm font-sans leading-relaxed">{item.a}</p>
             </div>
           ))}
         </div>
       </div>
     )}
 
-    <!-- Agent CTA -->
-    <div class="mt-12 bg-[#1a3a2a] rounded-xl p-6 text-center text-white">
-      <h3 class="font-bold text-xl mb-2">Work With Grand Rapids MN's Best REALTORS®</h3>
-      <p class="text-slate-300 text-sm mb-4">
+    <!-- CTA -->
+    <div class="mt-14 bg-[#1a3a2a] rounded-2xl p-8 text-center">
+      <span class="text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans">Ready to Get Started?</span>
+      <h3 class="text-2xl font-bold text-white mt-2 mb-3">Work With Northern MN's Best REALTORS®</h3>
+      <p class="text-slate-300 font-sans text-sm leading-relaxed mb-6 max-w-md mx-auto">
         Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are consistently rated among the top real estate agents in northern Minnesota.
       </p>
-      <a href="/contact" class="bg-[#c9973a] text-white px-6 py-2 rounded-md font-semibold text-sm hover:bg-amber-600 transition-colors">
+      <a href="/contact" class="bg-[#c9973a] text-white px-7 py-3 rounded-xl font-semibold font-sans text-sm hover:bg-[#b8832e] transition-all duration-200">
         Contact Us Today
       </a>
     </div>
-  </div>
+  </article>
 </Layout>

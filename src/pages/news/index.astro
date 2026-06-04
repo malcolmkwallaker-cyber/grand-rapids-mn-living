@@ -16,60 +16,57 @@ const posts = cityParam
   title="Local News — Northern Minnesota"
   description="Local news from Grand Rapids, Hibbing, Virginia, Duluth, and surrounding northern Minnesota communities. Updated twice weekly by Pemberton Real Estate."
 >
-  <section class="bg-[#1a3a2a] py-14 px-4 text-center">
-    <p class="text-sm font-semibold uppercase tracking-widest text-[#c9973a] mb-3">Community Updates</p>
-    <h1 class="text-4xl font-bold text-white mb-4">Local News</h1>
-    <p class="text-slate-300 max-w-xl mx-auto">
-      Staying on top of what's happening across northern Minnesota — real estate, development, community events, and more.
+  <!-- Hero -->
+  <section class="bg-[#1a3a2a] py-16 px-4 text-center">
+    <span class="eyebrow text-[#c9973a]">Community Updates</span>
+    <h1 class="text-5xl font-bold text-white mt-2 mb-4">Local News</h1>
+    <p class="text-slate-300 max-w-xl mx-auto font-sans font-light text-lg">
+      Staying on top of what's happening across northern Minnesota — real estate, development, community, and more.
     </p>
   </section>
 
   <!-- City Filter -->
-  <section class="py-6 px-4 bg-[#f5f0e8] border-b border-slate-200">
-    <div class="max-w-5xl mx-auto flex flex-wrap gap-2 justify-center">
-      <a
-        href="/news"
-        class={`text-sm px-3 py-1 rounded-full border font-medium transition-colors ${
-          !cityParam ? 'bg-[#1a3a2a] text-white border-[#1a3a2a]' : 'border-slate-300 text-slate-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a]'
-        }`}
-      >
+  <div class="bg-white border-b border-slate-100 sticky top-[68px] z-40">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap gap-2">
+      <a href="/news"
+        class={`text-xs px-3 py-1.5 rounded-full font-semibold font-sans transition-all duration-150 ${
+          !cityParam ? 'bg-[#1a3a2a] text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+        }`}>
         All Cities
       </a>
       {CITIES.map(city => (
-        <a
-          href={`/news?city=${encodeURIComponent(city.name)}`}
-          class={`text-sm px-3 py-1 rounded-full border font-medium transition-colors ${
-            cityParam === city.name ? 'bg-[#1a3a2a] text-white border-[#1a3a2a]' : 'border-slate-300 text-slate-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a]'
-          }`}
-        >
+        <a href={`/news?city=${encodeURIComponent(city.name)}`}
+          class={`text-xs px-3 py-1.5 rounded-full font-semibold font-sans transition-all duration-150 ${
+            cityParam === city.name ? 'bg-[#1a3a2a] text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}>
           {city.name}
         </a>
       ))}
     </div>
-  </section>
+  </div>
 
-  <section class="py-12 px-4">
-    <div class="max-w-5xl mx-auto">
-      {posts.length === 0 && (
-        <p class="text-center text-slate-500 py-12">No news stories yet. Check back Monday or Thursday.</p>
-      )}
-      <div class="grid md:grid-cols-2 gap-6">
-        {posts.map(post => (
-          <a href={`/news/${post.id}`} class="bg-white rounded-xl border border-slate-100 p-5 hover:shadow-md transition-shadow group">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a]">{post.data.city}</span>
-              <span class="text-xs text-slate-400">
-                {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-              </span>
-            </div>
-            <h2 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] leading-snug">{post.data.title}</h2>
-            <p class="text-sm text-slate-500 mt-2 line-clamp-2">{post.data.description}</p>
-            {post.data.source && (
-              <p class="text-xs text-slate-400 mt-3">Source: {post.data.source}</p>
-            )}
-          </a>
-        ))}
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    {posts.length === 0 && (
+      <div class="text-center py-20">
+        <p class="text-slate-400 font-sans">No news stories yet for this area. Check back soon.</p>
       </div>
+    )}
+    <div class="grid md:grid-cols-2 gap-5">
+      {posts.map(post => (
+        <a href={`/news/${post.id}`} class="card p-5 hover:-translate-y-0.5 transition-all duration-200 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a] font-sans">{post.data.city}, MN</span>
+            <time class="text-xs text-slate-400 font-sans" datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </time>
+          </div>
+          <h2 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] leading-snug transition-colors">{post.data.title}</h2>
+          <p class="text-sm text-slate-500 mt-2 line-clamp-2 font-sans leading-relaxed">{post.data.description}</p>
+          {post.data.source && (
+            <p class="text-xs text-slate-400 mt-3 font-sans">Source: {post.data.source}</p>
+          )}
+        </a>
+      ))}
     </div>
-  </section>
+  </div>
 </Layout>
