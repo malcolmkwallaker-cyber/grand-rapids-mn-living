@@ -62,14 +62,14 @@ jobs:
 
       - name: Run first content generation
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE }}
           CONTENT_TYPE: ${{ steps.content-type.outputs.type }}
         run: node scripts/generate-content.mjs
 
       - name: Run second news story (Wednesday only)
         if: steps.content-type.outputs.type == 'news'
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE }}
           CONTENT_TYPE: news
         run: node scripts/generate-content.mjs
 
