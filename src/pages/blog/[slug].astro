@@ -28,29 +28,29 @@ const schema = {
   schema={schema}
 >
   <!-- Article Header -->
-  <div class="bg-[#f5f0e8] border-b border-slate-200">
+  <div class="bg-[#f0f4f8] border-b border-slate-200">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-      <a href="/blog" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#1a3a2a] font-sans font-medium transition-colors mb-6">
+      <a href="/blog" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#1e3a5f] font-medium transition-colors mb-6">
         <span aria-hidden="true">←</span> Back to Blog
       </a>
       {post.data.city && (
-        <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans mb-3">{post.data.city}, MN</span>
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-3">{post.data.city}, MN</span>
       )}
-      <h1 class="text-4xl md:text-5xl font-bold text-[#1a3a2a] leading-tight mb-4">{post.data.title}</h1>
-      <p class="text-slate-600 font-sans mb-4 text-lg leading-relaxed">{post.data.description}</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e3a5f] leading-tight mb-4 tracking-tight">{post.data.title}</h1>
+      <p class="text-slate-600 mb-4 text-lg leading-relaxed">{post.data.description}</p>
       <div class="flex flex-wrap items-center gap-3 text-sm">
-        <span class="text-slate-500 font-sans">
-          By <strong class="text-[#1a3a2a]">{post.data.author}</strong> · Pemberton Real Estate
+        <span class="text-slate-500">
+          By <strong class="text-[#1e3a5f]">{post.data.author}</strong> · Pemberton Real Estate
         </span>
         <span class="text-slate-300">·</span>
-        <time class="text-slate-400 font-sans" datetime={post.data.pubDate.toISOString()}>
+        <time class="text-slate-400" datetime={post.data.pubDate.toISOString()}>
           {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </time>
       </div>
       {post.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mt-4">
           {post.data.tags.map(tag => (
-            <span class="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1 rounded-full font-sans">{tag}</span>
+            <span class="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1 rounded-full">{tag}</span>
           ))}
         </div>
       )}
@@ -73,13 +73,13 @@ const schema = {
     </div>
 
     <!-- Agent CTA -->
-    <div class="mt-14 bg-[#1a3a2a] rounded-2xl p-8 text-center">
-      <span class="text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans">Pemberton Real Estate</span>
-      <h3 class="text-2xl font-bold text-white mt-2 mb-3">Have Questions? We're Here.</h3>
-      <p class="text-slate-300 font-sans text-sm leading-relaxed mb-6 max-w-md mx-auto">
+    <div class="mt-14 bg-[#1e3a5f] rounded-xl p-8 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#c9973a]">Pemberton Real Estate</span>
+      <h3 class="text-2xl font-extrabold text-white mt-2 mb-3 tracking-tight">Have Questions? We're Here.</h3>
+      <p class="text-white/70 text-sm leading-relaxed mb-6 max-w-md mx-auto">
         Malcolm Wallaker and Bridger Hopkins are Grand Rapids' top REALTORS® — ready to help you navigate northern Minnesota real estate.
       </p>
-      <a href="/contact" class="bg-[#c9973a] text-white px-7 py-3 rounded-xl font-semibold font-sans text-sm hover:bg-[#b8832e] transition-all duration-200">
+      <a href="/contact" class="bg-[#c9973a] text-white px-7 py-3 rounded-md font-bold text-sm hover:bg-[#b8832e] transition-all duration-200">
         Contact Our Team
       </a>
     </div>

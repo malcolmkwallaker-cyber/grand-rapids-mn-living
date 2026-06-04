@@ -12,31 +12,36 @@ const nav = [
 const pathname = Astro.url.pathname;
 ---
 
-<header class="bg-white border-b border-slate-100 sticky top-0 z-50" id="site-header">
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50" id="site-header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-[68px]">
 
       <!-- Logo -->
-      <a href="/" class="flex flex-col leading-tight group" aria-label="Grand Rapids MN Living — Home">
-        <span class="text-[17px] font-bold text-[#1a3a2a] tracking-tight" style="font-family:'Playfair Display',Georgia,serif">
-          Grand Rapids MN
-        </span>
-        <span class="text-[11px] text-[#c9973a] font-semibold uppercase tracking-widest font-sans">
-          Living &amp; Real Estate
-        </span>
+      <a href="/" class="flex items-center gap-2 group" aria-label="Grand Rapids MN Living — Home">
+        <svg class="w-6 h-6 text-[#c9973a] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <div class="flex flex-col leading-tight">
+          <span class="text-[16px] font-bold text-[#1e3a5f] tracking-tight">
+            Grand Rapids MN
+          </span>
+          <span class="text-[10px] text-[#c9973a] font-semibold uppercase tracking-widest">
+            Living &amp; Real Estate
+          </span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      <nav class="hidden md:flex items-center gap-0.5" aria-label="Main navigation">
         {nav.map(item => {
           const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
           return (
             <a
               href={item.href}
-              class={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+              class={`px-3.5 py-2 rounded-md text-sm font-medium transition-all duration-150 ${
                 isActive
-                  ? 'text-[#1a3a2a] bg-[#f5f0e8]'
-                  : 'text-slate-600 hover:text-[#1a3a2a] hover:bg-slate-50'
+                  ? 'text-[#1e3a5f] bg-blue-50'
+                  : 'text-slate-600 hover:text-[#1e3a5f] hover:bg-slate-50'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -46,7 +51,7 @@ const pathname = Astro.url.pathname;
         })}
         <a
           href="/contact"
-          class="ml-3 bg-[#1a3a2a] text-[#f5f0e8] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#2d5a3d] transition-all duration-150"
+          class="ml-3 bg-[#c9973a] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#b8832e] transition-all duration-150"
         >
           Contact Us
         </a>
@@ -55,7 +60,7 @@ const pathname = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-[#1a3a2a] hover:bg-slate-50 transition-colors"
+        class="md:hidden p-2 rounded-md text-slate-600 hover:text-[#1e3a5f] hover:bg-slate-50 transition-colors"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -82,10 +87,10 @@ const pathname = Astro.url.pathname;
         return (
           <a
             href={item.href}
-            class={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+            class={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
               isActive
-                ? 'text-[#1a3a2a] bg-[#f5f0e8] font-semibold'
-                : 'text-slate-700 hover:text-[#1a3a2a] hover:bg-slate-50'
+                ? 'text-[#1e3a5f] bg-blue-50 font-semibold'
+                : 'text-slate-700 hover:text-[#1e3a5f] hover:bg-slate-50'
             }`}
           >
             {item.label}
@@ -95,7 +100,7 @@ const pathname = Astro.url.pathname;
       <div class="pt-2 pb-1">
         <a
           href="/contact"
-          class="block bg-[#1a3a2a] text-[#f5f0e8] px-4 py-3 rounded-lg text-sm font-semibold text-center hover:bg-[#2d5a3d] transition-colors"
+          class="block bg-[#c9973a] text-white px-4 py-3 rounded-md text-sm font-semibold text-center hover:bg-[#b8832e] transition-colors"
         >
           Contact Us
         </a>
@@ -119,12 +124,11 @@ const pathname = Astro.url.pathname;
     btn?.setAttribute('aria-expanded', String(!isOpen));
   });
 
-  // Add shadow on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
-      header?.classList.add('shadow-sm');
+      header?.classList.add('shadow-md');
     } else {
-      header?.classList.remove('shadow-sm');
+      header?.classList.remove('shadow-md');
     }
   });
 </script>

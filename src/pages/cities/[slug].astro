@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
-import { AGENTS } from '../../lib/constants';
+import { AGENTS, CITIES } from '../../lib/constants';
 
 export async function getStaticPaths() {
   const cities = await getCollection('cities');
@@ -12,6 +12,7 @@ const { city } = Astro.props;
 const { Content } = await render(city);
 
 const cityAgents = AGENTS.filter(a => a.cities.includes(city.data.name));
+const cityMeta = CITIES.find(c => c.slug === city.id);
 
 const schema = {
   '@type': 'WebPage',
@@ -30,35 +31,51 @@ const schema = {
   description={`${city.data.tagline}. Local real estate insights, school info, and community guides from Pemberton Real Estate's Malcolm Wallaker and Bridger Hopkins.`}
   schema={schema}
 >
-  <!-- Hero -->
-  <section class="bg-[#1a3a2a] py-16 px-4">
-    <div class="max-w-4xl mx-auto">
-      <a href="/cities" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white font-sans transition-colors mb-6">
-        <span aria-hidden="true">←</span> All Cities
-      </a>
-      <span class="eyebrow text-[#c9973a]">Northern Minnesota</span>
-      <h1 class="text-5xl md:text-6xl font-bold text-white mt-2 mb-3">{city.data.name}, MN</h1>
-      <p class="text-xl text-slate-300 font-sans font-light max-w-2xl">{city.data.tagline}</p>
-
-      <!-- Stats -->
-      <div class="flex flex-wrap gap-4 mt-8">
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-sans font-semibold">Population</p>
-          <p class="text-white font-bold text-lg mt-0.5">{city.data.population}</p>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10">
-          <p class="text-xs text-slate-400 uppercase tracking-wider font-sans font-semibold">Median Home Price</p>
-          <p class="text-white font-bold text-lg mt-0.5">{city.data.medianHomePrice}</p>
-        </div>
-        {city.data.distanceToGrandRapids && (
-          <div class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 border border-white/10">
-            <p class="text-xs text-slate-400 uppercase tracking-wider font-sans font-semibold">From Grand Rapids</p>
-            <p class="text-white font-bold text-lg mt-0.5">{city.data.distanceToGrandRapids}</p>
-          </div>
-        )}
+  <!-- Full-width Photo Hero -->
+  <section class="relative h-[420px] md:h-[500px] overflow-hidden">
+    <img
+      src={cityMeta?.photo || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80'}
+      alt={`${city.data.name}, Minnesota`}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/60 via-[#1e3a5f]/50 to-[#1e3a5f]/80"></div>
+    <div class="relative h-full flex items-end">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full pb-10">
+        <a href="/cities" class="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors mb-5">
+          <span aria-hidden="true">←</span> All Cities
+        </a>
+        <span class="eyebrow text-[#c9973a]">Northern Minnesota</span>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mt-1 mb-2 tracking-tight">{city.data.name}, MN</h1>
+        <p class="text-xl text-white/75 max-w-2xl">{city.data.tagline}</p>
       </div>
     </div>
   </section>
+
+  <!-- Horizontal Stat Bar -->
+  <div class="bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-wrap gap-0 divide-x divide-slate-200">
+        <div class="px-6 py-4 first:pl-0">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Population</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{city.data.population}</p>
+        </div>
+        <div class="px-6 py-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Median Home Price</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{city.data.medianHomePrice}</p>
+        </div>
+        {city.data.distanceToGrandRapids && (
+          <div class="px-6 py-4">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-400">From Grand Rapids</p>
+            <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{city.data.distanceToGrandRapids}</p>
+          </div>
+        )}
+        <div class="px-6 py-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">County</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{cityMeta?.county || 'Minnesota'} County</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Content + Sidebar -->
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-3 gap-10">
@@ -73,49 +90,69 @@ const schema = {
     <!-- Sidebar -->
     <aside class="space-y-5">
 
+      <!-- Why [City]? Checklist -->
+      <div class="bg-[#f0f4f8] rounded-xl p-6">
+        <h3 class="font-extrabold text-[#1e3a5f] text-base tracking-tight mb-4">Why {city.data.name}?</h3>
+        <ul class="space-y-2.5">
+          {[
+            city.data.tagline,
+            `Located in ${cityMeta?.county || 'northern'} County, MN`,
+            `Population: ${city.data.population}`,
+            `Median home price: ${city.data.medianHomePrice}`,
+            'Access to lakes, forests & outdoor recreation',
+            'Strong northern Minnesota community',
+          ].filter(Boolean).map(item => (
+            <li class="flex items-start gap-2.5 text-sm text-slate-700">
+              <svg class="w-4 h-4 text-[#c9973a] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <!-- Agent Card -->
       {cityAgents.length > 0 ? cityAgents.map(agent => (
-        <div class="card p-5">
-          <span class="eyebrow">Your Local Expert</span>
-          <div class="flex gap-3 items-center mt-1">
-            <div class="w-14 h-14 rounded-full bg-slate-100 flex-shrink-0 overflow-hidden">
+        <div class="bg-[#1e3a5f] rounded-xl p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-3">Thinking of Moving?</p>
+          <div class="flex gap-3 items-center mb-4">
+            <div class="w-14 h-14 rounded-full bg-white/10 flex-shrink-0 overflow-hidden">
               <img src={agent.image} alt={agent.name} class="w-full h-full object-cover"
-                onerror="this.parentElement.style.background='#e8e4dc'" />
+                onerror="this.parentElement.style.background='#2d5480'" />
             </div>
             <div>
-              <h3 class="font-bold text-[#1a3a2a]">{agent.name}</h3>
-              <p class="text-xs text-slate-500 font-sans">{agent.title} · {agent.brokerage}</p>
+              <h3 class="font-extrabold text-white tracking-tight">{agent.name}</h3>
+              <p class="text-xs text-white/60">{agent.title} · {agent.brokerage}</p>
             </div>
           </div>
-          <a href="/contact" class="btn-primary w-full text-center mt-4 text-sm py-2.5 block rounded-xl">
+          <p class="text-sm text-white/70 mb-4 leading-relaxed">
+            {agent.name.split(' ')[0]} is your local expert for buying and selling in {city.data.name} and the surrounding area.
+          </p>
+          <a href="/contact" class="block w-full bg-[#c9973a] text-white text-center py-3 rounded-md font-bold text-sm hover:bg-[#b8832e] transition-colors">
             Contact {agent.name.split(' ')[0]}
           </a>
         </div>
       )) : (
-        <div class="card p-5">
-          <span class="eyebrow">Local Experts</span>
-          <p class="text-sm text-slate-600 font-sans mt-2 mb-4 leading-relaxed">
+        <div class="bg-[#1e3a5f] rounded-xl p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-3">Thinking of Moving?</p>
+          <h3 class="font-extrabold text-white tracking-tight mb-2">Talk to a Local Expert</h3>
+          <p class="text-sm text-white/70 mb-4 leading-relaxed">
             Malcolm Wallaker and Bridger Hopkins serve {city.data.name} and all of northern Minnesota.
           </p>
-          <a href="/agents" class="btn-primary w-full text-center text-sm py-2.5 block rounded-xl">
-            Meet Our Agents
+          <a href="/contact" class="block w-full bg-[#c9973a] text-white text-center py-3 rounded-md font-bold text-sm hover:bg-[#b8832e] transition-colors">
+            Contact Our Agents
           </a>
         </div>
       )}
 
-      <!-- Quick Facts -->
-      <div class="bg-[#f5f0e8] rounded-2xl p-5">
-        <h3 class="font-bold text-[#1a3a2a] mb-2">Why {city.data.name}?</h3>
-        <p class="text-sm text-slate-600 font-sans leading-relaxed">{city.data.tagline}</p>
-      </div>
-
       <!-- Quick links -->
       <div class="card p-5">
-        <h3 class="font-bold text-[#1a3a2a] text-sm mb-3">Explore More</h3>
+        <h3 class="font-bold text-[#1e3a5f] text-sm mb-3 tracking-tight">Explore More</h3>
         <ul class="space-y-2">
-          <li><a href="/blog" class="text-sm text-[#2d5a3d] hover:underline font-sans font-medium">Real Estate Blog →</a></li>
-          <li><a href="/news" class="text-sm text-[#2d5a3d] hover:underline font-sans font-medium">Local News →</a></li>
-          <li><a href="/contact" class="text-sm text-[#2d5a3d] hover:underline font-sans font-medium">Contact an Agent →</a></li>
+          <li><a href="/blog" class="text-sm text-[#1e3a5f] hover:text-[#c9973a] font-semibold transition-colors">Real Estate Blog →</a></li>
+          <li><a href="/news" class="text-sm text-[#1e3a5f] hover:text-[#c9973a] font-semibold transition-colors">Local News →</a></li>
+          <li><a href="/contact" class="text-sm text-[#1e3a5f] hover:text-[#c9973a] font-semibold transition-colors">Contact an Agent →</a></li>
         </ul>
       </div>
     </aside>

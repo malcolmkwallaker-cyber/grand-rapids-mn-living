@@ -23,116 +23,114 @@ const featuredCities = CITIES.slice(0, 6);
   description="Malcolm Wallaker and Bridger Hopkins with Pemberton Real Estate are the top-rated REALTORS® in Grand Rapids, MN. Serving Grand Rapids, Hibbing, Virginia, Duluth, and all of northern Minnesota."
 >
 
-  <!-- Hero -->
-  <section class="relative bg-[#1a3a2a] overflow-hidden">
-    <!-- Subtle texture overlay -->
-    <div class="absolute inset-0 opacity-5" style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");"></div>
+  <!-- Hero: Full-width photo with dark overlay -->
+  <section class="relative h-[600px] md:h-[700px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota lakes and forests aerial view"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0f1e30]/70 via-[#1e3a5f]/60 to-[#0f1e30]/80"></div>
 
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-24 md:py-32 text-center">
-      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-[#c9973a] mb-5 font-sans">
-        Grand Rapids, MN &amp; Northern Minnesota
-      </span>
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-none tracking-tight">
-        Your Northern Minnesota<br class="hidden sm:block" />
-        <span class="text-[#c9973a]">Real Estate Experts</span>
-      </h1>
-      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed font-sans font-light">
-        Malcolm Wallaker and Bridger Hopkins with Pemberton Real Estate — trusted REALTORS® for buying, selling, and investing across 13 northern Minnesota communities.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/agents" class="bg-[#c9973a] text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#b8832e] transition-all duration-200 text-sm font-sans shadow-lg shadow-amber-900/20">
-          Meet Our Agents
-        </a>
-        <a href="/cities" class="border border-white/30 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 transition-all duration-200 text-sm font-sans backdrop-blur-sm">
-          Explore Cities
-        </a>
+    <div class="relative h-full flex items-center">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full text-center">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a] mb-4">
+          Northern Minnesota
+        </span>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-5 leading-none tracking-tight">
+          Find Your Place in<br />
+          <span class="text-[#c9973a]">Minnesota</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
+          Malcolm Wallaker and Bridger Hopkins with Pemberton Real Estate — trusted REALTORS® across 13 northern Minnesota communities.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/cities" class="bg-[#c9973a] text-white px-8 py-3.5 rounded-md font-bold hover:bg-[#b8832e] transition-all duration-200 text-sm shadow-lg">
+            Explore Cities
+          </a>
+          <a href="/geo" class="border-2 border-white/60 text-white px-8 py-3.5 rounded-md font-bold hover:bg-white/10 hover:border-white transition-all duration-200 text-sm">
+            Moving Guides
+          </a>
+        </div>
       </div>
     </div>
-
-    <!-- Bottom fade -->
-    <div class="h-12 bg-gradient-to-b from-transparent to-[#fdfcf9]"></div>
   </section>
 
-  <!-- Trust Bar -->
-  <section class="bg-[#fdfcf9] py-10 border-b border-slate-100">
-    <div class="max-w-4xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      {[
-        { value: '13', label: 'Communities Served' },
-        { value: 'Pemberton', label: 'Real Estate' },
-        { value: '2 Agents', label: 'Local Experts' },
-        { value: 'Northern MN', label: 'Specialists' },
-      ].map(stat => (
-        <div class="py-2">
-          <p class="text-2xl font-bold text-[#1a3a2a]" style="font-family:'Playfair Display',Georgia,serif">{stat.value}</p>
-          <p class="text-xs text-slate-500 mt-1 uppercase tracking-wider font-sans font-medium">{stat.label}</p>
-        </div>
-      ))}
+  <!-- Cities Photo Grid -->
+  <section class="bg-white py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="eyebrow">Northern Minnesota</span>
+        <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Explore Cities</h2>
+        <p class="text-slate-500 mt-3 max-w-lg mx-auto text-base">Detailed community guides covering real estate markets, schools, and what makes each place special.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {featuredCities.map(city => (
+          <a href={`/cities/${city.slug}`}
+            class="group relative overflow-hidden rounded-xl bg-slate-900 aspect-[4/3] block shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <!-- Photo -->
+            <img
+              src={city.photo}
+              alt={`${city.name}, Minnesota`}
+              class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+            />
+            <!-- Bottom overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <!-- City name overlay -->
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-1">Minnesota</p>
+              <h3 class="text-xl font-extrabold text-white tracking-tight">{city.name}</h3>
+              <p class="text-sm text-white/70 mt-1 font-medium group-hover:text-white transition-colors">
+                Explore {city.name} <span aria-hidden="true">→</span>
+              </p>
+            </div>
+            {city.primary && (
+              <div class="absolute top-3 right-3">
+                <span class="text-xs bg-[#c9973a] text-white px-2 py-1 rounded font-bold uppercase tracking-wider">Primary</span>
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/cities" class="btn-secondary">View All 13 Communities</a>
+      </div>
     </div>
   </section>
 
   <!-- Agents -->
-  <section class="section-pad bg-white">
+  <section class="section-pad bg-[#f0f4f8]">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
         <span class="eyebrow">Pemberton Real Estate</span>
-        <h2 class="text-4xl font-bold text-[#1a3a2a]">Grand Rapids' Top REALTORS®</h2>
-        <p class="text-slate-500 mt-3 max-w-lg mx-auto font-sans">Two local agents with deep roots in northern Minnesota, ready to help you buy, sell, or invest.</p>
+        <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Meet Your Local REALTORS®</h2>
+        <p class="text-slate-500 mt-3 max-w-lg mx-auto">Two local agents with deep roots in northern Minnesota, ready to help you buy, sell, or invest.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-6">
         {AGENTS.map(agent => (
           <div class="card p-0 overflow-hidden group hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex gap-0">
-              <!-- Photo -->
-              <div class="w-28 h-full min-h-[160px] flex-shrink-0 bg-slate-100 relative overflow-hidden">
+              <div class="w-32 flex-shrink-0 bg-slate-100 relative overflow-hidden">
                 <img
                   src={agent.image}
                   alt={`${agent.name}, REALTOR® at Pemberton Real Estate`}
                   class="absolute inset-0 w-full h-full object-cover"
-                  onerror="this.parentElement.style.background='#e8e4dc'"
+                  onerror="this.parentElement.style.background='#dbe4ee'"
                 />
               </div>
-              <!-- Content -->
-              <div class="p-5 flex-1">
-                <p class="text-xs text-[#c9973a] font-semibold uppercase tracking-wider font-sans">{agent.title}</p>
-                <h3 class="text-xl font-bold text-[#1a3a2a] mt-0.5">{agent.name}</h3>
-                <p class="text-xs text-slate-500 font-sans mb-2">{agent.brokerage}</p>
-                <p class="text-sm text-slate-600 font-sans leading-relaxed line-clamp-2">{agent.bio}</p>
-                <a href={`/agents/${agent.slug}`} class="inline-flex items-center gap-1 mt-3 text-sm text-[#2d5a3d] font-semibold font-sans hover:text-[#1a3a2a] transition-colors">
+              <div class="p-6 flex-1">
+                <p class="text-xs text-[#c9973a] font-bold uppercase tracking-wider">{agent.title}</p>
+                <h3 class="text-xl font-bold text-[#1e3a5f] mt-0.5 tracking-tight">{agent.name}</h3>
+                <p class="text-xs text-slate-400 font-medium mb-3">{agent.brokerage}</p>
+                <p class="text-sm text-slate-600 leading-relaxed line-clamp-2">{agent.bio}</p>
+                <a href={`/agents/${agent.slug}`} class="inline-flex items-center gap-1 mt-4 text-sm text-[#1e3a5f] font-bold hover:text-[#c9973a] transition-colors">
                   View Profile <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Cities -->
-  <section class="section-pad bg-[#f5f0e8]">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="eyebrow">Local Guides</span>
-        <h2 class="text-4xl font-bold text-[#1a3a2a]">Explore Northern Minnesota</h2>
-        <p class="text-slate-500 mt-3 max-w-lg mx-auto font-sans">Detailed community guides covering real estate markets, schools, lifestyle, and what makes each city unique.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {featuredCities.map((city, i) => (
-          <a href={`/cities/${city.slug}`}
-            class="group bg-white rounded-2xl border border-slate-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-between">
-            <div>
-              <h3 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] transition-colors">{city.name}, MN</h3>
-              <p class="text-xs text-slate-400 mt-0.5 font-sans">{city.county} County</p>
-              {city.primary && (
-                <span class="inline-block mt-2 text-xs bg-[#f5f0e8] text-[#c9973a] px-2 py-0.5 rounded-full font-semibold font-sans border border-amber-200">Primary Market</span>
-              )}
-            </div>
-            <span class="text-slate-300 group-hover:text-[#1a3a2a] transition-colors text-lg">→</span>
-          </a>
-        ))}
-      </div>
-      <div class="text-center mt-8">
-        <a href="/cities" class="btn-secondary">View All 13 Communities</a>
       </div>
     </div>
   </section>
@@ -144,70 +142,66 @@ const featuredCities = CITIES.slice(0, 6);
         <div class="flex items-end justify-between mb-10">
           <div>
             <span class="eyebrow">Real Estate Insights</span>
-            <h2 class="text-4xl font-bold text-[#1a3a2a]">From the Blog</h2>
+            <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">From the Blog</h2>
           </div>
-          <a href="/blog" class="text-sm text-[#2d5a3d] font-semibold font-sans hover:underline hidden sm:block">All posts →</a>
+          <a href="/blog" class="text-sm text-[#1e3a5f] font-bold hover:text-[#c9973a] transition-colors hidden sm:block">All posts →</a>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          {recentBlog.map((post, i) => (
+        <div class="grid md:grid-cols-3 gap-5">
+          {recentBlog.map(post => (
             <a href={`/blog/${post.id}`}
-              class="card overflow-hidden group hover:-translate-y-0.5 transition-all duration-200">
-              <!-- Image placeholder -->
-              <div class="h-44 bg-gradient-to-br from-[#1a3a2a] to-[#2d5a3d] relative overflow-hidden">
+              class="card overflow-hidden group hover:-translate-y-1 transition-all duration-200">
+              <div class="h-44 bg-[#1e3a5f] relative overflow-hidden">
                 {post.data.image ? (
-                  <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover opacity-80" />
+                  <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
                 ) : (
-                  <div class="absolute inset-0 flex items-end p-4">
-                    <span class="text-white/40 text-4xl font-bold leading-none" style="font-family:'Playfair Display',Georgia,serif">
+                  <div class="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] to-[#2d5480] flex items-end p-4">
+                    <span class="text-white/20 text-6xl font-extrabold leading-none">
                       {post.data.city?.charAt(0) || 'G'}
                     </span>
                   </div>
                 )}
                 {post.data.city && (
                   <div class="absolute top-3 left-3">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-white bg-[#c9973a] px-2 py-1 rounded-md font-sans">{post.data.city}</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-white bg-[#c9973a] px-2 py-1 rounded">{post.data.city}</span>
                   </div>
                 )}
               </div>
               <div class="p-5">
-                <h3 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] leading-snug text-base transition-colors">{post.data.title}</h3>
-                <p class="text-sm text-slate-500 mt-2 line-clamp-2 font-sans leading-relaxed">{post.data.description}</p>
+                <h3 class="font-bold text-[#1e3a5f] group-hover:text-[#c9973a] leading-snug text-base transition-colors tracking-tight">{post.data.title}</h3>
+                <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed">{post.data.description}</p>
                 <div class="flex items-center justify-between mt-4">
-                  <span class="text-xs text-slate-400 font-sans">
+                  <span class="text-xs text-slate-400">
                     {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </span>
-                  <span class="text-xs text-[#2d5a3d] font-semibold font-sans">Read →</span>
+                  <span class="text-xs text-[#1e3a5f] font-bold">Read →</span>
                 </div>
               </div>
             </a>
           ))}
         </div>
-        <div class="text-center mt-6 sm:hidden">
-          <a href="/blog" class="btn-secondary text-sm">All Blog Posts</a>
-        </div>
       </div>
     </section>
   )}
 
-  <!-- GEO / Local Guides -->
+  <!-- GEO / Moving Guides -->
   {recentGeo.length > 0 && (
-    <section class="section-pad bg-[#f5f0e8]">
+    <section class="section-pad bg-[#f0f4f8]">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-end justify-between mb-10">
           <div>
             <span class="eyebrow">Agent Expertise</span>
-            <h2 class="text-4xl font-bold text-[#1a3a2a]">Why Choose Pemberton</h2>
+            <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Why Choose Pemberton</h2>
           </div>
-          <a href="/geo" class="text-sm text-[#2d5a3d] font-semibold font-sans hover:underline hidden sm:block">All guides →</a>
+          <a href="/geo" class="text-sm text-[#1e3a5f] font-bold hover:text-[#c9973a] transition-colors hidden sm:block">All guides →</a>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
           {recentGeo.map(post => (
             <a href={`/geo/${post.id}`}
-              class="bg-white rounded-2xl border border-slate-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+              class="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div class="w-8 h-1 bg-[#c9973a] rounded mb-4"></div>
-              <h3 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] text-base leading-snug transition-colors">{post.data.title}</h3>
-              <p class="text-sm text-slate-500 mt-2 line-clamp-2 font-sans leading-relaxed">{post.data.description}</p>
-              <p class="text-sm text-[#2d5a3d] mt-4 font-semibold font-sans">Read more →</p>
+              <h3 class="font-bold text-[#1e3a5f] group-hover:text-[#c9973a] text-base leading-snug transition-colors tracking-tight">{post.data.title}</h3>
+              <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed">{post.data.description}</p>
+              <p class="text-sm text-[#1e3a5f] mt-4 font-bold group-hover:text-[#c9973a] transition-colors">Read more →</p>
             </a>
           ))}
         </div>
@@ -222,42 +216,44 @@ const featuredCities = CITIES.slice(0, 6);
         <div class="flex items-end justify-between mb-10">
           <div>
             <span class="eyebrow">Local News</span>
-            <h2 class="text-4xl font-bold text-[#1a3a2a]">What's Happening in Northern MN</h2>
+            <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">What's Happening in Northern MN</h2>
           </div>
-          <a href="/news" class="text-sm text-[#2d5a3d] font-semibold font-sans hover:underline hidden sm:block">All news →</a>
+          <a href="/news" class="text-sm text-[#1e3a5f] font-bold hover:text-[#c9973a] transition-colors hidden sm:block">All news →</a>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
           {recentNews.map(post => (
             <a href={`/news/${post.id}`}
               class="card p-5 hover:-translate-y-0.5 transition-all duration-200 group">
               <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a] font-sans">{post.data.city}</span>
-                <span class="text-xs text-slate-400 font-sans">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#c9973a]">{post.data.city}</span>
+                <span class="text-xs text-slate-400">
                   {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                 </span>
               </div>
-              <h3 class="font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] text-base leading-snug transition-colors">{post.data.title}</h3>
-              <p class="text-sm text-slate-500 mt-2 line-clamp-2 font-sans leading-relaxed">{post.data.description}</p>
+              <h3 class="font-bold text-[#1e3a5f] group-hover:text-[#c9973a] text-base leading-snug transition-colors tracking-tight">{post.data.title}</h3>
+              <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed">{post.data.description}</p>
             </a>
           ))}
-        </div>
-        <div class="text-center mt-8 sm:hidden">
-          <a href="/news" class="btn-secondary text-sm">All Local News</a>
         </div>
       </div>
     </section>
   )}
 
-  <!-- CTA -->
-  <section class="bg-[#1a3a2a] py-20 px-4 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5" style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");"></div>
+  <!-- CTA Banner -->
+  <section class="relative py-24 px-4 text-center overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota landscape"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#1e3a5f]/85"></div>
     <div class="relative max-w-2xl mx-auto">
-      <span class="text-xs font-semibold uppercase tracking-widest text-[#c9973a] font-sans">Ready to Get Started?</span>
-      <h2 class="text-4xl font-bold text-white mt-3 mb-4">Buy or Sell in Northern Minnesota</h2>
-      <p class="text-slate-300 mb-8 font-sans leading-relaxed">
+      <span class="text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a]">Ready to Get Started?</span>
+      <h2 class="text-4xl font-extrabold text-white mt-3 mb-4 tracking-tight">Buy or Sell in Northern Minnesota</h2>
+      <p class="text-white/70 mb-8 leading-relaxed text-lg">
         Connect with Malcolm Wallaker or Bridger Hopkins at Pemberton Real Estate — Grand Rapids' most trusted local REALTORS®.
       </p>
-      <a href="/contact" class="bg-[#c9973a] text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#b8832e] transition-all duration-200 font-sans shadow-lg shadow-amber-900/30">
+      <a href="/contact" class="bg-[#c9973a] text-white px-10 py-4 rounded-md font-bold hover:bg-[#b8832e] transition-all duration-200 shadow-lg text-sm">
         Get In Touch Today
       </a>
     </div>

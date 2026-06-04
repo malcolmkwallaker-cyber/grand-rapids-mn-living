@@ -23,7 +23,7 @@ const schema = {
   description="Pemberton Real Estate is one of northern Minnesota's top brokerages. Malcolm Wallaker and Bridger Hopkins serve Grand Rapids and 12 surrounding communities with expert local real estate knowledge."
   schema={schema}
 >
-  <section class="bg-[#1a3a2a] py-14 px-4 text-center">
+  <section class="bg-[#1e3a5f] py-14 px-4 text-center">
     <p class="text-sm font-semibold uppercase tracking-widest text-[#c9973a] mb-3">Northern Minnesota's Trusted Brokerage</p>
     <h1 class="text-4xl font-bold text-white mb-4">About Pemberton Real Estate</h1>
     <p class="text-slate-300 max-w-xl mx-auto">
@@ -33,7 +33,7 @@ const schema = {
 
   <div class="max-w-4xl mx-auto px-4 py-14 space-y-12">
     <div>
-      <h2 class="text-2xl font-bold text-[#1a3a2a] mb-4">Who We Are</h2>
+      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-4">Who We Are</h2>
       <p class="text-slate-700 mb-4">
         Pemberton Real Estate is one of Grand Rapids, Minnesota's most trusted real estate brokerages. We specialize in helping buyers, sellers, and investors navigate the northern Minnesota market — from the lakes and forests of Itasca County to the Iron Range communities of St. Louis County.
       </p>
@@ -43,13 +43,13 @@ const schema = {
     </div>
 
     <div>
-      <h2 class="text-2xl font-bold text-[#1a3a2a] mb-4">Our Market</h2>
+      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-4">Our Market</h2>
       <p class="text-slate-700 mb-4">
         We serve 13 communities across northern Minnesota:
       </p>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {CITIES.map(city => (
-          <a href={`/cities/${city.slug}`} class="text-sm text-[#2d5a3d] hover:underline font-medium">
+          <a href={`/cities/${city.slug}`} class="text-sm text-[#2d5480] hover:underline font-medium">
             {city.name}, MN →
           </a>
         ))}
@@ -58,11 +58,11 @@ const schema = {
 
     <div class="grid md:grid-cols-2 gap-8">
       {AGENTS.map(agent => (
-        <div class="bg-[#f5f0e8] rounded-xl p-6">
-          <h3 class="font-bold text-[#1a3a2a] text-lg">{agent.name}</h3>
+        <div class="bg-[#f0f4f8] rounded-xl p-6">
+          <h3 class="font-bold text-[#1e3a5f] text-lg">{agent.name}</h3>
           <p class="text-[#c9973a] font-medium text-sm">{agent.title}</p>
           <p class="text-slate-600 text-sm mt-2">{agent.bio}</p>
-          <a href={`/agents/${agent.slug}`} class="inline-block mt-3 text-sm text-[#2d5a3d] font-semibold hover:underline">
+          <a href={`/agents/${agent.slug}`} class="inline-block mt-3 text-sm text-[#2d5480] font-semibold hover:underline">
             View full profile →
           </a>
         </div>

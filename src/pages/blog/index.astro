@@ -14,33 +14,43 @@ const rest = posts.slice(1);
   description="Northern Minnesota real estate tips, market updates, buying and selling guides from Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate in Grand Rapids, MN."
 >
   <!-- Hero -->
-  <section class="bg-[#1a3a2a] py-16 px-4 text-center">
-    <span class="eyebrow text-[#c9973a]">Expert Insights</span>
-    <h1 class="text-5xl font-bold text-white mt-2 mb-4">Real Estate Blog</h1>
-    <p class="text-slate-300 max-w-xl mx-auto font-sans font-light text-lg">
-      Market insights, buying and selling tips, and local real estate news from your Pemberton Real Estate agents.
-    </p>
+  <section class="relative h-[280px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota forest"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#1e3a5f]/80"></div>
+    <div class="relative h-full flex items-center justify-center text-center px-4">
+      <div>
+        <span class="eyebrow text-[#c9973a]">Expert Insights</span>
+        <h1 class="text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">Real Estate Blog</h1>
+        <p class="text-white/70 max-w-xl mx-auto text-lg">
+          Market insights, buying and selling tips, and local real estate news from your Pemberton Real Estate agents.
+        </p>
+      </div>
+    </div>
   </section>
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
 
     {posts.length === 0 && (
       <div class="text-center py-20">
-        <p class="text-slate-400 font-sans">No posts published yet. Check back soon.</p>
+        <p class="text-slate-400">No posts published yet. Check back soon.</p>
       </div>
     )}
 
     <!-- Featured Post -->
     {featured && (
       <div class="mb-12">
-        <a href={`/blog/${featured.id}`} class="group block bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md overflow-hidden hover:-translate-y-0.5 transition-all duration-200">
+        <a href={`/blog/${featured.id}`} class="group block bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg overflow-hidden hover:-translate-y-0.5 transition-all duration-200">
           <div class="md:flex">
-            <div class="md:w-2/5 h-56 md:h-auto bg-gradient-to-br from-[#1a3a2a] to-[#2d5a3d] relative overflow-hidden flex-shrink-0">
+            <div class="md:w-2/5 h-56 md:h-auto bg-[#1e3a5f] relative overflow-hidden flex-shrink-0">
               {featured.data.image ? (
-                <img src={featured.data.image} alt={featured.data.title} class="w-full h-full object-cover opacity-80" />
+                <img src={featured.data.image} alt={featured.data.title} class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
               ) : (
-                <div class="absolute inset-0 flex items-end p-6">
-                  <span class="text-white/30 text-8xl font-bold leading-none" style="font-family:'Playfair Display',Georgia,serif">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] to-[#2d5480] flex items-end p-6">
+                  <span class="text-white/20 text-8xl font-extrabold leading-none">
                     {featured.data.city?.charAt(0) || 'G'}
                   </span>
                 </div>
@@ -48,18 +58,18 @@ const rest = posts.slice(1);
             </div>
             <div class="p-8 flex flex-col justify-center">
               <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs font-semibold uppercase tracking-wider text-[#c9973a] font-sans">Featured</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#c9973a]">Featured</span>
                 {featured.data.city && (
-                  <span class="text-xs text-slate-400 font-sans">{featured.data.city}, MN</span>
+                  <span class="text-xs text-slate-400">{featured.data.city}, MN</span>
                 )}
               </div>
-              <h2 class="text-2xl md:text-3xl font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] leading-tight transition-colors mb-3">{featured.data.title}</h2>
-              <p class="text-slate-500 font-sans leading-relaxed line-clamp-3">{featured.data.description}</p>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-[#1e3a5f] group-hover:text-[#c9973a] leading-tight transition-colors mb-3 tracking-tight">{featured.data.title}</h2>
+              <p class="text-slate-500 leading-relaxed line-clamp-3">{featured.data.description}</p>
               <div class="flex items-center justify-between mt-6">
-                <span class="text-xs text-slate-400 font-sans">
+                <span class="text-xs text-slate-400">
                   {featured.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
-                <span class="text-sm text-[#2d5a3d] font-semibold font-sans">Read article →</span>
+                <span class="text-sm text-[#1e3a5f] font-bold">Read article →</span>
               </div>
             </div>
           </div>
@@ -69,33 +79,33 @@ const rest = posts.slice(1);
 
     <!-- Rest of posts -->
     {rest.length > 0 && (
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 gap-5">
         {rest.map(post => (
-          <a href={`/blog/${post.id}`} class="card overflow-hidden group hover:-translate-y-0.5 transition-all duration-200">
-            <div class="h-40 bg-gradient-to-br from-[#1a3a2a] to-[#2d5a3d] relative overflow-hidden">
+          <a href={`/blog/${post.id}`} class="card overflow-hidden group hover:-translate-y-1 transition-all duration-200">
+            <div class="h-40 bg-[#1e3a5f] relative overflow-hidden">
               {post.data.image ? (
-                <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover opacity-80" />
+                <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
               ) : (
-                <div class="absolute inset-0 flex items-end p-4">
-                  <span class="text-white/30 text-5xl font-bold leading-none" style="font-family:'Playfair Display',Georgia,serif">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] to-[#2d5480] flex items-end p-4">
+                  <span class="text-white/20 text-5xl font-extrabold leading-none">
                     {post.data.city?.charAt(0) || 'G'}
                   </span>
                 </div>
               )}
               {post.data.city && (
                 <div class="absolute top-3 left-3">
-                  <span class="text-xs font-semibold uppercase tracking-wider text-white bg-black/30 backdrop-blur-sm px-2 py-1 rounded font-sans">{post.data.city}</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-white bg-[#c9973a] px-2 py-1 rounded">{post.data.city}</span>
                 </div>
               )}
             </div>
             <div class="p-5">
-              <h2 class="text-base font-bold text-[#1a3a2a] group-hover:text-[#2d5a3d] leading-snug transition-colors">{post.data.title}</h2>
-              <p class="text-sm text-slate-500 mt-2 line-clamp-2 font-sans leading-relaxed">{post.data.description}</p>
+              <h2 class="text-base font-bold text-[#1e3a5f] group-hover:text-[#c9973a] leading-snug transition-colors tracking-tight">{post.data.title}</h2>
+              <p class="text-sm text-slate-500 mt-2 line-clamp-2 leading-relaxed">{post.data.description}</p>
               <div class="flex items-center justify-between mt-4">
-                <span class="text-xs text-slate-400 font-sans">
+                <span class="text-xs text-slate-400">
                   {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </span>
-                <span class="text-sm text-[#2d5a3d] font-semibold font-sans">Read →</span>
+                <span class="text-sm text-[#1e3a5f] font-bold">Read →</span>
               </div>
             </div>
           </a>
