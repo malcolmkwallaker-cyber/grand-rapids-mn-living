@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-04",
+    "lastUpdated": "2026-06-08",
     "totalTopics": 0,
-    "publishedCount": 4,
+    "publishedCount": 6,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -90,7 +90,7 @@
     },
     {
       "id": "seo-005",
-      "status": "pending",
+      "status": "published",
       "title": "Moving to Grand Rapids, MN from the Twin Cities: What to Expect",
       "primaryKeyword": "moving to grand rapids mn from twin cities",
       "secondaryKeywords": [
@@ -115,7 +115,9 @@
         "Essentials that exist vs. what requires a trip to Duluth or the Cities",
         "The outdoor lifestyle advantage that actually changes daily life"
       ],
-      "wordCount": 1500
+      "wordCount": 1500,
+      "publishedSlug": "moving-to-grand-rapids-mn-from-the-twin-cities-what-to-expect",
+      "publishedDate": "2026-06-08"
     },
     {
       "id": "seo-006",
@@ -497,7 +499,7 @@
     },
     {
       "id": "geo-005",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Aitkin, MN — Top Local Real Estate Agents",
       "targetQuery": "best realtor in aitkin mn",
       "city": "Aitkin",
@@ -509,7 +511,9 @@
         "Familiar with Mille Lacs-area market dynamics",
         "Honest about what lake properties actually cost to own",
         "Pemberton Real Estate — northern MN's trusted brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-aitkin-mn-top-local-real-estate-agents",
+      "publishedDate": "2026-06-08"
     },
     {
       "id": "geo-006",
