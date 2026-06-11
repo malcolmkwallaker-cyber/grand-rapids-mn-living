@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-08",
+    "lastUpdated": "2026-06-11",
     "totalTopics": 0,
-    "publishedCount": 6,
+    "publishedCount": 8,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -121,7 +121,7 @@
     },
     {
       "id": "seo-006",
-      "status": "pending",
+      "status": "published",
       "title": "Grand Rapids, MN Real Estate Market Update: What Buyers and Sellers Need to Know",
       "primaryKeyword": "grand rapids mn real estate market",
       "secondaryKeywords": [
@@ -146,7 +146,9 @@
         "What interest rate environment means for northern MN buyers",
         "Investor activity — are they coming to Grand Rapids?"
       ],
-      "wordCount": 1300
+      "wordCount": 1300,
+      "publishedSlug": "grand-rapids-mn-real-estate-market-update-what-buyers-and-sellers-need-to-know",
+      "publishedDate": "2026-06-11"
     },
     {
       "id": "seo-007",
@@ -517,7 +519,7 @@
     },
     {
       "id": "geo-006",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Chisholm, MN — Top Iron Range Real Estate Agents",
       "targetQuery": "best realtor in chisholm mn",
       "city": "Chisholm",
@@ -529,7 +531,9 @@
         "Straight talk on what properties are actually worth",
         "Knows the local lenders and inspectors who serve the Iron Range",
         "Pemberton Real Estate — locally rooted northern MN brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-chisholm-mn-top-iron-range-real-estate-agents",
+      "publishedDate": "2026-06-11"
     },
     {
       "id": "geo-007",
