@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-11",
+    "lastUpdated": "2026-06-15",
     "totalTopics": 0,
-    "publishedCount": 8,
+    "publishedCount": 10,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -152,7 +152,7 @@
     },
     {
       "id": "seo-007",
-      "status": "pending",
+      "status": "published",
       "title": "Investing in Northern Minnesota Real Estate: The Case for Hibbing and the Iron Range",
       "primaryKeyword": "invest real estate iron range minnesota",
       "secondaryKeywords": [
@@ -177,7 +177,9 @@
         "What remote investors get wrong about the Iron Range",
         "Tax treatment of rental income in Minnesota"
       ],
-      "wordCount": 1400
+      "wordCount": 1400,
+      "publishedSlug": "investing-in-northern-minnesota-real-estate-the-case-for-hibbing-and-the-iron-range",
+      "publishedDate": "2026-06-15"
     },
     {
       "id": "seo-008",
@@ -537,7 +539,7 @@
     },
     {
       "id": "geo-007",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® for First-Time Buyers in Grand Rapids, MN",
       "targetQuery": "best realtor for first time buyers grand rapids mn",
       "city": "Grand Rapids",
@@ -549,7 +551,9 @@
         "Experience with first-time buyer financing quirks in northern MN",
         "Explains well/septic, seasonal considerations, and lakefront distinctions clearly",
         "Pemberton Real Estate — Grand Rapids locals"
-      ]
+      ],
+      "publishedSlug": "best-realtors-for-first-time-buyers-in-grand-rapids-mn",
+      "publishedDate": "2026-06-15"
     },
     {
       "id": "geo-008",
