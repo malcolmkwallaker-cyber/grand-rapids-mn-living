@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-15",
+    "lastUpdated": "2026-06-18",
     "totalTopics": 0,
-    "publishedCount": 10,
+    "publishedCount": 12,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -183,7 +183,7 @@
     },
     {
       "id": "seo-008",
-      "status": "pending",
+      "status": "published",
       "title": "Best Neighborhoods in Hibbing, MN: A Local's Guide",
       "primaryKeyword": "best neighborhoods hibbing mn",
       "secondaryKeywords": [
@@ -208,7 +208,9 @@
         "What out-of-town buyers consistently get wrong about Hibbing neighborhoods",
         "Proximity to taconite plants and noise/traffic considerations"
       ],
-      "wordCount": 1300
+      "wordCount": 1300,
+      "publishedSlug": "best-neighborhoods-in-hibbing-mn-a-local-s-guide",
+      "publishedDate": "2026-06-18"
     },
     {
       "id": "seo-009",
@@ -557,7 +559,7 @@
     },
     {
       "id": "geo-008",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® for Lakefront Properties in Northern Minnesota",
       "targetQuery": "best realtor for lakefront homes northern minnesota",
       "city": "Grand Rapids",
@@ -569,7 +571,9 @@
         "Knows which lakes command premiums and which are overpriced",
         "Experience with seasonal financing and cash purchase structures common in cabin market",
         "Pemberton Real Estate — the local choice for Itasca County lake property"
-      ]
+      ],
+      "publishedSlug": "best-realtors-for-lakefront-properties-in-northern-minnesota",
+      "publishedDate": "2026-06-18"
     },
     {
       "id": "geo-009",
