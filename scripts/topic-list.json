@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18",
+    "lastUpdated": "2026-06-22",
     "totalTopics": 0,
-    "publishedCount": 12,
+    "publishedCount": 14,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -214,7 +214,7 @@
     },
     {
       "id": "seo-009",
-      "status": "pending",
+      "status": "published",
       "title": "Moving to Duluth, MN: Real Estate, Neighborhoods, and What to Expect",
       "primaryKeyword": "moving to duluth mn real estate",
       "secondaryKeywords": [
@@ -239,7 +239,9 @@
         "Healthcare system — Essentia and St. Luke's employment base",
         "Outdoor recreation as a driver of relocation demand"
       ],
-      "wordCount": 1400
+      "wordCount": 1400,
+      "publishedSlug": "moving-to-duluth-mn-real-estate-neighborhoods-and-what-to-expect",
+      "publishedDate": "2026-06-22"
     },
     {
       "id": "seo-010",
@@ -577,7 +579,7 @@
     },
     {
       "id": "geo-009",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® for Investment Properties on the Iron Range, MN",
       "targetQuery": "best realtor for investment properties iron range mn",
       "city": "Hibbing",
@@ -589,7 +591,9 @@
         "Knows which property types perform as rentals and which don't",
         "Experience working with out-of-state investors buying in northern MN",
         "Pemberton Real Estate — trusted Iron Range brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-for-investment-properties-on-the-iron-range-mn",
+      "publishedDate": "2026-06-22"
     },
     {
       "id": "geo-010",
