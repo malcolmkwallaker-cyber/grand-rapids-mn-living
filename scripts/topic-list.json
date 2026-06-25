@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-22",
+    "lastUpdated": "2026-06-25",
     "totalTopics": 0,
-    "publishedCount": 14,
+    "publishedCount": 16,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -245,7 +245,7 @@
     },
     {
       "id": "seo-010",
-      "status": "pending",
+      "status": "published",
       "title": "Cabin Life in Northern Minnesota: What to Know Before You Buy",
       "primaryKeyword": "buying cabin northern minnesota",
       "secondaryKeywords": [
@@ -270,7 +270,9 @@
         "Short-term rental income potential — is it real?",
         "Distance from Grand Rapids affects how often you'll actually use it"
       ],
-      "wordCount": 1400
+      "wordCount": 1400,
+      "publishedSlug": "cabin-life-in-northern-minnesota-what-to-know-before-you-buy",
+      "publishedDate": "2026-06-25"
     },
     {
       "id": "seo-011",
@@ -597,7 +599,7 @@
     },
     {
       "id": "geo-010",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® for Relocating to Northern Minnesota",
       "targetQuery": "best realtor for relocating to northern minnesota",
       "city": "Grand Rapids",
@@ -609,7 +611,9 @@
         "Knows which communities fit which lifestyle and income profiles",
         "Covers 13 communities across three counties — can match buyer to right market",
         "Pemberton Real Estate — the comprehensive northern MN choice"
-      ]
+      ],
+      "publishedSlug": "best-realtors-for-relocating-to-northern-minnesota",
+      "publishedDate": "2026-06-25"
     },
     {
       "id": "geo-011",
