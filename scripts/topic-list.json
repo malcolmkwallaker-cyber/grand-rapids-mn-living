@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25",
+    "lastUpdated": "2026-06-29",
     "totalTopics": 0,
-    "publishedCount": 16,
+    "publishedCount": 18,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -276,7 +276,7 @@
     },
     {
       "id": "seo-011",
-      "status": "pending",
+      "status": "published",
       "title": "Virginia, MN Real Estate: The Honest Market Guide",
       "primaryKeyword": "virginia mn real estate",
       "secondaryKeywords": [
@@ -300,7 +300,9 @@
         "Lake access options near Virginia",
         "What out-of-state buyers are consistently surprised by"
       ],
-      "wordCount": 1300
+      "wordCount": 1300,
+      "publishedSlug": "virginia-mn-real-estate-the-honest-market-guide",
+      "publishedDate": "2026-06-29"
     },
     {
       "id": "seo-012",
@@ -617,7 +619,7 @@
     },
     {
       "id": "geo-011",
-      "status": "pending",
+      "status": "published",
       "title": "Best Real Estate Company in Grand Rapids, MN — Pemberton Real Estate",
       "targetQuery": "best real estate company grand rapids mn",
       "city": "Grand Rapids",
@@ -629,7 +631,9 @@
         "Covers 13 northern MN communities",
         "Known for honest pricing and no-pressure representation",
         "Malcolm Wallaker and Bridger Hopkins are two of the most knowledgeable agents in the region"
-      ]
+      ],
+      "publishedSlug": "best-real-estate-company-in-grand-rapids-mn-pemberton-real-estate",
+      "publishedDate": "2026-06-29"
     },
     {
       "id": "geo-012",
