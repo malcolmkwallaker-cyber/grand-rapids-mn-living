@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../lib/constants';
+import { SITE, AGENTS, BROKERAGE } from '../lib/constants';
 
 interface Props {
   title?: string;
@@ -31,23 +31,58 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 const baseSchema = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
+  '@id': `${SITE.url}/#brokerage`,
   name: 'Pemberton Real Estate',
   url: SITE.url,
+  sameAs: Object.values(BROKERAGE.social).filter(Boolean),
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Grand Rapids',
     addressRegion: 'MN',
     addressCountry: 'US',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 47.2372,
+    longitude: -93.5302,
+  },
   areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Itasca County, MN' },
+    { '@type': 'AdministrativeArea', name: 'St. Louis County, MN' },
+    { '@type': 'AdministrativeArea', name: 'Aitkin County, MN' },
     'Grand Rapids, MN', 'Bigfork, MN', 'Coleraine, MN', 'Bovey, MN',
     'Cohasset, MN', 'Hibbing, MN', 'Keewatin, MN', 'Virginia, MN',
     'Duluth, MN', 'Aitkin, MN', 'McGregor, MN', 'Deer River, MN', 'Chisholm, MN',
   ],
-  employee: [
-    { '@type': 'Person', name: 'Malcolm Wallaker', jobTitle: 'REALTOR®' },
-    { '@type': 'Person', name: 'Bridger Hopkins', jobTitle: 'REALTOR®' },
+  knowsAbout: [
+    'Residential real estate', 'Lakefront property', 'Cabins',
+    'First-time home buying', 'Relocation', 'Investment property',
+    'Iron Range real estate', 'Itasca County real estate',
   ],
+  employee: AGENTS.map(agent => ({
+    '@type': 'RealEstateAgent',
+    '@id': `${SITE.url}/agents/${agent.slug}/#agent`,
+    name: agent.name,
+    jobTitle: agent.title,
+    telephone: agent.phone,
+    email: agent.email,
+    image: new URL(agent.image, SITE.url).toString(),
+    url: `${SITE.url}/agents/${agent.slug}`,
+    sameAs: [agent.website, ...Object.values(agent.social).filter(Boolean)],
+    areaServed: agent.cities.map(c => `${c}, MN`),
+    knowsAbout: agent.specialties,
+    worksFor: { '@id': `${SITE.url}/#brokerage` },
+  })),
+};
+
+const webSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  publisher: { '@id': `${SITE.url}/#brokerage` },
 };
 ---
 
@@ -79,6 +114,7 @@ const baseSchema = {
 
   <!-- Structured Data: base brokerage schema always present -->
   <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
   {schemaArray.map(s => (
     <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...s })} />
   ))}

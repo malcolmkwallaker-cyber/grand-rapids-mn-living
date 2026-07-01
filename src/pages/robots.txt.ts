@@ -20,7 +20,7 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-Sitemap: https://grandrapidsminnesota.com/sitemap.xml
+Sitemap: https://grandrapidsminnesota.com/sitemap-index.xml
 `,
     { headers: { 'Content-Type': 'text/plain' } }
   );

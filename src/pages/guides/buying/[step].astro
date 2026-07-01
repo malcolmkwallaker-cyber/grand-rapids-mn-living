@@ -1,0 +1,190 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { buyingGuide } from '../../../lib/guides';
+
+export function getStaticPaths() {
+  return buyingGuide.steps.map((step, index) => ({
+    params: { step: step.slug },
+    props: { step, index, totalSteps: buyingGuide.steps.length, allSteps: buyingGuide.steps },
+  }));
+}
+
+const { step, index, totalSteps, allSteps } = Astro.props;
+const prevStep = index > 0 ? allSteps[index - 1] : null;
+const nextStep = index < totalSteps - 1 ? allSteps[index + 1] : null;
+const progressPct = Math.round(((index + 1) / totalSteps) * 100);
+---
+
+<Layout
+  title={`${step.title} — Home Buyer's Guide — Northern Minnesota`}
+  description={step.intro}
+>
+
+  <!-- Progress Header -->
+  <div class="bg-[#1e3a5f] text-white py-4 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center justify-between mb-2">
+        <a href="/guides" class="text-white/60 hover:text-white text-sm font-medium transition-colors flex items-center gap-1">
+          ← All Guides
+        </a>
+        <span class="text-white/60 text-sm font-medium">Step {index + 1} of {totalSteps}</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#c9973a]">Buyer's Guide</span>
+        <div class="flex-1 bg-white/20 rounded-full h-1.5">
+          <div class="bg-[#c9973a] h-1.5 rounded-full transition-all duration-500" style={`width: ${progressPct}%`}></div>
+        </div>
+        <span class="text-white/60 text-xs font-bold">{progressPct}%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step Nav Pills -->
+  <div class="bg-[#0f1e30] px-4 py-3 overflow-x-auto">
+    <div class="max-w-4xl mx-auto flex gap-2 min-w-max">
+      {allSteps.map((s, i) => (
+        <a
+          href={`/guides/buying/${s.slug}`}
+          class={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
+            i === index
+              ? 'bg-[#c9973a] text-white'
+              : i < index
+              ? 'bg-white/10 text-white/80 hover:bg-white/20'
+              : 'bg-white/5 text-white/40 hover:bg-white/10 hover:text-white/60'
+          }`}
+        >
+          <span class={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] flex-shrink-0 ${
+            i < index ? 'bg-green-500 text-white' : i === index ? 'bg-white/20 text-white' : 'bg-white/10 text-white/40'
+          }`}>
+            {i < index ? '✓' : i + 1}
+          </span>
+          {s.title}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-14">
+
+      <!-- Step Header -->
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-4xl">{step.icon}</span>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a]">{step.subtitle} — Buyer's Guide</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e3a5f] tracking-tight leading-tight">{step.title}</h1>
+          </div>
+        </div>
+        <p class="text-lg text-slate-600 leading-relaxed max-w-2xl border-l-4 border-[#c9973a] pl-5">
+          {step.intro}
+        </p>
+      </div>
+
+      <!-- Sections -->
+      <div class="space-y-10">
+        {step.sections.map(section => (
+          <div>
+            <h2 class="text-2xl font-bold text-[#1e3a5f] mb-3 tracking-tight">{section.heading}</h2>
+            <p class="text-slate-600 leading-relaxed text-base">{section.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Pro Tip -->
+      {step.tip && (
+        <div class="mt-12 bg-[#f0f4f8] border border-[#1e3a5f]/10 rounded-xl p-6">
+          <div class="flex gap-4 items-start">
+            <span class="text-2xl mt-0.5">💡</span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-1">Pro Tip</p>
+              <p class="text-slate-700 leading-relaxed font-medium">{step.tip}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Prev / Next -->
+      <div class="mt-14 flex flex-col sm:flex-row gap-4 justify-between items-center">
+        {prevStep ? (
+          <a
+            href={`/guides/buying/${prevStep.slug}`}
+            class="flex items-center gap-3 px-6 py-4 border-2 border-slate-200 rounded-xl hover:border-[#1e3a5f] hover:bg-[#f0f4f8] transition-all duration-200 group w-full sm:w-auto"
+          >
+            <span class="text-2xl group-hover:-translate-x-1 transition-transform">←</span>
+            <div>
+              <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Previous</p>
+              <p class="font-bold text-[#1e3a5f] text-sm">{prevStep.title}</p>
+            </div>
+          </a>
+        ) : (
+          <div></div>
+        )}
+
+        {nextStep ? (
+          <a
+            href={`/guides/buying/${nextStep.slug}`}
+            class="flex items-center gap-3 px-6 py-4 bg-[#1e3a5f] rounded-xl hover:bg-[#2d5480] transition-all duration-200 group w-full sm:w-auto text-right sm:text-right justify-end sm:justify-start"
+          >
+            <div>
+              <p class="text-xs text-white/60 font-bold uppercase tracking-wider">Next Step</p>
+              <p class="font-bold text-white text-sm">{nextStep.title}</p>
+            </div>
+            <span class="text-2xl text-white group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        ) : (
+          <a
+            href="/contact"
+            class="flex items-center gap-3 px-6 py-4 bg-[#c9973a] rounded-xl hover:bg-[#b8832e] transition-all duration-200 group w-full sm:w-auto justify-end"
+          >
+            <div class="text-right">
+              <p class="text-xs text-white/80 font-bold uppercase tracking-wider">You're Ready!</p>
+              <p class="font-bold text-white text-sm">Talk to Malcolm or Bridger</p>
+            </div>
+            <span class="text-2xl text-white">🎉</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Agent CTA -->
+  <section class="bg-[#f0f4f8] py-16 px-4 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="eyebrow">Ready When You Are</span>
+          <h2 class="text-3xl font-extrabold text-[#1e3a5f] tracking-tight mb-3">Have Questions About This Step?</h2>
+          <p class="text-slate-600 leading-relaxed">Malcolm Wallaker and Bridger Hopkins know northern Minnesota real estate inside and out. Whether you're just exploring or ready to make a move, we're here to help — no pressure.</p>
+          <div class="flex flex-col sm:flex-row gap-3 mt-6">
+            <a href="/contact" class="bg-[#c9973a] text-white px-6 py-3 rounded-md font-bold hover:bg-[#b8832e] transition-colors text-sm text-center">
+              Contact Us
+            </a>
+            <a href="/agents" class="border-2 border-[#1e3a5f] text-[#1e3a5f] px-6 py-3 rounded-md font-bold hover:bg-[#1e3a5f] hover:text-white transition-colors text-sm text-center">
+              Meet Our Agents
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+            <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-3">Also Read</p>
+            <div class="space-y-3">
+              {allSteps.filter((_, i) => i !== index).slice(0, 3).map(s => (
+                <a href={`/guides/buying/${s.slug}`} class="flex items-center gap-3 group">
+                  <span class="text-xl">{s.icon}</span>
+                  <span class="text-sm text-[#1e3a5f] font-medium group-hover:text-[#c9973a] transition-colors">{s.title}</span>
+                </a>
+              ))}
+              <a href="/guides/selling/prepare-your-home" class="flex items-center gap-3 group pt-2 border-t border-slate-100">
+                <span class="text-xl">🏷️</span>
+                <span class="text-sm text-[#1e3a5f] font-medium group-hover:text-[#c9973a] transition-colors">Also selling? See the Seller's Guide</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

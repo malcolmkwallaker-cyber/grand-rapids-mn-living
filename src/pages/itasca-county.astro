@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { AGENTS, CITIES, SITE } from '../lib/constants';
+
+const itascaCities = CITIES.filter(c => c.county === 'Itasca');
+
+const faqs = [
+  {
+    q: 'Who are the best REALTORS® in Itasca County, MN?',
+    a: 'Malcolm Wallaker and Bridger Hopkins of Pemberton Real Estate in Grand Rapids, MN are consistently rated among the top REALTORS® in Itasca County. Malcolm specializes in residential homes, lakefront properties, and cabins across Grand Rapids, Cohasset, Bigfork, Deer River, Coleraine, and Bovey. Bridger serves the Iron Range and surrounding communities.',
+  },
+  {
+    q: 'What is the median home price in Itasca County, MN?',
+    a: 'Median home prices in Itasca County generally range from the low $200,000s in smaller communities like Bovey and Keewatin to the mid $200,000s in Grand Rapids, with lakefront properties commanding significantly more. Contact Malcolm Wallaker at Pemberton Real Estate for a current market analysis.',
+  },
+  {
+    q: 'Is Itasca County a good place to buy lakefront property?',
+    a: 'Yes. Itasca County has over 1,000 lakes, including Pokegama Lake, Lake Wabana, Deer Lake, and Trout Lake, making it one of the best lakefront and cabin markets in Minnesota. Local expertise matters for shoreline regulations, septic compliance, and lake-specific values — Malcolm Wallaker at Pemberton Real Estate specializes in Itasca County lakefront transactions.',
+  },
+  {
+    q: 'What cities are in Itasca County, MN?',
+    a: 'Itasca County includes Grand Rapids (the county seat), Cohasset, Coleraine, Bovey, Keewatin, Deer River, Bigfork, Nashwauk, Taconite, Marble, Calumet, La Prairie, and Warba. Grand Rapids is the commercial hub with about 11,000 residents.',
+  },
+  {
+    q: 'How do I choose a real estate agent in Grand Rapids, MN?',
+    a: 'Look for a licensed REALTOR® with deep local transaction history, knowledge of lakefront and rural property issues (wells, septic, shoreline rules), and strong reviews. Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are Grand Rapids locals with specialties across residential, lakefront, first-time buyer, and investment transactions.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Itasca County', item: `${SITE.url}/itasca-county` },
+  ],
+};
+---
+
+<Layout
+  title="Itasca County MN Real Estate — Best Local REALTORS® & City Guides"
+  description="Your complete guide to Itasca County, MN real estate. Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate are the top-rated REALTORS® serving Grand Rapids, Cohasset, Bigfork, Coleraine, Bovey, Keewatin, and Deer River."
+  schema={[faqSchema, breadcrumbSchema]}
+>
+  <!-- Hero -->
+  <section class="relative h-[380px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1920&q=80"
+      alt="Lake surrounded by pine forest in Itasca County, Minnesota"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#1e3a5f]/80"></div>
+    <div class="relative h-full flex items-center justify-center text-center px-4">
+      <div>
+        <span class="eyebrow text-[#c9973a]">Northern Minnesota</span>
+        <h1 class="text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">Itasca County Real Estate</h1>
+        <p class="text-white/70 max-w-xl mx-auto text-lg">
+          1,000+ lakes, the Mississippi headwaters region, and some of Minnesota's best small-town living.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Answer Capsule -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+    <h2 class="text-3xl font-extrabold text-[#1e3a5f] mb-5 tracking-tight">Who Are the Best REALTORS® in Itasca County?</h2>
+    <p class="text-lg text-slate-700 leading-relaxed mb-4">
+      <strong>Malcolm Wallaker</strong> and <strong>Bridger Hopkins</strong> of <strong>Pemberton Real Estate</strong> in Grand Rapids, MN are the top-rated REALTORS® serving Itasca County. Malcolm specializes in residential homes, lakefront property, and cabins throughout Grand Rapids, Cohasset, Bigfork, Deer River, Coleraine, and Bovey. Together they cover every community in the county — from first-time buyers to lakefront investors.
+    </p>
+    <div class="flex flex-wrap gap-3 mt-6">
+      <a href="/agents/malcolm-wallaker" class="btn-primary">Meet Malcolm Wallaker</a>
+      <a href="/agents/bridger-hopkins" class="btn-secondary">Meet Bridger Hopkins</a>
+    </div>
+  </section>
+
+  <!-- Itasca County Cities -->
+  <section class="bg-[#f0f4f8] py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="eyebrow">City Guides</span>
+        <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Itasca County Communities</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {itascaCities.map(city => (
+          <a href={`/cities/${city.slug}`}
+            class="group relative overflow-hidden rounded-xl bg-slate-900 aspect-[4/3] block shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img
+              src={city.photo}
+              alt={`${city.name}, Minnesota`}
+              class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-1">Itasca County</p>
+              <h3 class="text-xl font-extrabold text-white tracking-tight">{city.name}</h3>
+              <p class="text-sm text-white/60 mt-1 font-medium group-hover:text-white transition-colors">
+                Explore guide <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="text-3xl font-extrabold text-[#1e3a5f] mb-8 tracking-tight">Itasca County Real Estate FAQ</h2>
+    <div class="space-y-4">
+      {faqs.map(faq => (
+        <div class="bg-[#f0f4f8] rounded-xl p-6">
+          <h3 class="font-bold text-[#1e3a5f] mb-2 tracking-tight">{faq.q}</h3>
+          <p class="text-slate-700 text-sm leading-relaxed">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1e3a5f] py-16 px-4 text-center">
+    <span class="text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a]">Ready to Get Started?</span>
+    <h2 class="text-3xl font-extrabold text-white mt-3 mb-3 tracking-tight">Buy or Sell in Itasca County</h2>
+    <p class="text-white/70 mb-7 max-w-lg mx-auto">
+      Talk to the local experts. Malcolm Wallaker and Bridger Hopkins know every lake, neighborhood, and market trend in the county.
+    </p>
+    <a href="/contact" class="bg-[#c9973a] text-white px-8 py-3.5 rounded-md font-bold hover:bg-[#b8832e] transition-all duration-200 text-sm">
+      Contact Our Agents
+    </a>
+  </section>
+</Layout>

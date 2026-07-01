@@ -63,7 +63,7 @@ export const AGENTS = [
 ];
 
 export const CITIES = [
-  { name: 'Grand Rapids', slug: 'grand-rapids', county: 'Itasca', primary: true, photo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Grand Rapids', slug: 'grand-rapids', county: 'Itasca', primary: true, photo: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=800&q=80' },
   { name: 'Bigfork', slug: 'bigfork', county: 'Itasca', photo: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80' },
   { name: 'Coleraine', slug: 'coleraine', county: 'Itasca', photo: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80' },
   { name: 'Bovey', slug: 'bovey', county: 'Itasca', photo: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80' },

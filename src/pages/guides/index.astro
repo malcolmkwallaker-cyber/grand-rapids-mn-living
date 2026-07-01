@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { buyingGuide, sellingGuide } from '../../lib/guides';
+---
+
+<Layout
+  title="Home Buyer & Seller Guides — Northern Minnesota Real Estate"
+  description="Free step-by-step guides for buying or selling a home in Grand Rapids and northern Minnesota. Written by local REALTORS® Malcolm Wallaker and Bridger Hopkins."
+>
+
+  <!-- Hero -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota home"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0f1e30]/80 via-[#1e3a5f]/75 to-[#0f1e30]/85"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a] mb-4">Free Resources</span>
+      <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-5 leading-tight tracking-tight">
+        Your Northern Minnesota<br />
+        <span class="text-[#c9973a]">Real Estate Guides</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-0 max-w-2xl mx-auto leading-relaxed">
+        Step-by-step guides written by local REALTORS® who know Grand Rapids, the Iron Range, and northern Minnesota inside and out.
+      </p>
+    </div>
+  </section>
+
+  <!-- Guide Cards -->
+  <section class="bg-white py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-14">
+        <span class="eyebrow">Choose Your Path</span>
+        <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Where Are You in the Process?</h2>
+        <p class="text-slate-500 mt-3 max-w-xl mx-auto">Whether you're buying your first home or selling a property you've owned for years, we've broken down every step so you know exactly what to expect.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Buyer Guide Card -->
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative h-56 overflow-hidden">
+            <img
+              src={buyingGuide.heroImage}
+              alt="Buying a home in northern Minnesota"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0f1e30]/90 via-[#1e3a5f]/50 to-transparent"></div>
+            <div class="absolute bottom-5 left-6">
+              <span class="text-3xl mb-2 block">🏡</span>
+              <h3 class="text-2xl font-extrabold text-white tracking-tight">Home Buyer's Guide</h3>
+              <p class="text-[#c9973a] text-sm font-bold uppercase tracking-wider mt-1">{buyingGuide.steps.length} Steps</p>
+            </div>
+          </div>
+          <div class="bg-white p-6">
+            <p class="text-slate-600 leading-relaxed mb-5">{buyingGuide.description}</p>
+            <div class="space-y-2 mb-6">
+              {buyingGuide.steps.map((step, i) => (
+                <div class="flex items-center gap-3 text-sm text-slate-500">
+                  <span class="w-5 h-5 rounded-full bg-[#1e3a5f]/10 text-[#1e3a5f] flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
+                  <span>{step.title}</span>
+                </div>
+              ))}
+            </div>
+            <a
+              href={`/guides/buying/${buyingGuide.steps[0].slug}`}
+              class="block w-full bg-[#1e3a5f] text-white text-center py-3.5 rounded-md font-bold hover:bg-[#2d5480] transition-colors text-sm"
+            >
+              Start Buyer's Guide →
+            </a>
+          </div>
+        </div>
+
+        <!-- Seller Guide Card -->
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative h-56 overflow-hidden">
+            <img
+              src={sellingGuide.heroImage}
+              alt="Selling a home in northern Minnesota"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0f1e30]/90 via-[#1e3a5f]/50 to-transparent"></div>
+            <div class="absolute bottom-5 left-6">
+              <span class="text-3xl mb-2 block">💰</span>
+              <h3 class="text-2xl font-extrabold text-white tracking-tight">Home Seller's Guide</h3>
+              <p class="text-[#c9973a] text-sm font-bold uppercase tracking-wider mt-1">{sellingGuide.steps.length} Steps</p>
+            </div>
+          </div>
+          <div class="bg-white p-6">
+            <p class="text-slate-600 leading-relaxed mb-5">{sellingGuide.description}</p>
+            <div class="space-y-2 mb-6">
+              {sellingGuide.steps.map((step, i) => (
+                <div class="flex items-center gap-3 text-sm text-slate-500">
+                  <span class="w-5 h-5 rounded-full bg-[#c9973a]/15 text-[#c9973a] flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
+                  <span>{step.title}</span>
+                </div>
+              ))}
+            </div>
+            <a
+              href={`/guides/selling/${sellingGuide.steps[0].slug}`}
+              class="block w-full bg-[#c9973a] text-white text-center py-3.5 rounded-md font-bold hover:bg-[#b8832e] transition-colors text-sm"
+            >
+              Start Seller's Guide →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Use These Guides -->
+  <section class="bg-[#f0f4f8] py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="eyebrow">Local Expertise</span>
+        <h2 class="text-4xl font-extrabold text-[#1e3a5f] tracking-tight">Written for Northern Minnesota</h2>
+        <p class="text-slate-500 mt-3 max-w-xl mx-auto">These guides aren't generic — they're built around the specific realities of buying and selling property in our market.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          { icon: '🏔️', title: 'Rural & Lake Property', body: 'Covers wells, septic, DNR setbacks, dock rights, and recreational property quirks that generic guides miss.' },
+          { icon: '❄️', title: 'Minnesota Winters', body: 'Honest advice about heating systems, road access, insulation, and what northern winters mean for buyers and sellers.' },
+          { icon: '🤝', title: 'Local Market Knowledge', body: 'Pricing and strategy guidance rooted in real data from the Grand Rapids, Iron Range, and northern Minnesota MLS.' },
+        ].map(item => (
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-[#1e3a5f] text-lg mb-2 tracking-tight">{item.title}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 px-4 text-center overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota landscape"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#1e3a5f]/85"></div>
+    <div class="relative max-w-2xl mx-auto">
+      <span class="text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a]">Ready to Move?</span>
+      <h2 class="text-4xl font-extrabold text-white mt-3 mb-4 tracking-tight">Talk to a Local Expert</h2>
+      <p class="text-white/70 mb-8 leading-relaxed text-lg">
+        Malcolm Wallaker and Bridger Hopkins are here to answer your questions — no pressure, no obligations.
+      </p>
+      <a href="/contact" class="bg-[#c9973a] text-white px-10 py-4 rounded-md font-bold hover:bg-[#b8832e] transition-all duration-200 shadow-lg text-sm">
+        Contact Us Today
+      </a>
+    </div>
+  </section>
+
+</Layout>
