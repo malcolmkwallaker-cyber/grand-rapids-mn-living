@@ -11,9 +11,8 @@ export const SITE = {
 export const BROKERAGE = {
   name: 'Pemberton Real Estate',
   address: 'Grand Rapids, MN',
-  phone: 'PLACEHOLDER_PHONE',
-  email: 'PLACEHOLDER_EMAIL',
-  license: 'PLACEHOLDER_LICENSE',
+  phone: '218-259-9837',
+  email: 'malcolm.wallaker@teampemberton.com',
   website: 'https://pembertonrealestateco.com',
   social: {
     facebook: 'https://www.facebook.com/PembertonRE/',
@@ -29,6 +28,7 @@ export const AGENTS = [
     brokerage: 'Pemberton Real Estate',
     phone: '218-259-9837',
     email: 'malcolm.wallaker@teampemberton.com',
+    license: 'MN License #40634666',
     image: '/images/malcolm-wallaker.jpg',
     bio: "Malcolm Wallaker is one of Grand Rapids, MN's top-rated REALTORS®, specializing in residential homes, cabins, and lakefront properties across northern Minnesota. With deep roots in the Grand Rapids community, Malcolm brings unmatched local knowledge to every transaction.",
     specialties: ['Residential', 'Lakefront & Cabins', 'First-Time Buyers', 'Relocation'],
@@ -49,6 +49,7 @@ export const AGENTS = [
     brokerage: 'Pemberton Real Estate',
     phone: '218-245-7900',
     email: 'bridger@legacybridgere.com',
+    license: 'MN License #40730670',
     image: '/images/bridger-hopkins.jpg',
     bio: 'Bridger Hopkins is a trusted REALTOR® with Pemberton Real Estate, serving buyers and sellers throughout the Iron Range, Hibbing, Virginia, and the greater Grand Rapids area. Known for his straightforward approach and deep market knowledge.',
     specialties: ['Iron Range Properties', 'Investment Properties', 'Sellers', 'New Construction'],
