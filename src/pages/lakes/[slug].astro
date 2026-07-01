@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { LAKES } from '../../lib/lakes';
+import { AGENTS, SITE } from '../../lib/constants';
+
+export function getStaticPaths() {
+  return LAKES.map(lake => ({ params: { slug: lake.slug }, props: { lake } }));
+}
+
+const { lake } = Astro.props;
+const malcolm = AGENTS.find(a => a.slug === 'malcolm-wallaker');
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: lake.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const placeSchema = {
+  '@type': 'LakeBodyOfWater',
+  name: lake.name,
+  description: lake.knownFor,
+  containedInPlace: { '@type': 'AdministrativeArea', name: 'Itasca County, MN' },
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Lakes', item: `${SITE.url}/lakes` },
+    { '@type': 'ListItem', position: 3, name: lake.name, item: `${SITE.url}/lakes/${lake.slug}` },
+  ],
+};
+---
+
+<Layout
+  title={`${lake.name} MN — Lakefront Homes, Cabins & Buyer's Guide`}
+  description={`${lake.name} lakefront property guide: ${lake.knownFor.toLowerCase()}. Malcolm Wallaker at Pemberton Real Estate is the Grand Rapids MN lakefront specialist for ${lake.name}.`}
+  schema={[placeSchema, faqSchema, breadcrumbSchema]}
+>
+  <!-- Hero -->
+  <section class="relative h-[400px] md:h-[460px] overflow-hidden">
+    <img
+      src={lake.photo}
+      alt={`${lake.name}, Itasca County, Minnesota`}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/60 via-[#1e3a5f]/50 to-[#1e3a5f]/80"></div>
+    <div class="relative h-full flex items-end">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full pb-10">
+        <a href="/lakes" class="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors mb-5">
+          <span aria-hidden="true">←</span> All Lakes
+        </a>
+        <span class="eyebrow text-[#c9973a]">Itasca County, Minnesota</span>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mt-1 mb-2 tracking-tight">{lake.name}</h1>
+        <p class="text-xl text-white/75 max-w-2xl">{lake.knownFor}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat Bar -->
+  <div class="bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-wrap gap-0 divide-x divide-slate-200">
+        <div class="px-6 py-4 first:pl-0">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Size</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{lake.acres}</p>
+        </div>
+        <div class="px-6 py-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Nearest Town</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{lake.nearestTown}</p>
+        </div>
+        <div class="px-6 py-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400">From Grand Rapids</p>
+          <p class="text-[#1e3a5f] font-extrabold text-lg mt-0.5">{lake.distanceFromGR}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content + Sidebar -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-3 gap-10">
+    <div class="md:col-span-2">
+      <h2 class="text-3xl font-extrabold text-[#1e3a5f] mb-4 tracking-tight">Living on {lake.name}</h2>
+      <p class="text-slate-700 leading-relaxed text-lg mb-8">{lake.description}</p>
+
+      <h3 class="text-2xl font-extrabold text-[#1e3a5f] mb-3 tracking-tight">Fishing</h3>
+      <p class="text-slate-700 leading-relaxed mb-8">{lake.fishing}.</p>
+
+      <!-- FAQ -->
+      <h3 class="text-2xl font-extrabold text-[#1e3a5f] mb-5 tracking-tight">{lake.name} FAQ</h3>
+      <div class="space-y-4">
+        {lake.faqs.map(faq => (
+          <div class="bg-[#f0f4f8] rounded-xl p-6">
+            <h4 class="font-bold text-[#1e3a5f] mb-2 tracking-tight">{faq.q}</h4>
+            <p class="text-slate-700 text-sm leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="space-y-5">
+      <!-- Buyer Notes -->
+      <div class="bg-[#f0f4f8] rounded-xl p-6">
+        <h3 class="font-extrabold text-[#1e3a5f] text-base tracking-tight mb-4">Why {lake.name}?</h3>
+        <ul class="space-y-2.5">
+          {lake.buyerNotes.map(note => (
+            <li class="flex items-start gap-2.5 text-sm text-slate-700">
+              <svg class="w-4 h-4 text-[#c9973a] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {note}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Agent Card -->
+      {malcolm && (
+        <div class="bg-[#1e3a5f] rounded-xl p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-3">Lakefront Specialist</p>
+          <div class="flex gap-3 items-center mb-4">
+            <div class="w-14 h-14 rounded-full bg-white/10 flex-shrink-0 overflow-hidden">
+              <img src={malcolm.image} alt={malcolm.name} class="w-full h-full object-cover"
+                onerror="this.parentElement.style.background='#2d5480'" />
+            </div>
+            <div>
+              <h3 class="font-extrabold text-white tracking-tight">{malcolm.name}</h3>
+              <p class="text-xs text-white/60">{malcolm.title} · {malcolm.brokerage}</p>
+            </div>
+          </div>
+          <p class="text-sm text-white/70 mb-4 leading-relaxed">
+            Malcolm specializes in lakefront homes and cabins on {lake.name} and throughout Itasca County. Many lake properties sell before hitting the open market — get on his buyer list.
+          </p>
+          <a href="/contact" class="block w-full bg-[#c9973a] text-white text-center py-3 rounded-md font-bold text-sm hover:bg-[#b8832e] transition-colors mb-2">
+            Contact Malcolm
+          </a>
+          <a href={`tel:${malcolm.phone}`} class="block w-full border border-white/30 text-white text-center py-3 rounded-md font-bold text-sm hover:bg-white/10 transition-colors">
+            Call {malcolm.phone}
+          </a>
+        </div>
+      )}
+
+      <!-- Other Lakes -->
+      <div class="card p-5">
+        <h3 class="font-bold text-[#1e3a5f] text-sm mb-3 tracking-tight">More Itasca County Lakes</h3>
+        <ul class="space-y-2">
+          {LAKES.filter(l => l.slug !== lake.slug).map(l => (
+            <li><a href={`/lakes/${l.slug}`} class="text-sm text-[#1e3a5f] hover:text-[#c9973a] font-semibold transition-colors">{l.name} →</a></li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</Layout>

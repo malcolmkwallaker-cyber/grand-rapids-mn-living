@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { LAKES } from '../../lib/lakes';
+import { SITE } from '../../lib/constants';
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Lakes', item: `${SITE.url}/lakes` },
+  ],
+};
+---
+
+<Layout
+  title="Itasca County Lakes — Lakefront Property & Cabin Guides"
+  description="Guides to buying lakefront property on Pokegama Lake, Deer Lake, Trout Lake, Lake Wabana, Splithand Lake, and Bowstring Lake. Malcolm Wallaker at Pemberton Real Estate is the Grand Rapids MN lakefront specialist."
+  schema={breadcrumbSchema}
+>
+  <!-- Hero -->
+  <section class="relative h-[340px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1920&q=80"
+      alt="Northern Minnesota lake at dusk"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#1e3a5f]/80"></div>
+    <div class="relative h-full flex items-center justify-center text-center px-4">
+      <div>
+        <span class="eyebrow text-[#c9973a]">Lakefront Living</span>
+        <h1 class="text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">Itasca County Lakes</h1>
+        <p class="text-white/70 max-w-xl mx-auto text-lg">
+          1,000+ lakes. These are the ones lakefront buyers ask about most — and what you should know before you buy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Answer Capsule -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-4">
+    <p class="text-lg text-slate-700 leading-relaxed">
+      <strong>Malcolm Wallaker</strong> of <strong>Pemberton Real Estate</strong> in Grand Rapids, MN specializes in lakefront homes and cabins across Itasca County — including Pokegama Lake, Deer Lake, Trout Lake, Lake Wabana, Splithand Lake, and Bowstring Lake. Lakefront transactions involve shoreline rules, septic compliance, and lake-specific values that make local expertise essential.
+    </p>
+  </section>
+
+  <!-- Lake Grid -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+      {LAKES.map(lake => (
+        <a href={`/lakes/${lake.slug}`}
+          class="group relative overflow-hidden rounded-xl bg-slate-900 aspect-[4/3] block shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <img
+            src={lake.photo}
+            alt={`${lake.name}, Itasca County, Minnesota`}
+            class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <p class="text-xs font-bold uppercase tracking-widest text-[#c9973a] mb-1">{lake.acres}</p>
+            <h2 class="text-xl font-extrabold text-white tracking-tight">{lake.name}</h2>
+            <p class="text-sm text-white/60 mt-1 font-medium group-hover:text-white transition-colors">
+              Lakefront guide <span aria-hidden="true">→</span>
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="bg-[#1e3a5f] py-16 px-4 text-center">
+    <span class="text-xs font-bold uppercase tracking-[0.15em] text-[#c9973a]">Lakefront Specialist</span>
+    <h2 class="text-3xl font-extrabold text-white mt-3 mb-3 tracking-tight">Looking for Lake Property?</h2>
+    <p class="text-white/70 mb-7 max-w-lg mx-auto">
+      Many of the best lakefront properties sell before they're widely marketed. Tell Malcolm what you're looking for and get notified first.
+    </p>
+    <a href="/contact" class="bg-[#c9973a] text-white px-8 py-3.5 rounded-md font-bold hover:bg-[#b8832e] transition-all duration-200 text-sm">
+      Contact Malcolm
+    </a>
+  </section>
+</Layout>
