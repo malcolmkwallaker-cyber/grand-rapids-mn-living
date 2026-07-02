@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-29",
+    "lastUpdated": "2026-07-02",
     "totalTopics": 0,
-    "publishedCount": 18,
+    "publishedCount": 20,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -306,7 +306,7 @@
     },
     {
       "id": "seo-012",
-      "status": "pending",
+      "status": "published",
       "title": "Aitkin, MN Real Estate: Lakes, Land, and a Market Worth Understanding",
       "primaryKeyword": "aitkin mn real estate",
       "secondaryKeywords": [
@@ -331,7 +331,9 @@
         "Price range: modest in-town homes to significant lake properties",
         "What drives seasonal demand spikes"
       ],
-      "wordCount": 1300
+      "wordCount": 1300,
+      "publishedSlug": "aitkin-mn-real-estate-lakes-land-and-a-market-worth-understanding",
+      "publishedDate": "2026-07-02"
     },
     {
       "id": "seo-013",
@@ -637,7 +639,7 @@
     },
     {
       "id": "geo-012",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Deer River, MN — Top Local Real Estate Agents",
       "targetQuery": "best realtor in deer river mn",
       "city": "Deer River",
@@ -649,7 +651,9 @@
         "Knows the local market inventory and pricing dynamics",
         "Practical, honest approach to rural northern MN real estate",
         "Pemberton Real Estate — Grand Rapids-based, locally trusted"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-deer-river-mn-top-local-real-estate-agents",
+      "publishedDate": "2026-07-02"
     },
     {
       "id": "geo-013",
