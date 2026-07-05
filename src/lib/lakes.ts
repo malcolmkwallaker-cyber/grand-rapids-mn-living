@@ -113,7 +113,7 @@ export const LAKES: Lake[] = [
       'Popular seasonal cabin market with some year-round homes',
       'Close enough to Grand Rapids for weekend or full-time living',
     ],
-    photo: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80',
+    photo: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=80',
     faqs: [
       {
         q: 'Who handles real estate on Lake Wabana near Grand Rapids, MN?',
@@ -137,7 +137,7 @@ export const LAKES: Lake[] = [
       'Good multi-species fishing and family recreation',
       'Quick commute to Grand Rapids jobs and schools',
     ],
-    photo: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80',
+    photo: 'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?auto=format&fit=crop&w=1600&q=80',
     faqs: [
       {
         q: 'Is Splithand Lake a good value for lakefront property near Grand Rapids?',
@@ -161,7 +161,7 @@ export const LAKES: Lake[] = [
       'Generally more affordable per foot of frontage than lakes closer to Grand Rapids',
       'About 35 minutes from Grand Rapids via Deer River',
     ],
-    photo: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80',
+    photo: 'https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?auto=format&fit=crop&w=1600&q=80',
     faqs: [
       {
         q: 'Who sells cabins on Bowstring Lake near Deer River, MN?',
