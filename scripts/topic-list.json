@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "totalTopics": 0,
-    "publishedCount": 20,
+    "publishedCount": 22,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -337,7 +337,7 @@
     },
     {
       "id": "seo-013",
-      "status": "pending",
+      "status": "published",
       "title": "Deer River, MN: A Buyer's Guide to Living and Buying in a Small Northern Town",
       "primaryKeyword": "deer river mn real estate",
       "secondaryKeywords": [
@@ -362,7 +362,9 @@
         "What buyers miss about small-town northern MN life",
         "Distance to Grand Rapids for services"
       ],
-      "wordCount": 1200
+      "wordCount": 1200,
+      "publishedSlug": "deer-river-mn-a-buyer-s-guide-to-living-and-buying-in-a-small-northern-town",
+      "publishedDate": "2026-07-06"
     },
     {
       "id": "seo-014",
@@ -657,7 +659,7 @@
     },
     {
       "id": "geo-013",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Cohasset, MN — Grand Rapids Area Real Estate Agents",
       "targetQuery": "best realtor in cohasset mn",
       "city": "Cohasset",
@@ -669,7 +671,9 @@
         "Experience with family homes and entry-level properties in the area",
         "Honest about what Cohasset offers vs. Grand Rapids for different buyer types",
         "Pemberton Real Estate — your local Itasca County brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-cohasset-mn-grand-rapids-area-real-estate-agents",
+      "publishedDate": "2026-07-06"
     },
     {
       "id": "geo-014",
