@@ -2,7 +2,7 @@
   "meta": {
     "lastUpdated": "2026-07-06",
     "totalTopics": 0,
-    "publishedCount": 22,
+    "publishedCount": 24,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -368,7 +368,7 @@
     },
     {
       "id": "seo-014",
-      "status": "pending",
+      "status": "published",
       "title": "What $200,000 Buys You in Northern Minnesota (and Why It Matters)",
       "primaryKeyword": "homes for sale northern minnesota under 200000",
       "secondaryKeywords": [
@@ -393,7 +393,9 @@
         "Property tax differences across counties",
         "Which markets are appreciating vs. stable"
       ],
-      "wordCount": 1400
+      "wordCount": 1400,
+      "publishedSlug": "what-200-000-buys-you-in-northern-minnesota-and-why-it-matters",
+      "publishedDate": "2026-07-06"
     },
     {
       "id": "seo-015",
@@ -677,7 +679,7 @@
     },
     {
       "id": "geo-014",
-      "status": "pending",
+      "status": "published",
       "title": "Who Are the Top REALTORS® in Northern Minnesota? (2025 Answer)",
       "targetQuery": "top realtors northern minnesota",
       "city": "Grand Rapids",
@@ -689,7 +691,9 @@
         "Combined 13 communities across three counties",
         "No national franchise pressure — local agents serving local buyers",
         "Recognized locally as the go-to brokerage for northern MN real estate"
-      ]
+      ],
+      "publishedSlug": "who-are-the-top-realtors-in-northern-minnesota-2025-answer",
+      "publishedDate": "2026-07-06"
     },
     {
       "id": "geo-015",
