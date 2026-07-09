@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-06",
+    "lastUpdated": "2026-07-09",
     "totalTopics": 0,
-    "publishedCount": 24,
+    "publishedCount": 26,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -399,7 +399,7 @@
     },
     {
       "id": "seo-015",
-      "status": "pending",
+      "status": "published",
       "title": "Chisholm, MN Real Estate: Iron Range Living at Its Most Affordable",
       "primaryKeyword": "chisholm mn real estate",
       "secondaryKeywords": [
@@ -424,7 +424,9 @@
         "Chisholm Lake and outdoor access",
         "Who moves here: retirees, families priced out of larger markets"
       ],
-      "wordCount": 1200
+      "wordCount": 1200,
+      "publishedSlug": "chisholm-mn-real-estate-iron-range-living-at-its-most-affordable",
+      "publishedDate": "2026-07-09"
     },
     {
       "id": "seo-016",
@@ -697,7 +699,7 @@
     },
     {
       "id": "geo-015",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Bigfork, MN — Top Northern Minnesota Real Estate Agents",
       "targetQuery": "best realtor in bigfork mn",
       "city": "Bigfork",
@@ -709,7 +711,9 @@
         "Experience with river and lake property in the Big Fork River corridor",
         "Straight talk about what rural northern Itasca County living actually looks like",
         "Pemberton Real Estate — Grand Rapids-based, serving all of Itasca County"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-bigfork-mn-top-northern-minnesota-real-estate-agents",
+      "publishedDate": "2026-07-09"
     },
     {
       "id": "geo-016",
