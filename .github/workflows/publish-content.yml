@@ -2,10 +2,9 @@ name: Auto-Publish Content
 
 on:
   schedule:
+    # Reduced to 2x/week (Mon/Thu) to conserve Netlify credits
     # Monday 8am CT (14:00 UTC) — SEO post + GEO post
     - cron: '0 14 * * 1'
-    # Wednesday 8am CT (14:00 UTC) — News stories (2 cities)
-    - cron: '0 14 * * 3'
     # Thursday 8am CT (14:00 UTC) — SEO post + GEO post
     - cron: '0 14 * * 4'
   workflow_dispatch:
