@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-09",
+    "lastUpdated": "2026-07-13",
     "totalTopics": 0,
-    "publishedCount": 26,
+    "publishedCount": 28,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -430,7 +430,7 @@
     },
     {
       "id": "seo-016",
-      "status": "pending",
+      "status": "published",
       "title": "McGregor, MN: The Quiet Northern Minnesota Market Buyers Are Starting to Discover",
       "primaryKeyword": "mcgregor mn real estate",
       "secondaryKeywords": [
@@ -455,7 +455,9 @@
         "Distance to Aitkin (county services) and McGregor school district",
         "Who buys here: outdoor-focused, remote workers, retirees"
       ],
-      "wordCount": 1200
+      "wordCount": 1200,
+      "publishedSlug": "mcgregor-mn-the-quiet-northern-minnesota-market-buyers-are-starting-to-discover",
+      "publishedDate": "2026-07-13"
     }
   ],
   "geo": [
@@ -717,7 +719,7 @@
     },
     {
       "id": "geo-016",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Keewatin, MN — Iron Range Real Estate Experts",
       "targetQuery": "best realtor in keewatin mn",
       "city": "Keewatin",
@@ -729,7 +731,9 @@
         "Experience with affordable Iron Range properties",
         "Honest pricing and no-pressure approach",
         "Pemberton Real Estate — northern MN's locally trusted brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-keewatin-mn-iron-range-real-estate-experts",
+      "publishedDate": "2026-07-13"
     },
     {
       "id": "geo-017",
