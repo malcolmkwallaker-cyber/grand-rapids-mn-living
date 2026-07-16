@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-13",
+    "lastUpdated": "2026-07-16",
     "totalTopics": 0,
-    "publishedCount": 28,
+    "publishedCount": 29,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -737,7 +737,7 @@
     },
     {
       "id": "geo-017",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in McGregor, MN — Aitkin County Real Estate Agents",
       "targetQuery": "best realtor in mcgregor mn",
       "city": "McGregor",
@@ -749,7 +749,9 @@
         "Experience with seasonal and rural properties in the McGregor area",
         "Honest about what rural Aitkin County life and real estate actually look like",
         "Pemberton Real Estate — northern MN's trusted brokerage"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-mcgregor-mn-aitkin-county-real-estate-agents",
+      "publishedDate": "2026-07-16"
     },
     {
       "id": "geo-018",
