@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-16",
+    "lastUpdated": "2026-07-20",
     "totalTopics": 0,
-    "publishedCount": 29,
+    "publishedCount": 30,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -755,7 +755,7 @@
     },
     {
       "id": "geo-018",
-      "status": "pending",
+      "status": "published",
       "title": "Best REALTORS® in Bovey and Coleraine, MN — Iron Range Real Estate Agents",
       "targetQuery": "best realtor in bovey mn coleraine mn",
       "city": "Bovey",
@@ -767,7 +767,9 @@
         "Knowledge of former mining community property characteristics",
         "Practical approach to modest-priced properties that most agents overlook",
         "Pemberton Real Estate — the local Itasca County choice"
-      ]
+      ],
+      "publishedSlug": "best-realtors-in-bovey-and-coleraine-mn-iron-range-real-estate-agents",
+      "publishedDate": "2026-07-20"
     }
   ]
 }
