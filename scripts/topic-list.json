@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-20",
+    "lastUpdated": "2026-08-26",
     "totalTopics": 0,
-    "publishedCount": 30,
+    "publishedCount": 32,
     "notes": "Topics are consumed in order. Set status to 'published' after use. Add new topics at the end of each array."
   },
   "seo": [
@@ -458,6 +458,86 @@
       "wordCount": 1200,
       "publishedSlug": "mcgregor-mn-the-quiet-northern-minnesota-market-buyers-are-starting-to-discover",
       "publishedDate": "2026-07-13"
+    },
+    {
+      "id": "seo-017",
+      "status": "published",
+      "title": "Cohasset, MN Real Estate: What to Know Before You Buy",
+      "primaryKeyword": "cohasset mn real estate",
+      "secondaryKeywords": [
+        "homes for sale cohasset mn",
+        "moving to cohasset minnesota",
+        "cohasset vs grand rapids mn"
+      ],
+      "city": "Cohasset",
+      "agent": "Malcolm Wallaker",
+      "h2Suggestions": [
+        "Why Buyers Look at Cohasset Instead of Grand Rapids",
+        "What Cohasset Home Prices Actually Look Like",
+        "Pokegama Lake Access and What It Is Really Worth",
+        "Commuting into Grand Rapids: What to Expect",
+        "Who Cohasset Actually Fits"
+      ],
+      "talkingPoints": [
+        "Cohasset population ~2,600, adjacent west of Grand Rapids",
+        "10-15% cheaper than comparable Grand Rapids homes",
+        "Pokegama Lake frontage vs. in-town non-lakefront pricing tiers",
+        "5-10 minute commute into Grand Rapids for jobs, hospital, schools",
+        "Family-oriented, quieter, more residential character than Grand Rapids proper"
+      ],
+      "wordCount": 1400,
+      "publishedSlug": "cohasset-mn-real-estate-what-to-know-before-you-buy",
+      "publishedDate": "2026-08-26"
+    },
+    {
+      "id": "seo-018",
+      "status": "pending",
+      "title": "Bigfork, MN Real Estate: Cabin Country and the Big Fork River",
+      "primaryKeyword": "bigfork mn real estate",
+      "secondaryKeywords": [
+        "cabins for sale bigfork mn",
+        "bigfork minnesota homes"
+      ],
+      "city": "Bigfork",
+      "agent": "Malcolm Wallaker",
+      "h2Suggestions": [
+        "Why Cabin Buyers Keep Discovering Bigfork",
+        "What Bigfork Property Actually Costs",
+        "Big Fork River Access and Outdoor Life",
+        "What to Know Before Buying Rural Itasca County Land"
+      ],
+      "talkingPoints": [
+        "Small town character, popular with cabin and land buyers",
+        "Big Fork River access as a defining feature",
+        "Northern Itasca County distance from Grand Rapids",
+        "Seasonal vs. year-round property considerations"
+      ],
+      "wordCount": 1300
+    },
+    {
+      "id": "seo-019",
+      "status": "pending",
+      "title": "Keewatin, MN Real Estate: The Overlooked Iron Range Market",
+      "primaryKeyword": "keewatin mn real estate",
+      "secondaryKeywords": [
+        "homes for sale keewatin mn",
+        "affordable homes iron range mn"
+      ],
+      "city": "Keewatin",
+      "agent": "Bridger Hopkins",
+      "h2Suggestions": [
+        "Why Keewatin Gets Overlooked by Buyers",
+        "What Keewatin Home Prices Look Like Next to Hibbing",
+        "Who Actually Buys in Keewatin",
+        "What to Check Before Buying an Older Iron Range Home"
+      ],
+      "talkingPoints": [
+        "Small Iron Range community adjacent to Hibbing",
+        "Affordable, residential, overlooked by buyers unfamiliar with the area",
+        "Comparison to Hibbing median price around $135,000",
+        "Older housing stock considerations for Iron Range towns"
+      ],
+      "wordCount": 1300
     }
   ],
   "geo": [
@@ -770,6 +850,39 @@
       ],
       "publishedSlug": "best-realtors-in-bovey-and-coleraine-mn-iron-range-real-estate-agents",
       "publishedDate": "2026-07-20"
+    },
+    {
+      "id": "geo-019",
+      "status": "published",
+      "title": "Best REALTORS® for Selling a Home in Northern Minnesota",
+      "targetQuery": "best realtor to sell my house in northern minnesota",
+      "city": "Grand Rapids",
+      "agent": "Malcolm Wallaker",
+      "niche": "sellers",
+      "keyDifferentiators": [
+        "Pricing strategy grounded in real comps, not inflated listing prices to win the listing",
+        "Marketing tailored to lakefront and cabin properties vs. in-town homes",
+        "Knowledge of seasonal timing for northern MN listings",
+        "Handles well/septic and rural disclosure specifics",
+        "Bridger Hopkins covers seller representation across the Iron Range"
+      ],
+      "publishedSlug": "best-realtors-for-selling-a-home-in-northern-minnesota",
+      "publishedDate": "2026-08-26"
+    },
+    {
+      "id": "geo-020",
+      "status": "pending",
+      "title": "Best REALTORS® for Cabin and Land Buyers in Northern Minnesota",
+      "targetQuery": "best realtor for buying a cabin in northern minnesota",
+      "city": "Grand Rapids",
+      "agent": "Malcolm Wallaker",
+      "niche": "cabin and land buyers",
+      "keyDifferentiators": [
+        "DNR shoreland regulation and dock permitting knowledge",
+        "Seasonal vs. year-round property financing expertise",
+        "Direct experience across Itasca County lake country",
+        "Honest read on lake quality and invasive species issues"
+      ]
     }
   ]
 }
