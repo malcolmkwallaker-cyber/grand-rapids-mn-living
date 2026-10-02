@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ListingLeadGate from '../../components/ListingLeadGate.astro';
 import { getCollection, render } from 'astro:content';
 import { AGENTS, BROKERAGE, SITE } from '../../lib/constants';
 import {
@@ -45,6 +46,7 @@ const facts = [
 ].filter(Boolean) as { label: string; value: string }[];
 
 const emailSubject = encodeURIComponent(`${d.address}, ${d.city} MN`);
+const gated = d.leadGate && !!d.externalPhotosUrl;
 
 const listingSchema = {
   '@type': 'RealEstateListing',
@@ -138,6 +140,9 @@ const breadcrumbSchema = {
           </a>
           {d.externalPhotosUrl && (
             <a href={d.externalPhotosUrl} target="_blank" rel="noopener noreferrer"
+              data-gated-photos={gated ? '' : undefined}
+              data-locked-label={gated ? (d.photoCount ? `Unlock All ${d.photoCount} Photos` : 'Unlock All Photos') : undefined}
+              data-unlocked-label={gated ? (d.photoCount ? `View All ${d.photoCount} Photos ↗` : 'View All Photos ↗') : undefined}
               class="bg-white/95 text-[#1e3a5f] px-6 py-3 rounded-lg text-sm font-bold hover:bg-white transition-colors text-center">
               {d.photoCount ? `View All ${d.photoCount} Photos ↗` : 'View All Photos ↗'}
             </a>
@@ -207,11 +212,23 @@ const breadcrumbSchema = {
       {d.photos.length > 0 && (
         <section>
           <h2 class="text-3xl font-extrabold text-[#1e3a5f] tracking-tight mb-6">Photos</h2>
-          <div class="grid sm:grid-cols-2 gap-3">
-            {d.photos.map(photo => (
-              <img src={photo.src} alt={photo.alt || address} loading="lazy"
-                class="w-full h-56 object-cover rounded-xl border border-slate-200" />
-            ))}
+          <div class="relative">
+            <div class="grid sm:grid-cols-2 gap-3 transition-all duration-300" data-gated-blur={gated ? '' : undefined}>
+              {d.photos.map(photo => (
+                <img src={photo.src} alt={photo.alt || address} loading="lazy"
+                  class="w-full h-56 object-cover rounded-xl border border-slate-200" />
+              ))}
+            </div>
+            {gated && (
+              <div class="absolute inset-0 flex items-center justify-center" data-gated-badge>
+                <button type="button" data-gated-photos
+                  data-locked-label="Unlock the Photo Set"
+                  data-unlocked-label="View the Photo Set"
+                  class="bg-[#c9973a] text-white px-7 py-3.5 rounded-lg text-sm font-bold hover:bg-[#b8832e] transition-colors shadow-xl">
+                  Unlock the Photo Set
+                </button>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -230,6 +247,9 @@ const breadcrumbSchema = {
           </p>
           <div class="flex flex-wrap gap-3">
             <a href={d.externalPhotosUrl} target="_blank" rel="noopener noreferrer"
+              data-gated-photos={gated ? '' : undefined}
+              data-locked-label={gated ? 'Unlock All Photos' : undefined}
+              data-unlocked-label={gated ? 'View All Photos ↗' : undefined}
               class="bg-white text-[#1e3a5f] px-6 py-3 rounded-lg text-sm font-bold hover:bg-slate-100 transition-colors">
               View All Photos ↗
             </a>
@@ -405,4 +425,15 @@ const breadcrumbSchema = {
       Equal Housing Opportunity.
     </p>
   </div>
+
+  {gated && (
+    <ListingLeadGate
+      slug={listing.id}
+      address={address}
+      mls={d.mls}
+      photoCount={d.photoCount}
+      photosUrl={d.externalPhotosUrl!}
+      agentName={agent.name}
+    />
+  )}
 </Layout>

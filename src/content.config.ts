@@ -87,6 +87,8 @@ const listings = defineCollection({
     highlights: z.array(z.string()).default([]),
     features: z.array(z.object({ title: z.string(), detail: z.string() })).default([]),
     mapQuery: z.string().optional(),
+    /** Gate the full photo set behind the lead-capture modal. */
+    leadGate: z.boolean().default(true),
     draft: z.boolean().default(false),
   }),
 });

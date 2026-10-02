@@ -1,0 +1,313 @@
+---
+/**
+ * Lead capture gate for a listing's photo set.
+ *
+ * The page content stays open — only the full photo set is gated — so the page
+ * is still crawlable and doesn't trip Google's intrusive-interstitial rules.
+ * The modal also opens once the visitor scrolls past most of the page.
+ *
+ * Submits to the Netlify form `listing-unlock`, kept separate from
+ * `listing-inquiry` so photo unlocks and showing requests stay in their own
+ * buckets in the Netlify dashboard.
+ */
+interface Props {
+  slug: string;
+  address: string;
+  mls?: string;
+  photoCount?: number;
+  photosUrl: string;
+  agentName: string;
+  scrollTrigger?: number;
+}
+
+const {
+  slug,
+  address,
+  mls = '',
+  photoCount,
+  photosUrl,
+  agentName,
+  scrollTrigger = 0.55,
+} = Astro.props;
+
+const headline = photoCount ? `See all ${photoCount} photos` : 'See the full photo set';
+---
+
+<div
+  id="lead-gate"
+  class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="lead-gate-title"
+  data-slug={slug}
+  data-photos-url={photosUrl}
+  data-scroll-trigger={scrollTrigger}
+>
+  <div id="lead-gate-backdrop" class="absolute inset-0 bg-[#0f1e30]/80 backdrop-blur-sm"></div>
+
+  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <button
+      id="lead-gate-close"
+      type="button"
+      class="absolute top-3 right-3 p-2 rounded-lg text-slate-400 hover:text-[#1e3a5f] hover:bg-slate-100 transition-colors"
+      aria-label="Close"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="p-7 sm:p-8">
+      <!-- Form view -->
+      <div id="lead-gate-form-view">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#c9973a]">{address}</span>
+        <h2 id="lead-gate-title" class="text-2xl font-extrabold text-[#1e3a5f] tracking-tight mt-2 mb-2">
+          {headline}
+        </h2>
+        <p class="text-sm text-slate-500 leading-relaxed mb-6">
+          Tell me where to reach you and the full photo set opens right up. I'll also let you know if
+          the price changes or it goes pending.
+        </p>
+
+        <form id="lead-gate-form" name="listing-unlock" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-4">
+          <input type="hidden" name="form-name" value="listing-unlock" />
+          <input type="hidden" name="property" value={address} />
+          <input type="hidden" name="mls" value={mls} />
+          <p class="hidden">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="gate-name" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Name <span class="text-red-400" aria-hidden="true">*</span>
+            </label>
+            <input type="text" id="gate-name" name="name" required autocomplete="name"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all bg-white placeholder-slate-300"
+              placeholder="Jane Smith" />
+          </div>
+
+          <div>
+            <label for="gate-email" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Email <span class="text-red-400" aria-hidden="true">*</span>
+            </label>
+            <input type="email" id="gate-email" name="email" required autocomplete="email"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all bg-white placeholder-slate-300"
+              placeholder="jane@example.com" />
+          </div>
+
+          <div>
+            <label for="gate-phone" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Phone <span class="text-red-400" aria-hidden="true">*</span>
+            </label>
+            <input type="tel" id="gate-phone" name="phone" required autocomplete="tel"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all bg-white placeholder-slate-300"
+              placeholder="(218) 555-0100" />
+          </div>
+
+          <label class="flex items-start gap-2.5 text-sm text-slate-600 cursor-pointer">
+            <input type="checkbox" name="wants_showing" value="yes"
+              class="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#1e3a5f] focus:ring-[#1e3a5f]" />
+            <span>I'd also like to schedule a showing</span>
+          </label>
+
+          <p id="lead-gate-error" class="hidden text-sm text-red-600"></p>
+
+          <button type="submit" id="lead-gate-submit"
+            class="w-full bg-[#c9973a] text-white py-3.5 rounded-xl font-bold hover:bg-[#b8832e] transition-all duration-200 text-sm disabled:opacity-60 disabled:cursor-not-allowed">
+            Show Me the Photos
+          </button>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your information goes to {agentName} only. No spam, and you can ask to be removed any time.
+          </p>
+        </form>
+
+        <button type="button" id="lead-gate-skip"
+          class="w-full mt-3 text-xs text-slate-400 hover:text-slate-600 transition-colors py-2">
+          Not right now, keep reading
+        </button>
+      </div>
+
+      <!-- Success view -->
+      <div id="lead-gate-success" class="hidden text-center py-4">
+        <div class="w-14 h-14 rounded-full bg-[#c9973a]/10 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-[#c9973a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-extrabold text-[#1e3a5f] tracking-tight mb-2">You're all set</h2>
+        <p class="text-sm text-slate-500 leading-relaxed mb-6">
+          The full photo set is unlocked. {agentName} will follow up shortly.
+        </p>
+        <a id="lead-gate-photos-link" href={photosUrl} target="_blank" rel="noopener noreferrer"
+          class="block w-full bg-[#1e3a5f] text-white py-3.5 rounded-xl font-bold hover:bg-[#2d5480] transition-colors text-sm">
+          Open All Photos ↗
+        </a>
+        <button type="button" id="lead-gate-done"
+          class="w-full mt-3 text-xs text-slate-400 hover:text-slate-600 transition-colors py-2">
+          Back to the listing
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const UNLOCK_KEY = 'grml-lead-unlocked';
+  const SKIP_KEY = 'grml-gate-skipped';
+
+  const gate = document.getElementById('lead-gate') as HTMLElement | null;
+  if (gate) {
+    const form = document.getElementById('lead-gate-form') as HTMLFormElement | null;
+    const formView = document.getElementById('lead-gate-form-view');
+    const successView = document.getElementById('lead-gate-success');
+    const submitBtn = document.getElementById('lead-gate-submit') as HTMLButtonElement | null;
+    const errorEl = document.getElementById('lead-gate-error');
+    const closeBtn = document.getElementById('lead-gate-close');
+    const skipBtn = document.getElementById('lead-gate-skip');
+    const doneBtn = document.getElementById('lead-gate-done');
+    const backdrop = document.getElementById('lead-gate-backdrop');
+    const photosUrl = gate.dataset.photosUrl || '';
+    const scrollTrigger = parseFloat(gate.dataset.scrollTrigger || '0.55');
+
+    // Storage can throw in private browsing — never let it break the page.
+    const read = (key: string): string | null => {
+      try { return window.localStorage.getItem(key); } catch { return null; }
+    };
+    const write = (key: string, value: string) => {
+      try { window.localStorage.setItem(key, value); } catch { /* ignore */ }
+    };
+    const readSession = (key: string): string | null => {
+      try { return window.sessionStorage.getItem(key); } catch { return null; }
+    };
+    const writeSession = (key: string, value: string) => {
+      try { window.sessionStorage.setItem(key, value); } catch { /* ignore */ }
+    };
+
+    let isUnlocked = read(UNLOCK_KEY) === '1';
+    let lastFocused: HTMLElement | null = null;
+
+    const lockedTriggers = () =>
+      Array.from(document.querySelectorAll<HTMLElement>('[data-gated-photos]'));
+
+    /** Swap gated buttons between "unlock" and "open photos" wording. */
+    function paintTriggers() {
+      lockedTriggers().forEach(el => {
+        const unlockedLabel = el.dataset.unlockedLabel;
+        const lockedLabel = el.dataset.lockedLabel;
+        if (isUnlocked && unlockedLabel) el.textContent = unlockedLabel;
+        if (!isUnlocked && lockedLabel) el.textContent = lockedLabel;
+      });
+      document.querySelectorAll<HTMLElement>('[data-gated-blur]').forEach(el => {
+        el.classList.toggle('blur-md', !isUnlocked);
+        el.classList.toggle('select-none', !isUnlocked);
+        el.classList.toggle('pointer-events-none', !isUnlocked);
+      });
+      document.querySelectorAll<HTMLElement>('[data-gated-badge]').forEach(el => {
+        el.classList.toggle('hidden', isUnlocked);
+      });
+    }
+
+    function openGate() {
+      if (!gate) return;
+      lastFocused = document.activeElement as HTMLElement;
+      gate.classList.remove('hidden');
+      gate.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      (document.getElementById('gate-name') as HTMLInputElement | null)?.focus();
+    }
+
+    function closeGate() {
+      if (!gate) return;
+      gate.classList.add('hidden');
+      gate.classList.remove('flex');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    }
+
+    function showSuccess() {
+      formView?.classList.add('hidden');
+      successView?.classList.remove('hidden');
+    }
+
+    // Keep focus inside the dialog while it is open.
+    gate.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeGate(); return; }
+      if (e.key !== 'Tab') return;
+      const focusable = gate.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      const list = Array.from(focusable).filter(el => el.offsetParent !== null);
+      if (list.length === 0) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    closeBtn?.addEventListener('click', closeGate);
+    doneBtn?.addEventListener('click', closeGate);
+    backdrop?.addEventListener('click', closeGate);
+    skipBtn?.addEventListener('click', () => {
+      writeSession(SKIP_KEY, '1');
+      closeGate();
+    });
+
+    // Gated links: intercept until the visitor has given their info.
+    document.querySelectorAll<HTMLAnchorElement>('[data-gated-photos]').forEach(el => {
+      el.addEventListener('click', e => {
+        if (isUnlocked) return;
+        e.preventDefault();
+        openGate();
+      });
+    });
+
+    // Scroll trigger — once per session, and never after unlocking or skipping.
+    let scrollFired = false;
+    function onScroll() {
+      if (scrollFired || isUnlocked || readSession(SKIP_KEY) === '1') return;
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      if (total > 0 && scrolled / total >= scrollTrigger) {
+        scrollFired = true;
+        openGate();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    form?.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!submitBtn) return;
+      errorEl?.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>);
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString(),
+        });
+        if (!res.ok) throw new Error(`Submission failed (${res.status})`);
+
+        isUnlocked = true;
+        write(UNLOCK_KEY, '1');
+        paintTriggers();
+        showSuccess();
+        if (photosUrl) window.open(photosUrl, '_blank', 'noopener');
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent =
+            "That didn't go through. Please try again, or call 218-259-9837 and I'll send the photos directly.";
+          errorEl.classList.remove('hidden');
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Show Me the Photos';
+      }
+    });
+
+    paintTriggers();
+  }
+</script>
