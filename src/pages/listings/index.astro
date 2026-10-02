@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { AGENTS, SITE } from '../../lib/constants';
+import {
+  STATUS_META,
+  formatNumber,
+  formatPrice,
+  fullAddress,
+  sortListings,
+  type ListingStatus,
+} from '../../lib/listings';
+
+const all = sortListings(await getCollection('listings', l => !l.data.draft));
+const available = all.filter(l => l.data.status !== 'sold');
+const sold = all.filter(l => l.data.status === 'sold');
+
+const schema = {
+  '@type': 'CollectionPage',
+  name: 'Our Listings — Northern Minnesota Homes for Sale',
+  description:
+    'Homes, cabins and land for sale in Grand Rapids, Deer River and northern Minnesota, listed by Pemberton Real Estate.',
+  url: `${SITE.url}/listings`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: all.map((listing, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: fullAddress(listing.data),
+      url: `${SITE.url}/listings/${listing.id}`,
+    })),
+  },
+};
+---
+
+<Layout
+  title="Our Listings — Homes for Sale in Northern Minnesota"
+  description="Current homes, cabins, lakefront property and land for sale in Grand Rapids, Deer River and northern Minnesota, listed by Malcolm Wallaker and Bridger Hopkins at Pemberton Real Estate."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-[#1e3a5f] py-16 px-4 text-center">
+    <span class="eyebrow text-[#c9973a]">Pemberton Real Estate</span>
+    <h1 class="text-5xl font-bold text-white mt-2 mb-4">Our Listings</h1>
+    <p class="text-slate-300 max-w-2xl mx-auto font-light text-lg">
+      Homes, cabins, lakefront property and land across Itasca County and the Iron Range — listed by
+      agents who actually live here.
+    </p>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+
+    {all.length === 0 ? (
+      <div class="card p-10 text-center">
+        <h2 class="text-2xl font-extrabold text-[#1e3a5f] tracking-tight mb-2">No active listings right now</h2>
+        <p class="text-slate-500 text-sm max-w-md mx-auto mb-6">
+          Our listings move quickly. Tell us what you're looking for and we'll send you properties before
+          they hit the public sites.
+        </p>
+        <a href="/contact" class="btn-primary">Tell Us What You Want</a>
+      </div>
+    ) : (
+      <>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {available.map(listing => {
+            const d = listing.data;
+            const status = STATUS_META[d.status as ListingStatus];
+            return (
+              <a href={`/listings/${listing.id}`}
+                class="card overflow-hidden group hover:-translate-y-1 transition-all duration-200 flex flex-col">
+                <div class="h-52 relative overflow-hidden bg-[#1e3a5f]">
+                  <img src={d.heroImage} alt={fullAddress(d)} loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute top-3 left-3">
+                    <span class={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded ${status.badge}`}>
+                      {status.label}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-5 flex flex-col flex-1">
+                  <p class="text-2xl font-extrabold text-[#1e3a5f] tracking-tight">{formatPrice(d.price)}</p>
+                  <p class="text-sm font-semibold text-slate-700 mt-1">{d.address}</p>
+                  <p class="text-sm text-slate-500">{d.city}, {d.state} {d.zip}</p>
+                  <p class="text-sm text-slate-500 mt-3 leading-relaxed line-clamp-2">{d.tagline}</p>
+
+                  <div class="flex flex-wrap gap-x-4 gap-y-1 mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-semibold">
+                    <span>{formatNumber(d.beds)} bd</span>
+                    <span>{formatNumber(d.baths)} ba</span>
+                    {d.sqft && <span>{formatNumber(d.sqft)} sq ft</span>}
+                    {d.acres && <span>{d.acres} acres</span>}
+                  </div>
+
+                  <span class="text-xs font-bold text-[#1e3a5f] group-hover:text-[#c9973a] transition-colors mt-4">
+                    View listing →
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        {sold.length > 0 && (
+          <section class="mt-16">
+            <span class="eyebrow">Recently Closed</span>
+            <h2 class="text-3xl font-extrabold text-[#1e3a5f] tracking-tight mt-1 mb-6">Sold Listings</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+              {sold.map(listing => (
+                <a href={`/listings/${listing.id}`} class="card p-5 group hover:-translate-y-0.5 transition-all duration-200">
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Sold</span>
+                  <p class="font-bold text-[#1e3a5f] group-hover:text-[#c9973a] transition-colors mt-1">{listing.data.address}</p>
+                  <p class="text-sm text-slate-500">{listing.data.city}, {listing.data.state}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </>
+    )}
+
+    <!-- CTA -->
+    <section class="mt-16 bg-[#1e3a5f] rounded-2xl p-8 md:p-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-[#c9973a]">Thinking of selling?</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mt-2 mb-3">
+          Your listing could be the next one on this page.
+        </h2>
+        <p class="text-white/70 text-sm leading-relaxed max-w-xl">
+          Every property we list gets its own page, its own photography plan and its own marketing push —
+          not just an MLS entry. Let's talk about what your home is worth right now.
+        </p>
+      </div>
+      <a href="/contact" class="bg-[#c9973a] text-white px-7 py-3.5 rounded-lg text-sm font-bold hover:bg-[#b8832e] transition-colors whitespace-nowrap text-center">
+        Get a Home Valuation
+      </a>
+    </section>
+
+    <!-- Agents -->
+    <section class="mt-14">
+      <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5">Listed By</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {AGENTS.map(agent => (
+          <a href={`/agents/${agent.slug}`} class="card p-5 flex items-center gap-4 group hover:-translate-y-0.5 transition-all duration-200">
+            <div class="w-14 h-14 rounded-full bg-slate-100 flex-shrink-0 overflow-hidden">
+              <img src={agent.image} alt={agent.name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div>
+              <p class="font-bold text-[#1e3a5f] group-hover:text-[#c9973a] transition-colors">{agent.name}</p>
+              <p class="text-xs text-[#c9973a] font-semibold uppercase tracking-wider">{agent.title} · {agent.brokerage}</p>
+              <p class="text-xs text-slate-500 mt-1">{agent.phone}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
