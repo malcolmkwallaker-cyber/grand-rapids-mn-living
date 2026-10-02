@@ -59,4 +59,36 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { cities, blog, geo, news };
+const listings = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/listings' }),
+  schema: z.object({
+    address: z.string(),
+    city: z.string(),
+    state: z.string().default('MN'),
+    zip: z.string(),
+    county: z.string().optional(),
+    price: z.number(),
+    status: z.enum(['active', 'coming-soon', 'pending', 'sold']).default('active'),
+    beds: z.number(),
+    baths: z.number(),
+    sqft: z.number().optional(),
+    acres: z.number().optional(),
+    yearBuilt: z.number().optional(),
+    propertyType: z.string().default('Single Family Residence'),
+    mls: z.string().optional(),
+    listDate: z.coerce.date(),
+    agent: z.string().default('malcolm-wallaker'),
+    tagline: z.string(),
+    description: z.string(),
+    heroImage: z.string(),
+    photos: z.array(z.object({ src: z.string(), alt: z.string().optional() })).default([]),
+    photoCount: z.number().optional(),
+    externalPhotosUrl: z.string().optional(),
+    highlights: z.array(z.string()).default([]),
+    features: z.array(z.object({ title: z.string(), detail: z.string() })).default([]),
+    mapQuery: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { cities, blog, geo, news, listings };
